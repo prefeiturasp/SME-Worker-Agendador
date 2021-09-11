@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SME.SGP.Worker.Agendador.Service", "src\SME.SGP.Worker.Agendador\SME.SGP.Worker.Agendador.Service\SME.SGP.Worker.Agendador.Service.csproj", "{4A2755B1-033C-4ACD-9DF1-77C338E5BE61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SME.SGP.Background", "src\SME.SGP.Background\SME.SGP.Background.csproj", "{ADC4D9F6-0471-4371-8F4E-3D54B9976EE8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SME.SGP.Worker.Agendador.Service", "src\SME.SGP.Worker.Agendador\SME.SGP.Worker.Agendador.Service.csproj", "{981FBCE8-460E-48D4-A61F-9A9A05D896F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SME.Background.Core", "src\SME.Background.Core\SME.Background.Core.csproj", "{E3E81190-3D1E-47F9-A386-07DE1CD17577}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SME.Background.Hangfire", "src\SME.Background.Hangfire\SME.Background.Hangfire.csproj", "{C0264D24-9871-48CF-85C8-906B2B0895FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SME.SGP.Infra", "src\SME.SGP.Infra\SME.SGP.Infra.csproj", "{DF136AD7-4301-4275-B20B-C99612F341EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4A2755B1-033C-4ACD-9DF1-77C338E5BE61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A2755B1-033C-4ACD-9DF1-77C338E5BE61}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A2755B1-033C-4ACD-9DF1-77C338E5BE61}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A2755B1-033C-4ACD-9DF1-77C338E5BE61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADC4D9F6-0471-4371-8F4E-3D54B9976EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC4D9F6-0471-4371-8F4E-3D54B9976EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC4D9F6-0471-4371-8F4E-3D54B9976EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC4D9F6-0471-4371-8F4E-3D54B9976EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{981FBCE8-460E-48D4-A61F-9A9A05D896F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{981FBCE8-460E-48D4-A61F-9A9A05D896F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{981FBCE8-460E-48D4-A61F-9A9A05D896F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{981FBCE8-460E-48D4-A61F-9A9A05D896F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3E81190-3D1E-47F9-A386-07DE1CD17577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3E81190-3D1E-47F9-A386-07DE1CD17577}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3E81190-3D1E-47F9-A386-07DE1CD17577}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3E81190-3D1E-47F9-A386-07DE1CD17577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0264D24-9871-48CF-85C8-906B2B0895FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0264D24-9871-48CF-85C8-906B2B0895FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0264D24-9871-48CF-85C8-906B2B0895FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0264D24-9871-48CF-85C8-906B2B0895FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF136AD7-4301-4275-B20B-C99612F341EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF136AD7-4301-4275-B20B-C99612F341EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF136AD7-4301-4275-B20B-C99612F341EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF136AD7-4301-4275-B20B-C99612F341EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
