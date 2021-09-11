@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SME.Worker.Agendador.Background;
 using SME.Worker.Agendador.Background.Core.Interfaces;
+using SME.Worker.Agendador.Hangfire.Configurations;
 using SME.Worker.Agendador.Hangfire.Logging;
 using System;
 using System.IO;
@@ -67,7 +68,7 @@ namespace SME.Worker.Agendador.Hangfire
                                config.AddEnvironmentVariables();
                            })
                            .UseStartup<Startup>()
-                           .UseUrls(new[] { "http://*:5000", "https://*:5001" })
+                           .UseUrls(UriConfiguration.GetUrls())
                            .Build();
 
             host.RunAsync();

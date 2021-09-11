@@ -13,6 +13,7 @@ using SME.Worker.Agendador.Api.Configuracoes;
 using SME.Worker.Agendador.Background;
 using SME.Worker.Agendador.Background.Core;
 using SME.Worker.Agendador.Hangfire;
+using SME.Worker.Agendador.Hangfire.Configurations;
 using SME.Worker.Agendador.IoC;
 using System.Net;
 using System.Net.Sockets;
@@ -72,12 +73,16 @@ namespace SME.Worker.Agendador.Api.Services
         internal static void ConfigurarDependenciasApi(IConfiguration configuration, IServiceCollection services)
         {
             services.AddPolicies();
+
+            services.AddRabbit();
+
             RegistraDependenciasWorkerServices.Registrar(services);
             RegistraDependencias.Registrar(services);
             RegistraDependenciasAgendador.Registrar(services);
             
             RegistraClientesHttp.Registrar(services, configuration);
             Orquestrador.Inicializar(services.BuildServiceProvider());
+            
         }
 
         internal static void ConfigurarDependencias(IConfiguration configuration, IServiceCollection services)
@@ -108,27 +113,27 @@ namespace SME.Worker.Agendador.Api.Services
         internal static void Initialize(IConfiguration configuration, IServiceCollection services)
         {
             services.AddHostedService<WorkerService>();
-            //WorkerService.ConfigurarDependenciasApi(configuration, services);
+            WorkerService.ConfigurarDependenciasApi(configuration, services);
             WorkerService.ConfiguraVariaveisAmbiente(services, configuration);
             WorkerService.ConfiguraGoogleClassroomSync(services, configuration);
             WorkerService.ConfigurarHangfire(configuration, services);
 
-            //services.AddApplicationInsightsTelemetryWorkerService(configuration.GetValue<string>("ApplicationInsights__InstrumentationKey"));
+            services.AddApplicationInsightsTelemetryWorkerService(configuration.GetValue<string>("ApplicationInsights__InstrumentationKey"));
 
-            ////var provider = services.BuildServiceProvider();
+            var provider = services.BuildServiceProvider();
 
-            ////services.AddSingleton<IConnectionMultiplexerSME>(
-            ////    new ConnectionMultiplexerSME(hostContext.Configuration.GetConnectionString("SGP_Redis"), provider.GetService<IServicoLog>()));
+            //services.AddSingleton<IConnectionMultiplexerSME>(
+            //    new ConnectionMultiplexerSME(hostContext.Configuration.GetConnectionString("SGP_Redis"), provider.GetService<IServicoLog>()));
 
-            //Orquestrador.Registrar(new Processor(configuration, "SGP_Postgres"));
-            //RegistraServicosRecorrentes.Registrar();
+            Orquestrador.Registrar(new Processor(configuration, "SGP_Postgres"));
+            RegistraServicosRecorrentes.Registrar();
 
-            //// Teste para injeção do client de telemetria em classe estática                 ,
-            //var telemetryConfiguration = new Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration(configuration.GetValue<string>("ApplicationInsights:InstrumentationKey"));
-            //var telemetryClient = new TelemetryClient(telemetryConfiguration);
-            //DapperExtensionMethods.Init(telemetryClient);
+            // Teste para injeção do client de telemetria em classe estática                 ,
+            var telemetryConfiguration = new Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration(configuration.GetValue<string>("ApplicationInsights:InstrumentationKey"));
+            var telemetryClient = new TelemetryClient(telemetryConfiguration);
+            DapperExtensionMethods.Init(telemetryClient);
 
-            //services.AddMemoryCache();
+            services.AddMemoryCache();
         }
     }
 }

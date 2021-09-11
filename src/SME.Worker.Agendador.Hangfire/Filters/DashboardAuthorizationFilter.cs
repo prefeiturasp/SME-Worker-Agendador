@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SME.Worker.Agendador.Hangfire
 {
-    public class DashboardAuthorizationFilter : BasicAuthAuthorizationFilter
+    internal class DashboardAuthorizationFilter : BasicAuthAuthorizationFilter
     {
         private readonly BasicAuthAuthorizationFilterOptions options;
 

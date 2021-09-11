@@ -4,7 +4,7 @@ using System;
 
 namespace SME.Worker.Agendador.Hangfire
 {
-    public class SgpAuthAuthorizationFilterOptions : BasicAuthAuthorizationFilterOptions
+    internal class SgpAuthAuthorizationFilterOptions : BasicAuthAuthorizationFilterOptions
     {
         public static string AdminUser;
 

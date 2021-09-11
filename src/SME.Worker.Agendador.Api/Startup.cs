@@ -5,17 +5,22 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SME.Worker.Agendador.Api.Services;
+using SME.Worker.Agendador.Hangfire.Configurations;
 
 namespace SME.Worker.Agendador.Api
 {
     public class Startup
     {
+        private IApplicationBuilder app;
+
+        public IConfiguration Configuration { get; }
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -32,6 +37,8 @@ namespace SME.Worker.Agendador.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            this.app = app;
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -49,6 +56,8 @@ namespace SME.Worker.Agendador.Api
             {
                 endpoints.MapControllers();
             });
+
+            
         }
     }
 }

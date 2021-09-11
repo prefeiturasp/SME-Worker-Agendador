@@ -5,13 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\SME-NovoSGP\src\SME.SGP.Aplicacao\SME.SGP.Aplicacao.csproj" />
     <ProjectReference Include="..\..\..\SME-NovoSGP\src\SME.SGP.Dados\SME.SGP.Dados.csproj" />
     <ProjectReference Include="..\..\..\SME-NovoSGP\src\SME.SGP.Dominio.Interfaces\SME.SGP.Dominio.Interfaces.csproj" />
     <ProjectReference Include="..\SME.Worker.Agendador.Infra\SME.Worker.Agendador.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SME.SGP.Dominio.Servicos">
+      <HintPath>..\..\..\SME-NovoSGP\src\SME.SGP.Dominio.Servicos\bin\Debug\netstandard2.0\SME.SGP.Dominio.Servicos.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
