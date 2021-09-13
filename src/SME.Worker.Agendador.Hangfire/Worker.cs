@@ -10,6 +10,7 @@ using SME.Worker.Agendador.Hangfire.Configurations;
 using SME.Worker.Agendador.Hangfire.Logging;
 using System;
 using System.IO;
+using System.Reflection;
 
 namespace SME.Worker.Agendador.Hangfire
 {
@@ -79,12 +80,10 @@ namespace SME.Worker.Agendador.Hangfire
             var pollInterval = configuration.GetValue<int>("BackgroundWorkerQueuePollInterval", 5);
             Console.WriteLine($"SGP Worker Service - BackgroundWorkerQueuePollInterval parameter = {pollInterval}");
 
-
-            //TODO VERIFICAR AddTransient
-            var assembly = AppDomain.CurrentDomain.Load("SME.SGP.Aplicacao");
-            serviceCollection.AddMediatR(assembly);
-            // Todo: Verificar referencia
-            //serviceCollection.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidacoesPipeline<,>));
+            var assemblyApi = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Api");
+            var assemblyApplication = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Aplicacao");
+            var assemblyDomain = AppDomain.CurrentDomain.Load("SME.SGP.Agendador.Dominio");
+            serviceCollection.AddMediatR(assemblyApi, assemblyApplication, assemblyDomain);
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var mediator = (IMediator)serviceProvider.GetService(typeof(IMediator));
@@ -99,10 +98,10 @@ namespace SME.Worker.Agendador.Hangfire
                 .UseFilter<AutomaticRetryAttribute>(new AutomaticRetryAttribute() { Attempts = 0 })
             // Todo: Alterar para redis
             .UsePostgreSqlStorage(connectionString, new PostgreSqlStorageOptions()
-             {
-                 QueuePollInterval = TimeSpan.FromSeconds(pollInterval),
-                 SchemaName = "hangfire"
-             });
+            {
+                QueuePollInterval = TimeSpan.FromSeconds(pollInterval),
+                SchemaName = "hangfire"
+            });
 
             GlobalJobFilters.Filters.Add(new ContextFilterAttribute());
 

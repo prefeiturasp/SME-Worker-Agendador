@@ -17,7 +17,9 @@ namespace SME.Worker.Agendador.IoC.Extensions
                 collection.TryAddTransient(typeof(TService), x => WorkerServiceScope.AddTransientDisposableServices((IDisposable)x.GetService(typeof(TImplementation))));
             }
             else
+            {
                 collection.TryAddTransient<TService, TImplementation>();
+            }
         }
     }
 }

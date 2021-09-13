@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SME.Worker.Agendador.Api.Services;
-using SME.Worker.Agendador.Hangfire.Configurations;
 
 namespace SME.Worker.Agendador.Api
 {
@@ -57,7 +56,7 @@ namespace SME.Worker.Agendador.Api
                 endpoints.MapControllers();
             });
 
-            
+
         }
     }
 }

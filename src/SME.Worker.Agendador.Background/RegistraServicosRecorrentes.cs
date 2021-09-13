@@ -1,7 +1,36 @@
 ﻿using Hangfire;
-using SME.SGP.Aplicacao;
-using SME.SGP.Aplicacao.Interfaces;
-using SME.SGP.Dominio.Interfaces;
+using SME.SGP.Agendador.Dominio.CasosDeUso.Aula.CriacaoAutomatica;
+using SME.SGP.Agendador.Dominio.CasosDeUso.AulasPrevistas;
+using SME.SGP.Agendador.Dominio.CasosDeUso.ComponentesCurriculares;
+using SME.SGP.Agendador.Dominio.CasosDeUso.ConsolidacaoAcompanhamentoAprendizagemAluno;
+using SME.SGP.Agendador.Dominio.CasosDeUso.ConsolidacaoDevolutivas;
+using SME.SGP.Agendador.Dominio.CasosDeUso.ConsolidacaoMatriculaTurma;
+using SME.SGP.Agendador.Dominio.CasosDeUso.ConsolidacaoMediaRegistrosIndividuais;
+using SME.SGP.Agendador.Dominio.CasosDeUso.Frequencia;
+using SME.SGP.Agendador.Dominio.CasosDeUso.Frequencia.ConciliacaoFrequenciaTurmas;
+using SME.SGP.Agendador.Dominio.CasosDeUso.GoogleClassroom;
+using SME.SGP.Agendador.Dominio.CasosDeUso.NotificacaoAlunosFaltosos;
+using SME.SGP.Agendador.Dominio.CasosDeUso.NotificacaoAndamentoFechamento;
+using SME.SGP.Agendador.Dominio.CasosDeUso.NotificacaoFrequenciaUe;
+using SME.SGP.Agendador.Dominio.CasosDeUso.NotificacaoInicioFimPeriodoFechamento;
+using SME.SGP.Agendador.Dominio.CasosDeUso.NotificacaoPeriodoFechamento;
+using SME.SGP.Agendador.Dominio.CasosDeUso.NotificacaoResultadoInsatisfatorio;
+using SME.SGP.Agendador.Dominio.CasosDeUso.NotificacaoReuniaoPedagogica;
+using SME.SGP.Agendador.Dominio.CasosDeUso.NotificacaoUeFechamentosInsuficientes;
+using SME.SGP.Agendador.Dominio.CasosDeUso.NotificacoesNiveisCargos;
+using SME.SGP.Agendador.Dominio.CasosDeUso.ObjetivoAprendizagem;
+using SME.SGP.Agendador.Dominio.CasosDeUso.PendenciaAusenciaFechamento;
+using SME.SGP.Agendador.Dominio.CasosDeUso.PendenciaProfessor;
+using SME.SGP.Agendador.Dominio.CasosDeUso.PendenciaRegistroIndividual;
+using SME.SGP.Agendador.Dominio.CasosDeUso.PendenciasGerais;
+using SME.SGP.Agendador.Dominio.CasosDeUso.PlanoAEE.EncerramentoPlanoAEEEstudantesInativos;
+using SME.SGP.Agendador.Dominio.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEEmAberto;
+using SME.SGP.Agendador.Dominio.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEExpirado;
+using SME.SGP.Agendador.Dominio.CasosDeUso.PlanoAEE.PendenciaValidadePlanoAEE;
+using SME.SGP.Agendador.Dominio.CasosDeUso.RabbitDeadletter;
+using SME.SGP.Agendador.Dominio.CasosDeUso.RotasAgendamento;
+using SME.SGP.Agendador.Dominio.CasosDeUso.SerapEstudantes;
+using SME.SGP.Agendador.Dominio.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Background.Core;
 
 namespace SME.Worker.Agendador.Background
@@ -10,8 +39,7 @@ namespace SME.Worker.Agendador.Background
     {
         public static void Registrar()
         {
-            // ToDo: Verificar como fica a referencia
-            Cliente.ExecutarPeriodicamente<IServicoNotificacaoFrequencia>(c => c.ExecutaNotificacaoRegistroFrequencia(), Cron.Daily(2));
+            Cliente.ExecutarPeriodicamente<INotifificarRegistroFrequenciaUseCase>(c => c.Executar(), Cron.Daily(2));
 
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoAulasPrevistasUseCase>(c => c.Executar(), Cron.Daily(2));
 
@@ -20,11 +48,11 @@ namespace SME.Worker.Agendador.Background
             //Cliente.ExecutarPeriodicamente<IServicoAbrangencia>(c => c.SincronizarEstruturaInstitucionalVigenteCompleta(), "0 13,17,19 * * 1-5");
 
             //todos os dias à 1 da manhã
-            Cliente.ExecutarPeriodicamente<IServicoObjetivosAprendizagem>(c => c.SincronizarObjetivosComJurema(), Cron.Daily(22));
+            Cliente.ExecutarPeriodicamente<ISincronizarObjetivosComJuremaUseCase>(c => c.Executar(), Cron.Daily(22));
 
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoAlunosFaltososUseCase>(c => c.Executar(), Cron.Daily(2));
 
-            Cliente.ExecutarPeriodicamente<IServicoNotificacaoFrequencia>(c => c.NotificarAlunosFaltososBimestre(), Cron.Daily(3));
+            Cliente.ExecutarPeriodicamente<INotificarAlunosFaltososBimestreUseCase>(c => c.Executar(), Cron.Daily(3));
 
             Cliente.ExecutarPeriodicamente<ISincronizarAulasInfantilUseCase>(c => c.Executar(), Cron.Daily(6));
 
@@ -86,8 +114,10 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoAulasRegenciaAutomaticasUseCase>(c => c.Executar(), Cron.Daily(9));
 
             //De 10 em 10 minutos
-            Cliente.ExecutarPeriodicamente<IRabbitDeadletterSgpSyncUseCase>(c => c.Executar(), "*/10 * * * *");
-            Cliente.ExecutarPeriodicamente<IRabbitDeadletterSrSyncUseCase>(c => c.Executar(), "*/10 * * * *");
+            Cliente.ExecutarPeriodicamente<IRabbitDeadletterSgpSyncUseCase>(c => c.Executar(), Cron.MinuteInterval(10));
+            //ToDo:voltar 10 em 10
+            //Cliente.ExecutarPeriodicamente<IRabbitDeadletterSrSyncUseCase>(c => c.Executar(), Cron.MinuteInterval(10));
+            Cliente.ExecutarPeriodicamente<IRabbitDeadletterSrSyncUseCase>(c => c.Executar(), Cron.MinuteInterval(1));
 
             Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase>(c => c.Executar(), Cron.Daily(9));
 

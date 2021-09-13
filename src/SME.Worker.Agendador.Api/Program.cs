@@ -26,7 +26,6 @@ namespace SME.Worker.Agendador.Api
                 log.AddConfiguration(context.Configuration);
                 //log.AddSentry();
             })
-            //.ConfigureServices(WorkerService.Initialize);
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();

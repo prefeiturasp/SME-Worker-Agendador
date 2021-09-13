@@ -4,16 +4,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Sentry;
 using SME.SGP.Dados;
-using SME.SGP.Dados.Mapeamentos;
 using SME.SGP.Infra;
 using SME.SGP.Infra.Utilitarios;
-using SME.SGP.IoC;
 using SME.SGP.IoC.Extensions;
-using SME.Worker.Agendador.Api.Configuracoes;
 using SME.Worker.Agendador.Background;
 using SME.Worker.Agendador.Background.Core;
 using SME.Worker.Agendador.Hangfire;
-using SME.Worker.Agendador.Hangfire.Configurations;
 using SME.Worker.Agendador.IoC;
 using System.Net;
 using System.Net.Sockets;
@@ -43,7 +39,9 @@ namespace SME.Worker.Agendador.Api.Services
                     }
 
                     if (string.IsNullOrWhiteSpace(ipLocal))
+                    {
                         ipLocal = "127.0.0.1";
+                    }
                 }
 
                 return ipLocal;
@@ -70,25 +68,29 @@ namespace SME.Worker.Agendador.Api.Services
             HangfireWorkerService = new Servidor<Hangfire.Worker>(new Hangfire.Worker(configuration, services, configuration.GetConnectionString("SGP_Postgres")));
         }
 
+        //internal static void ConfigurarDependenciasApi(IConfiguration configuration, IServiceCollection services)
+        //{
+        //    services.AddPolicies();
+
+        //    services.AddRabbit();
+
+        //    RegistraDependenciasWorkerServices.Registrar(services);
+        //    RegistraDependencias.Registrar(services);
+        //    RegistraDependenciasAgendador.Registrar(services);
+
+        //    RegistraClientesHttp.Registrar(services, configuration);
+        //    Orquestrador.Inicializar(services.BuildServiceProvider());
+
+        //}
+
         internal static void ConfigurarDependenciasApi(IConfiguration configuration, IServiceCollection services)
         {
             services.AddPolicies();
-
-            services.AddRabbit();
-
             RegistraDependenciasWorkerServices.Registrar(services);
-            RegistraDependencias.Registrar(services);
-            RegistraDependenciasAgendador.Registrar(services);
-            
-            RegistraClientesHttp.Registrar(services, configuration);
+            //RegistrarMapeamentos.Registrar();
+            //RegistraClientesHttp.Registrar(services, configuration);
             Orquestrador.Inicializar(services.BuildServiceProvider());
-            
-        }
 
-        internal static void ConfigurarDependencias(IConfiguration configuration, IServiceCollection services)
-        {
-            RegistrarMapeamentos.Registrar();
-            ConfigurarDependenciasApi(configuration, services);
         }
 
         internal static void ConfiguraVariaveisAmbiente(IServiceCollection services, IConfiguration configuration)
@@ -107,9 +109,6 @@ namespace SME.Worker.Agendador.Api.Services
             services.AddSingleton(googleClassroomSyncOptions);
         }
 
-        internal static void Initialize(HostBuilderContext hostContext, IServiceCollection services) =>
-            Initialize(hostContext.Configuration, services);
-
         internal static void Initialize(IConfiguration configuration, IServiceCollection services)
         {
             services.AddHostedService<WorkerService>();
@@ -121,9 +120,6 @@ namespace SME.Worker.Agendador.Api.Services
             services.AddApplicationInsightsTelemetryWorkerService(configuration.GetValue<string>("ApplicationInsights__InstrumentationKey"));
 
             var provider = services.BuildServiceProvider();
-
-            //services.AddSingleton<IConnectionMultiplexerSME>(
-            //    new ConnectionMultiplexerSME(hostContext.Configuration.GetConnectionString("SGP_Redis"), provider.GetService<IServicoLog>()));
 
             Orquestrador.Registrar(new Processor(configuration, "SGP_Postgres"));
             RegistraServicosRecorrentes.Registrar();
