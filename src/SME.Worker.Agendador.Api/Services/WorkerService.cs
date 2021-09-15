@@ -3,14 +3,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Sentry;
-using SME.SGP.Dados;
 using SME.SGP.Infra;
 using SME.SGP.Infra.Utilitarios;
-using SME.SGP.IoC.Extensions;
 using SME.Worker.Agendador.Background;
 using SME.Worker.Agendador.Background.Core;
 using SME.Worker.Agendador.Hangfire;
 using SME.Worker.Agendador.IoC;
+using SME.Worker.Agendador.IoC.Extensions;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -125,9 +124,9 @@ namespace SME.Worker.Agendador.Api.Services
             RegistraServicosRecorrentes.Registrar();
 
             // Teste para injeção do client de telemetria em classe estática                 ,
-            var telemetryConfiguration = new Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration(configuration.GetValue<string>("ApplicationInsights:InstrumentationKey"));
-            var telemetryClient = new TelemetryClient(telemetryConfiguration);
-            DapperExtensionMethods.Init(telemetryClient);
+            //var telemetryConfiguration = new Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration(configuration.GetValue<string>("ApplicationInsights:InstrumentationKey"));
+            //var telemetryClient = new TelemetryClient(telemetryConfiguration);
+            //DapperExtensionMethods.Init(telemetryClient);
 
             services.AddMemoryCache();
         }

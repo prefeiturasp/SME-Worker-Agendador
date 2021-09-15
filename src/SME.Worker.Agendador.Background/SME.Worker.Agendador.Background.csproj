@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SME-NovoSGP\src\SME.SGP.Agendador.Dominio\SME.SGP.Agendador.Dominio.csproj" />
+    <ProjectReference Include="..\SME.SGP.Agendador.Dominio\SME.SGP.Agendador.Dominio.csproj" />
     <ProjectReference Include="..\SME.Worker.Agendador.Background.Core\SME.Worker.Agendador.Background.Core.csproj" />
     <ProjectReference Include="..\SME.Worker.Agendador.Infra\SME.Worker.Agendador.Infra.csproj" />
   </ItemGroup>

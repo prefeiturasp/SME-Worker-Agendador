@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System;
 
-namespace SME.Worker.Agendador.Aplicacao
+namespace SME.SGP.Agendador.Dominio.CasosDeUso
 {
     public abstract class AbstractUseCase
     {

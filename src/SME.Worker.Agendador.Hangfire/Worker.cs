@@ -10,7 +10,6 @@ using SME.Worker.Agendador.Hangfire.Configurations;
 using SME.Worker.Agendador.Hangfire.Logging;
 using System;
 using System.IO;
-using System.Reflection;
 
 namespace SME.Worker.Agendador.Hangfire
 {

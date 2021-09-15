@@ -25,8 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SME-NovoSGP\src\SME.SGP.Agendador.Dominio\SME.SGP.Agendador.Dominio.csproj" />
-    <ProjectReference Include="..\..\..\SME-NovoSGP\src\SME.SGP.IoC\SME.SGP.IoC.csproj" />
+    <ProjectReference Include="..\SME.SGP.Agendador.Dominio\SME.SGP.Agendador.Dominio.csproj" />
     <ProjectReference Include="..\SME.Worker.Agendador.Background\SME.Worker.Agendador.Background.csproj" />
     <ProjectReference Include="..\SME.Worker.Agendador.Hangfire\SME.Worker.Agendador.Hangfire.csproj" />
     <ProjectReference Include="..\SME.Worker.Agendador.IoC\SME.Worker.Agendador.IoC.csproj" />
