@@ -67,27 +67,10 @@ namespace SME.Worker.Agendador.Api.Services
             HangfireWorkerService = new Servidor<Hangfire.Worker>(new Hangfire.Worker(configuration, services, configuration.GetConnectionString("SGP_Postgres")));
         }
 
-        //internal static void ConfigurarDependenciasApi(IConfiguration configuration, IServiceCollection services)
-        //{
-        //    services.AddPolicies();
-
-        //    services.AddRabbit();
-
-        //    RegistraDependenciasWorkerServices.Registrar(services);
-        //    RegistraDependencias.Registrar(services);
-        //    RegistraDependenciasAgendador.Registrar(services);
-
-        //    RegistraClientesHttp.Registrar(services, configuration);
-        //    Orquestrador.Inicializar(services.BuildServiceProvider());
-
-        //}
-
         internal static void ConfigurarDependenciasApi(IConfiguration configuration, IServiceCollection services)
         {
             services.AddPolicies();
             RegistraDependenciasWorkerServices.Registrar(services);
-            //RegistrarMapeamentos.Registrar();
-            //RegistraClientesHttp.Registrar(services, configuration);
             Orquestrador.Inicializar(services.BuildServiceProvider());
 
         }
@@ -122,11 +105,6 @@ namespace SME.Worker.Agendador.Api.Services
 
             Orquestrador.Registrar(new Processor(configuration, "SGP_Postgres"));
             RegistraServicosRecorrentes.Registrar();
-
-            // Teste para injeção do client de telemetria em classe estática                 ,
-            //var telemetryConfiguration = new Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration(configuration.GetValue<string>("ApplicationInsights:InstrumentationKey"));
-            //var telemetryClient = new TelemetryClient(telemetryConfiguration);
-            //DapperExtensionMethods.Init(telemetryClient);
 
             services.AddMemoryCache();
         }

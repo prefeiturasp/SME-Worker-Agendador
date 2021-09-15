@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SME.Worker.Agendador.IoC", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SME.Worker.Agendador.Aplicacao", "SME.Worker.Agendador.Aplicacao\SME.Worker.Agendador.Aplicacao.csproj", "{2B6443F4-6C36-448D-B458-3075135E9ED4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SME.SGP.Agendador.Dominio", "src\SME.SGP.Agendador.Dominio\SME.SGP.Agendador.Dominio.csproj", "{8A5ADAAB-B96C-4E69-B214-8B45410637B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SME.Worker.Agendador.Dominio", "src\SME.SGP.Agendador.Dominio\SME.Worker.Agendador.Dominio.csproj", "{8A5ADAAB-B96C-4E69-B214-8B45410637B0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SME.SGP.Infra", "src\SME.SGP.Infra\SME.SGP.Infra.csproj", "{9FDB6E2B-4FA7-4FBA-AD02-2AA98F70505C}"
 EndProject
