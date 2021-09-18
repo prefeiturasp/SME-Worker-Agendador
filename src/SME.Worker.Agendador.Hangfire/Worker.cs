@@ -81,7 +81,7 @@ namespace SME.Worker.Agendador.Hangfire
 
             var assemblyApi = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Api");
             var assemblyApplication = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Aplicacao");
-            var assemblyDomain = AppDomain.CurrentDomain.Load("SME.SGP.Agendador.Dominio");
+            var assemblyDomain = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Dominio");
             serviceCollection.AddMediatR(assemblyApi, assemblyApplication, assemblyDomain);
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
