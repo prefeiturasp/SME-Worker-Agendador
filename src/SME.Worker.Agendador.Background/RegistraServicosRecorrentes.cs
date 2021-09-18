@@ -1,11 +1,14 @@
 ﻿using Hangfire;
+using SME.Worker.Agendador.Background.Core;
 using SME.Worker.Agendador.Dominio.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Dominio.CasosDeUso.AulasPrevistas;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ComponentesCurriculares;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoAcompanhamentoAprendizagemAluno;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoDevolutivas;
+using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoFrequenciaTurma;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoMatriculaTurma;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoMediaRegistrosIndividuais;
+using SME.Worker.Agendador.Dominio.CasosDeUso.FilaTesteRabbitMQ;
 using SME.Worker.Agendador.Dominio.CasosDeUso.Frequencia;
 using SME.Worker.Agendador.Dominio.CasosDeUso.Frequencia.ConciliacaoFrequenciaTurmas;
 using SME.Worker.Agendador.Dominio.CasosDeUso.GoogleClassroom;
@@ -31,8 +34,6 @@ using SME.Worker.Agendador.Dominio.CasosDeUso.RabbitDeadletter;
 using SME.Worker.Agendador.Dominio.CasosDeUso.RotasAgendamento;
 using SME.Worker.Agendador.Dominio.CasosDeUso.SerapEstudantes;
 using SME.Worker.Agendador.Dominio.CasosDeUso.SincronizacaoInstitucional;
-using SME.Worker.Agendador.Background.Core;
-using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoFrequenciaTurma;
 
 namespace SME.Worker.Agendador.Background
 {
@@ -87,7 +88,7 @@ namespace SME.Worker.Agendador.Background
 
             // de segunda a sexta as 11 horas
             //Cliente.ExecutarPeriodicamente<IExecutaTrataNotificacoesNiveisCargosUseCase>(c => c.Executar(), "0 14 * * 1-5");
-            Cliente.ExecutarPeriodicamente<ITratarNotificacoesNiveisCargosUseCase>(c => c.Executar(), , "0 14 * * 1-5");
+            Cliente.ExecutarPeriodicamente<ITratarNotificacoesNiveisCargosUseCase>(c => c.Executar(), "0 14 * * 1-5");
 
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoInicioFimPeriodoFechamentoUseCase>(c => c.Executar(), Cron.Daily(5, 15));
 
@@ -137,7 +138,9 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IRotasAgendamentoSyncUseCase>(c => c.Executar(), Cron.Daily(10));
 
             //Cliente.ExecutarPeriodicamente<IExecutarSyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
-            Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
+            
+            //ToDo: Eduardo - Verificar regra, esta dando erro de validação no PublicarFilaSerapEstudantesCommand
+            //Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
         }
 
 
@@ -224,6 +227,8 @@ namespace SME.Worker.Agendador.Background
 
             // Removido até melhoria de performance prevista
             Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoFrequenciaTurmaSyncUseCase>(c => c.Executar(), oneMinute);
+
+            //Cliente.ExecutarPeriodicamente<IFilaTesteRabbitMQ>(c => c.Executar(), oneMinute);
         }
     }
 }

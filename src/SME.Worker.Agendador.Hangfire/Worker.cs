@@ -38,23 +38,6 @@ namespace SME.Worker.Agendador.Hangfire
         {
             RegistrarHangfireServer();
             RegistrarDashboard();
-
-            //EXEMPLO DE ADICIONAR ITENS NA FILA VIA JSON
-            //var folderDetails = Path.Combine(Directory.GetCurrentDirectory(), $"files\\{"job.json"}");
-            //var JSON = System.IO.File.ReadAllText(folderDetails);
-            //dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(JSON);
-
-            //foreach (var item in jsonObj)
-            //{
-            //    try
-            //    {
-            //        BackgroundJob.Requeue(item.id.ToString(), "Failed");
-            //    }
-            //    catch (Exception)
-            //    {
-
-            //    }
-            //}
         }
 
         private void RegistrarDashboard()

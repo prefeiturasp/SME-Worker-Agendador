@@ -31,4 +31,8 @@
     <ProjectReference Include="..\SME.Worker.Agendador.IoC\SME.Worker.Agendador.IoC.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

@@ -9,6 +9,7 @@ using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoDevolutivas;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoFrequenciaTurma;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoMatriculaTurma;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoMediaRegistrosIndividuais;
+using SME.Worker.Agendador.Dominio.CasosDeUso.FilaTesteRabbitMQ;
 using SME.Worker.Agendador.Dominio.CasosDeUso.Frequencia;
 using SME.Worker.Agendador.Dominio.CasosDeUso.Frequencia.ConciliacaoFrequenciaTurmas;
 using SME.Worker.Agendador.Dominio.CasosDeUso.GoogleClassroom;
@@ -103,6 +104,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IRotasAgendamentoSyncUseCase, RotasAgendamentoSyncUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasUseCase, SyncSerapEstudantesProvasUseCase>();
             services.TryAddScopedWorkerService<IExecutarConsolidacaoFrequenciaTurmaSyncUseCase, ExecutarConsolidacaoFrequenciaTurmaSyncUseCase>();
+            services.TryAddScopedWorkerService<IFilaTesteRabbitMQ, FilaTesteRabbitMQ>();
         }
 
         private static void ResgistraDependenciaHttp(IServiceCollection services)

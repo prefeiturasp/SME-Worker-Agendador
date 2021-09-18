@@ -52,6 +52,7 @@ namespace SME.Worker.Agendador.Hangfire
                 {
                     SchemaName = "hangfire"
                 });
+
             GlobalJobFilters.Filters.Add(new ContextFilterAttribute());
 
             Registrado = true;
