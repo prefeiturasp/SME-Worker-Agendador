@@ -44,5 +44,7 @@
         public const string SyncSerapEstudantesProvas = "sgp.sync.serap.estudantes.provas";
         public const string TratarNotificacoesNiveisCargos = "sgp.tratar.notificacoes.niveis.cargos";
         public const string PendenciasGerais = "sgp.pendencias.gerais";
+        public const string ConsolidacaoFrequenciasTurmasCarregar = "sgp.frequencia.turma.carregar";
+        
     }
 }
