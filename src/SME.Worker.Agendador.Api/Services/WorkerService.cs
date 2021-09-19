@@ -1,5 +1,4 @@
-﻿using Microsoft.ApplicationInsights;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Sentry;
@@ -64,7 +63,7 @@ namespace SME.Worker.Agendador.Api.Services
 
         internal static void ConfigurarHangfire(IConfiguration configuration, IServiceCollection services)
         {
-            HangfireWorkerService = new Servidor<Hangfire.Worker>(new Hangfire.Worker(configuration, services, configuration.GetConnectionString("SGP_Postgres")));
+            HangfireWorkerService = new Servidor<Hangfire.Worker>(new Hangfire.Worker(configuration, services, configuration.GetConnectionString("SGP_Redis")));
         }
 
         internal static void ConfigurarDependenciasApi(IConfiguration configuration, IServiceCollection services)
@@ -91,7 +90,7 @@ namespace SME.Worker.Agendador.Api.Services
             services.AddSingleton(googleClassroomSyncOptions);
         }
 
-        internal static void Initialize(IConfiguration configuration, IServiceCollection services)
+        internal static void Initialize(IConfiguration configuration, IServiceCollection services, string connectionString)
         {
             services.AddHostedService<WorkerService>();
             WorkerService.ConfigurarDependenciasApi(configuration, services);
@@ -103,7 +102,7 @@ namespace SME.Worker.Agendador.Api.Services
 
             var provider = services.BuildServiceProvider();
 
-            Orquestrador.Registrar(new Processor(configuration, "SGP_Postgres"));
+            Orquestrador.Registrar(new Processor(configuration, connectionString));
             RegistraServicosRecorrentes.Registrar();
 
             services.AddMemoryCache();

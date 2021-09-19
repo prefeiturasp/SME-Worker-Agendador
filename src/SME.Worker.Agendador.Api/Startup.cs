@@ -30,7 +30,7 @@ namespace SME.Worker.Agendador.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SME.Worker.Agendador.Api", Version = "v1" });
             });
-            WorkerService.Initialize(Configuration, services);
+            WorkerService.Initialize(Configuration, services, Configuration.GetConnectionString("SGP_Redis"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,4 @@
 ﻿using Hangfire;
-using Hangfire.PostgreSql;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace SME.Worker.Agendador.Hangfire.Configurations
@@ -13,11 +12,7 @@ namespace SME.Worker.Agendador.Hangfire.Configurations
             .UseSimpleAssemblyNameTypeSerializer()
             .UseRecommendedSerializerSettings()
             .UseFilter<AutomaticRetryAttribute>(new AutomaticRetryAttribute() { Attempts = 0 })
-            // Todo: Alterar para redis
-            .UsePostgreSqlStorage(connectionString, new PostgreSqlStorageOptions()
-            {
-                SchemaName = "hangfire"
-            }));
+            .UseRedisStorage(connectionString));
         }
     }
 }

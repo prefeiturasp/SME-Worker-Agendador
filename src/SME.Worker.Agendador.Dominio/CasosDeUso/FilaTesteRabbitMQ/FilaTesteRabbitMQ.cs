@@ -1,6 +1,4 @@
 ﻿using MediatR;
-using SME.Worker.Agendador.Dominio.Comandos;
-using System;
 using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Dominio.CasosDeUso.FilaTesteRabbitMQ
@@ -29,7 +27,7 @@ namespace SME.Worker.Agendador.Dominio.CasosDeUso.FilaTesteRabbitMQ
             //await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.WorkflowAprovacaoExcluir, Guid.NewGuid()));
             //await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.NotificacoesNiveisCargos, Guid.NewGuid()));
             //await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.SincronizarComponentesCurriculares, Guid.NewGuid()));
-            
+
 
         }
     }

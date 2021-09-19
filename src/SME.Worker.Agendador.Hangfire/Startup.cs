@@ -8,20 +8,17 @@ namespace SME.Worker.Agendador.Hangfire
 {
     internal class Startup
     {
-        private readonly IConfiguration configuration;
-        private readonly string connectionString;
+        public IConfiguration Configuration { get; set; }
+        public string ConnectionString { get; set; }
 
-        public Startup(IConfiguration configuration)
+        public Startup()
         {
-            this.configuration = configuration;
-            var paramConnectionString = this.configuration.GetConnectionString("SGP_Postgres");
-            this.connectionString = (!paramConnectionString.EndsWith(';') ? paramConnectionString + ";" : paramConnectionString) + "Application Name=SGP Worker Service Dashboard";
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) =>
-            DashboardConfiguration.Configure(app, configuration);
+            DashboardConfiguration.Configure(app, this.Configuration);
 
         public void ConfigureServices(IServiceCollection services) =>
-            WorkerConfiguration.Configure(services, this.connectionString);
+            WorkerConfiguration.Configure(services, this.ConnectionString);
     }
 }

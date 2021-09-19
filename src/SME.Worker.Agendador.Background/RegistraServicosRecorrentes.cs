@@ -8,7 +8,6 @@ using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoDevolutivas;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoFrequenciaTurma;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoMatriculaTurma;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ConsolidacaoMediaRegistrosIndividuais;
-using SME.Worker.Agendador.Dominio.CasosDeUso.FilaTesteRabbitMQ;
 using SME.Worker.Agendador.Dominio.CasosDeUso.Frequencia;
 using SME.Worker.Agendador.Dominio.CasosDeUso.Frequencia.ConciliacaoFrequenciaTurmas;
 using SME.Worker.Agendador.Dominio.CasosDeUso.GoogleClassroom;
@@ -138,7 +137,7 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IRotasAgendamentoSyncUseCase>(c => c.Executar(), Cron.Daily(10));
 
             //Cliente.ExecutarPeriodicamente<IExecutarSyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
-            
+
             //ToDo: Eduardo - Verificar regra, esta dando erro de validação no PublicarFilaSerapEstudantesCommand
             //Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
         }

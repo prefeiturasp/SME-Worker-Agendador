@@ -1,5 +1,4 @@
 ﻿using Hangfire;
-using Hangfire.PostgreSql;
 using Microsoft.Extensions.Configuration;
 using SME.Worker.Agendador.Background;
 using SME.Worker.Agendador.Background.Core.Interfaces;
@@ -47,11 +46,7 @@ namespace SME.Worker.Agendador.Hangfire
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                 .UseSimpleAssemblyNameTypeSerializer()
                 .UseRecommendedSerializerSettings()
-                // Todo: Alterar para redis
-                .UsePostgreSqlStorage(configuration.GetConnectionString(connectionString), new PostgreSqlStorageOptions()
-                {
-                    SchemaName = "hangfire"
-                });
+                .UseRedisStorage(connectionString);
 
             GlobalJobFilters.Filters.Add(new ContextFilterAttribute());
 

@@ -1,5 +1,4 @@
 ﻿using Hangfire;
-using Hangfire.PostgreSql;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +24,7 @@ namespace SME.Worker.Agendador.Hangfire
         {
             this.configuration = configuration;
             this.serviceCollection = serviceCollection;
-            this.connectionString = (!connectionString.EndsWith(';') ? connectionString + ";" : connectionString) + "Application Name=SGP Worker Service";
+            this.connectionString = connectionString;
         }
 
         public void Dispose()
@@ -50,7 +49,14 @@ namespace SME.Worker.Agendador.Hangfire
                                config.SetBasePath(Directory.GetCurrentDirectory());
                                config.AddEnvironmentVariables();
                            })
-                           .UseStartup<Startup>()
+                           .UseStartup<Startup>((buider) =>
+                               {
+                                   return new Startup
+                                   {
+                                       Configuration = this.configuration,
+                                       ConnectionString = this.connectionString
+                                   };
+                               })
                            .UseUrls(UriConfiguration.GetUrls())
                            .Build();
 
@@ -78,12 +84,7 @@ namespace SME.Worker.Agendador.Hangfire
                 .UseRecommendedSerializerSettings()
                 .UseActivator(new HangfireActivator(serviceCollection.BuildServiceProvider(), mediator))
                 .UseFilter<AutomaticRetryAttribute>(new AutomaticRetryAttribute() { Attempts = 0 })
-            // Todo: Alterar para redis
-            .UsePostgreSqlStorage(connectionString, new PostgreSqlStorageOptions()
-            {
-                QueuePollInterval = TimeSpan.FromSeconds(pollInterval),
-                SchemaName = "hangfire"
-            });
+                .UseRedisStorage(connectionString);
 
             GlobalJobFilters.Filters.Add(new ContextFilterAttribute());
 
