@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SME.Worker.Agendador.Aplicacao\SME.Worker.Agendador.Aplicacao.csproj" />
-    <ProjectReference Include="..\SME.Worker.Agendador.Infra\SME.Worker.Agendador.Infra.csproj" />
   </ItemGroup>
 
 </Project>

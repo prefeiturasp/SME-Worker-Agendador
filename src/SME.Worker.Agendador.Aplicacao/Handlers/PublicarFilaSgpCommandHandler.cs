@@ -5,7 +5,7 @@ using Polly;
 using Polly.Registry;
 using RabbitMQ.Client;
 using SME.GoogleClassroom.Infra;
-using SME.SGP.Infra;
+using SME.Worker.Agendador.Infra;
 using SME.Worker.Agendador.Aplicacao.Comandos;
 using System;
 using System.Text;

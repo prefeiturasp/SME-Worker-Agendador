@@ -1,4 +1,4 @@
-﻿namespace SME.Worker.Agendador.Infra.Politicas
+﻿namespace SME.GoogleClassroom.Infra
 {
     public abstract class PoliticaPolly
     {

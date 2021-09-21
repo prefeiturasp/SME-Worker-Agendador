@@ -8,7 +8,7 @@ WORKDIR /src
 COPY ["src/SME.Worker.Agendador.Api/SME.Worker.Agendador.Api.csproj", "src/SME.Worker.Agendador.Api/"]
 COPY ["src/SME.Worker.Agendador.Background/SME.Worker.Agendador.Background.csproj", "src/SME.Worker.Agendador.Background/"]
 COPY ["src/SME.Worker.Agendador.Infra/SME.Worker.Agendador.Infra.csproj", "src/SME.Worker.Agendador.Infra/"]
-COPY ["src/SME.SGP.Infra/SME.SGP.Infra.csproj", "src/SME.SGP.Infra/"]
+COPY ["src/SME.Worker.Agendador.Infra/SME.Worker.Agendador.Infra.csproj", "src/SME.Worker.Agendador.Infra/"]
 COPY ["src/SME.Worker.Agendador.Dominio/SME.Worker.Agendador.Dominio.csproj", "src/SME.Worker.Agendador.Dominio/"]
 COPY ["src/SME.Worker.Agendador.Background.Core/SME.Worker.Agendador.Background.Core.csproj", "src/SME.Worker.Agendador.Background.Core/"]
 COPY ["src/SME.Worker.Agendador.IoC/SME.Worker.Agendador.IoC.csproj", "src/SME.Worker.Agendador.IoC/"]

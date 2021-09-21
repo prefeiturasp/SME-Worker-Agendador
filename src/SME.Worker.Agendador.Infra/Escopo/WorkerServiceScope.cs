@@ -59,7 +59,7 @@ namespace SME.Worker.Agendador.Infra.Escopo
             }
             if (TransientContexts.TryRemove(WorkerContext.ContextIdentifier, out context))
             {
-                context?.Dispose();
+                context.Dispose();
             }
         }
     }

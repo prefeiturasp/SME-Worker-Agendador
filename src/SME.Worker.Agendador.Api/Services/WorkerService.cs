@@ -2,8 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Sentry;
-using SME.SGP.Infra;
-using SME.SGP.Infra.Utilitarios;
+using SME.Worker.Agendador.Infra;
+using SME.Worker.Agendador.Infra.Utilitarios;
 using SME.Worker.Agendador.Background;
 using SME.Worker.Agendador.Background.Core;
 using SME.Worker.Agendador.Hangfire;

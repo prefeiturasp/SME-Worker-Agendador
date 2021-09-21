@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
-using SME.SGP.Infra.Excecoes;
+using SME.Worker.Agendador.Infra.Excecoes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;

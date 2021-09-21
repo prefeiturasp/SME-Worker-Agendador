@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SME.SGP.Infra;
+using SME.Worker.Agendador.Infra;
 using SME.Worker.Agendador.Aplicacao.Comandos;
 using System;
 using System.Threading.Tasks;
