@@ -48,9 +48,6 @@ namespace SME.Worker.Agendador.Api.Services
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            SentrySdk.AddBreadcrumb($"[SME SGP] Serviço Background iniciado no ip: {IPLocal}", "Service Life cycle");
-            HangfireWorkerService.Registrar();
-
             return Task.CompletedTask;
         }
 
@@ -71,8 +68,8 @@ namespace SME.Worker.Agendador.Api.Services
             services.AddPolicies();
             RegistraDependenciasWorkerServices.Registrar(services);
             Orquestrador.Inicializar(services.BuildServiceProvider());
-
         }
+
 
         internal static void ConfiguraVariaveisAmbiente(IServiceCollection services, IConfiguration configuration)
         {
@@ -106,6 +103,8 @@ namespace SME.Worker.Agendador.Api.Services
             RegistraServicosRecorrentes.Registrar();
 
             services.AddMemoryCache();
+
+            HangfireWorkerService.Registrar();
         }
     }
 }

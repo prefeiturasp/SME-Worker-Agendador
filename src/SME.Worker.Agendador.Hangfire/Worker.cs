@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SME.Worker.Agendador.Background;
 using SME.Worker.Agendador.Background.Core.Interfaces;
-using SME.Worker.Agendador.Hangfire.Configurations;
 using SME.Worker.Agendador.Hangfire.Logging;
 using System;
 using System.IO;
@@ -36,10 +35,10 @@ namespace SME.Worker.Agendador.Hangfire
         public void Registrar()
         {
             RegistrarHangfireServer();
-            RegistrarDashboard();
+            RegistrarApi();
         }
 
-        private void RegistrarDashboard()
+        private void RegistrarApi()
         {
             host = new WebHostBuilder()
                            .UseKestrel()
@@ -57,7 +56,6 @@ namespace SME.Worker.Agendador.Hangfire
                                        ConnectionString = this.connectionString
                                    };
                                })
-                           .UseUrls(UriConfiguration.GetUrls())
                            .Build();
 
             host.RunAsync();
@@ -94,7 +92,7 @@ namespace SME.Worker.Agendador.Hangfire
             hangFireServer = new BackgroundJobServer(new BackgroundJobServerOptions()
             {
                 WorkerCount = workerCount,
-                Queues = new[] { "sgp", "default" }
+                Queues = new[] { "sgp" }
             });
         }
     }

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace SME.Worker.Agendador.Hangfire.Configurations
 {
-    internal class DashboardConfiguration
+    public class DashboardConfiguration
     {
         public static void Configure(IApplicationBuilder app, IConfiguration configuration)
         {

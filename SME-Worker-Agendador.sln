@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31612.314
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AD47D975-CC6E-4E63-AC40-521BA951CD99}"
 EndProject
@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SME.SGP.Infra", "src\SME.SG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SME.Worker.Agendador.Dominio", "src\SME.Worker.Agendador.Dominio\SME.Worker.Agendador.Dominio.csproj", "{CF4866B8-0CEA-41D7-AC6B-8AAE0E878BAE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SME.Worker.Agendador.Aplicacao", "src\SME.Worker.Agendador.Aplicacao\SME.Worker.Agendador.Aplicacao.csproj", "{A3D60C29-3C78-4703-AF7F-6259A500DA83}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C040F86E-106C-413C-A32E-EC9C884EB853}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +61,10 @@ Global
 		{CF4866B8-0CEA-41D7-AC6B-8AAE0E878BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF4866B8-0CEA-41D7-AC6B-8AAE0E878BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF4866B8-0CEA-41D7-AC6B-8AAE0E878BAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3D60C29-3C78-4703-AF7F-6259A500DA83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3D60C29-3C78-4703-AF7F-6259A500DA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3D60C29-3C78-4703-AF7F-6259A500DA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3D60C29-3C78-4703-AF7F-6259A500DA83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C040F86E-106C-413C-A32E-EC9C884EB853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C040F86E-106C-413C-A32E-EC9C884EB853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C040F86E-106C-413C-A32E-EC9C884EB853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C040F86E-106C-413C-A32E-EC9C884EB853}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,7 +78,6 @@ Global
 		{9318F1CB-94F1-4241-96EE-273D2FAD30D8} = {AD47D975-CC6E-4E63-AC40-521BA951CD99}
 		{9FDB6E2B-4FA7-4FBA-AD02-2AA98F70505C} = {AD47D975-CC6E-4E63-AC40-521BA951CD99}
 		{CF4866B8-0CEA-41D7-AC6B-8AAE0E878BAE} = {AD47D975-CC6E-4E63-AC40-521BA951CD99}
-		{A3D60C29-3C78-4703-AF7F-6259A500DA83} = {AD47D975-CC6E-4E63-AC40-521BA951CD99}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {59C9E87F-1E63-43E3-990F-C6BA3BC6008B}

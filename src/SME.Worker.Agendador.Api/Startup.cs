@@ -1,3 +1,4 @@
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -5,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SME.Worker.Agendador.Api.Services;
+using SME.Worker.Agendador.Hangfire.Configurations;
 
 namespace SME.Worker.Agendador.Api
 {
@@ -24,13 +26,20 @@ namespace SME.Worker.Agendador.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SME.Worker.Agendador.Api", Version = "v1" });
             });
-            WorkerService.Initialize(Configuration, services, Configuration.GetConnectionString("SGP_Redis"));
+
+
+            var hangfireConnectionString = Configuration.GetConnectionString("SGP_Redis");
+            WorkerService.Initialize(Configuration, services, hangfireConnectionString);
+
+            WorkerConfiguration.Configure(services, hangfireConnectionString);
+            services.AddHangfireServer();
+            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +65,7 @@ namespace SME.Worker.Agendador.Api
                 endpoints.MapControllers();
             });
 
-
+            DashboardConfiguration.Configure(app, Configuration);
         }
     }
 }

@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
 using MediatR;
-using SME.Worker.Agendador.Infra.Excecoes;
+using SME.SGP.Infra.Excecoes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SME.Worker.Agendador.Aplicacao
+namespace SME.Worker.Agendador.Dominio
 {
     public class ValidacoesPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {

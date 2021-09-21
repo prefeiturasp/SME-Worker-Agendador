@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace SME.Worker.Agendador.Hangfire.Configurations
 {
-    internal class WorkerConfiguration
+    public class WorkerConfiguration
     {
         public static void Configure(IServiceCollection services, string connectionString)
         {

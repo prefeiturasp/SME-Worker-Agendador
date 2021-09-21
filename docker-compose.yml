@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  sme.agendador.redis:
+    image: redis
+    command: redis-server
+    ports:
+      - "6379:6379"
+    networks:
+      - sme-agendador-network
+
+  sme.worker.agendador.api:
+    image: ${DOCKER_REGISTRY-}smeworkeragendadorapi
+    build:
+      context: .
+      dockerfile: src/SME.Worker.Agendador.Api/Dockerfile
+
+networks:
+  sme-agendador-network:
+    driver: bridge

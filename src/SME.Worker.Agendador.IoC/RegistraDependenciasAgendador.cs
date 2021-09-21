@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using SME.Worker.Agendador.Aplicacao;
+using SME.Worker.Agendador.Dominio;
 using SME.Worker.Agendador.Dominio.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Dominio.CasosDeUso.AulasPrevistas;
 using SME.Worker.Agendador.Dominio.CasosDeUso.ComponentesCurriculares;
