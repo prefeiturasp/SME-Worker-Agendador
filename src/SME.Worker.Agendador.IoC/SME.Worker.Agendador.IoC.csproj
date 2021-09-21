@@ -11,14 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SME.Worker.Agendador.Dominio\SME.Worker.Agendador.Dominio.csproj" />
+    <ProjectReference Include="..\SME.Worker.Agendador.Aplicacao\SME.Worker.Agendador.Aplicacao.csproj" />
     <ProjectReference Include="..\SME.Worker.Agendador.Infra\SME.Worker.Agendador.Infra.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="SME.SGP.Dominio.Servicos">
-      <HintPath>..\..\..\SME-NovoSGP\src\SME.SGP.Dominio.Servicos\bin\Debug\netstandard2.0\SME.SGP.Dominio.Servicos.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

@@ -35,30 +35,6 @@ namespace SME.Worker.Agendador.Hangfire
         public void Registrar()
         {
             RegistrarHangfireServer();
-            RegistrarApi();
-        }
-
-        private void RegistrarApi()
-        {
-            host = new WebHostBuilder()
-                           .UseKestrel()
-                           .UseContentRoot(Directory.GetCurrentDirectory())
-                           .ConfigureAppConfiguration((hostContext, config) =>
-                           {
-                               config.SetBasePath(Directory.GetCurrentDirectory());
-                               config.AddEnvironmentVariables();
-                           })
-                           .UseStartup<Startup>((buider) =>
-                               {
-                                   return new Startup
-                                   {
-                                       Configuration = this.configuration,
-                                       ConnectionString = this.connectionString
-                                   };
-                               })
-                           .Build();
-
-            host.RunAsync();
         }
 
         private void RegistrarHangfireServer()
@@ -68,7 +44,7 @@ namespace SME.Worker.Agendador.Hangfire
 
             var assemblyApi = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Api");
             var assemblyApplication = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Aplicacao");
-            var assemblyDomain = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Dominio");
+            var assemblyDomain = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Aplicacao");
             serviceCollection.AddMediatR(assemblyApi, assemblyApplication, assemblyDomain);
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
