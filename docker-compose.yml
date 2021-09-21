@@ -7,7 +7,7 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - sme-agendador-network
+      - sme-agendador-network-external
 
   sme.worker.agendador.api:
     image: ${DOCKER_REGISTRY-}smeworkeragendadorapi
@@ -16,5 +16,6 @@ services:
       dockerfile: src/SME.Worker.Agendador.Api/Dockerfile
 
 networks:
-  sme-agendador-network:
+  sme-agendador-network-external:
+    external: true
     driver: bridge

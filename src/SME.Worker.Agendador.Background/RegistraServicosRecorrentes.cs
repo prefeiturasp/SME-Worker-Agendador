@@ -40,8 +40,6 @@ namespace SME.Worker.Agendador.Background
     {
         public static void Registrar()
         {
-            RegistrarTeste();
-            return;
             //Cliente.ExecutarPeriodicamente<IServicoNotificacaoFrequencia>(c => c.ExecutaNotificacaoRegistroFrequencia(), Cron.Daily(2));
             Cliente.ExecutarPeriodicamente<INotifificarRegistroFrequenciaUseCase>(c => c.Executar(), Cron.Daily(2));
 
