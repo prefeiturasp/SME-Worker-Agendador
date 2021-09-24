@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SME.Worker.Agendador.Api.Services;
 using SME.Worker.Agendador.Hangfire.Configurations;
+using SME.Worker.Agendador.Infra;
+using SME.Worker.Agendador.Infra.Utilitarios;
 
 namespace SME.Worker.Agendador.Api
 {
@@ -33,10 +35,23 @@ namespace SME.Worker.Agendador.Api
             });
 
 
-            var hangfireConnectionString = Configuration.GetConnectionString("SGP_Redis");
-            WorkerService.Initialize(Configuration, services, hangfireConnectionString);
+            var configuracaoHangfireOptions = new ConfiguracaoHangfireOptions();
+            Configuration.GetSection(nameof(ConfiguracaoHangfireOptions)).Bind(configuracaoHangfireOptions, c => c.BindNonPublicProperties = true);
 
-            WorkerConfiguration.Configure(services, hangfireConnectionString);
+            var configuracaoRabbitOptions = new ConfiguracaoRabbitOptions();
+            Configuration.GetSection(nameof(ConfiguracaoRabbitOptions)).Bind(configuracaoRabbitOptions, c => c.BindNonPublicProperties = true);
+
+            services.AddSingleton(configuracaoRabbitOptions);
+
+            var googleClassroomSyncOptions = new GoogleClassroomSyncOptions();
+            Configuration.GetSection(nameof(GoogleClassroomSyncOptions)).Bind(googleClassroomSyncOptions, c => c.BindNonPublicProperties = true);
+
+            services.AddSingleton(googleClassroomSyncOptions);
+
+
+            WorkerService.Initialize(services, configuracaoHangfireOptions, configuracaoRabbitOptions);
+
+            WorkerConfiguration.Configure(services, configuracaoHangfireOptions);
             services.AddHangfireServer();
             
 

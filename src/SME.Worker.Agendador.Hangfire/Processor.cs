@@ -9,12 +9,11 @@ namespace SME.Worker.Agendador.Hangfire
 {
     public class Processor : IProcessor
     {
-        private readonly IConfiguration configuration;
         private readonly string connectionString;
 
-        public Processor(IConfiguration configuration, string connectionString)
+        public Processor(string connectionString)
         {
-            this.configuration = configuration;
+            
             this.connectionString = connectionString;
         }
 

@@ -14,8 +14,6 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.ComponentesCurriculares
         }
         public async Task Executar()
         {
-            SentrySdk.AddBreadcrumb($"Mensagem ExecutaSincronismoComponentesCurricularesEolUseCase", "Rabbit - ExecutaSincronismoComponentesCurricularesEolUseCase");
-
             await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.SincronizarComponentesCurricularesEol, Guid.NewGuid()));
         }
     }

@@ -18,7 +18,10 @@ namespace SME.Worker.Agendador.Hangfire
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) =>
             DashboardConfiguration.Configure(app, this.Configuration);
 
-        public void ConfigureServices(IServiceCollection services) =>
-            WorkerConfiguration.Configure(services, this.ConnectionString);
+        public void ConfigureServices(IServiceCollection services)
+        {
+
+        }
+            //WorkerConfiguration.Configure(services, this.ConnectionString);
     }
 }

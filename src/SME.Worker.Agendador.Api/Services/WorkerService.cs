@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Sentry;
-using SME.Worker.Agendador.Infra;
-using SME.Worker.Agendador.Infra.Utilitarios;
 using SME.Worker.Agendador.Background;
 using SME.Worker.Agendador.Background.Core;
 using SME.Worker.Agendador.Hangfire;
+using SME.Worker.Agendador.Infra;
+using SME.Worker.Agendador.Infra.Utilitarios;
 using SME.Worker.Agendador.IoC;
 using SME.Worker.Agendador.IoC.Extensions;
 using System.Net;
@@ -54,16 +53,15 @@ namespace SME.Worker.Agendador.Api.Services
         public Task StopAsync(CancellationToken cancellationToken)
         {
             HangfireWorkerService.Dispose();
-            SentrySdk.AddBreadcrumb($"[SME SGP] Serviço Background finalizado no ip: {IPLocal}", "Service Life cycle");
             return Task.CompletedTask;
         }
 
-        internal static void ConfigurarHangfire(IConfiguration configuration, IServiceCollection services)
+        internal static void ConfigurarHangfire(IServiceCollection services, ConfiguracaoHangfireOptions configuracaoHangfireOptions)
         {
-            HangfireWorkerService = new Servidor<Hangfire.Worker>(new Hangfire.Worker(configuration, services, configuration.GetConnectionString("SGP_Redis")));
+            HangfireWorkerService = new Servidor<Hangfire.Worker>(new Hangfire.Worker(services, configuracaoHangfireOptions));
         }
 
-        internal static void ConfigurarDependenciasApi(IConfiguration configuration, IServiceCollection services)
+        internal static void ConfigurarDependenciasApi(IServiceCollection services)
         {
             services.AddPolicies();
             RegistraDependenciasWorkerServices.Registrar(services);
@@ -81,25 +79,16 @@ namespace SME.Worker.Agendador.Api.Services
 
         internal static void ConfiguraGoogleClassroomSync(IServiceCollection services, IConfiguration configuration)
         {
-            var googleClassroomSyncOptions = new GoogleClassroomSyncOptions();
-            configuration.GetSection(nameof(GoogleClassroomSyncOptions)).Bind(googleClassroomSyncOptions, c => c.BindNonPublicProperties = true);
-
-            services.AddSingleton(googleClassroomSyncOptions);
+            
         }
 
-        internal static void Initialize(IConfiguration configuration, IServiceCollection services, string connectionString)
+        internal static void Initialize(IServiceCollection services, ConfiguracaoHangfireOptions configuracaoHangfireOptions, ConfiguracaoRabbitOptions configuracaoRabbitOptions)
         {
             services.AddHostedService<WorkerService>();
-            WorkerService.ConfigurarDependenciasApi(configuration, services);
-            WorkerService.ConfiguraVariaveisAmbiente(services, configuration);
-            WorkerService.ConfiguraGoogleClassroomSync(services, configuration);
-            WorkerService.ConfigurarHangfire(configuration, services);
+            WorkerService.ConfigurarDependenciasApi(services);                        
+            WorkerService.ConfigurarHangfire(services, configuracaoHangfireOptions);            
 
-            services.AddApplicationInsightsTelemetryWorkerService(configuration.GetValue<string>("ApplicationInsights__InstrumentationKey"));
-
-            var provider = services.BuildServiceProvider();
-
-            Orquestrador.Registrar(new Processor(configuration, connectionString));
+            Orquestrador.Registrar(new Processor(configuracaoHangfireOptions.ConnectionString));
             RegistraServicosRecorrentes.Registrar();
 
             services.AddMemoryCache();

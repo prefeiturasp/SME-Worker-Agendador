@@ -54,8 +54,7 @@ namespace SME.Worker.Agendador.IoC
         private static void RegistrarMediator(IServiceCollection services)
         {
             var assembly = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Aplicacao");
-            services.AddMediatR(assembly);
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidacoesPipeline<,>));
+            services.AddMediatR(assembly);            
         }
 
         private static void RegistrarContextos(IServiceCollection services)
