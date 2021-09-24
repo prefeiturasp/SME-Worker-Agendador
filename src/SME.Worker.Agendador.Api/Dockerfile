@@ -1,15 +1,12 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
+EXPOSE 5000
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["src/SME.Worker.Agendador.Api/SME.Worker.Agendador.Api.csproj", "src/SME.Worker.Agendador.Api/"]
 COPY ["src/SME.Worker.Agendador.Background/SME.Worker.Agendador.Background.csproj", "src/SME.Worker.Agendador.Background/"]
 COPY ["src/SME.Worker.Agendador.Infra/SME.Worker.Agendador.Infra.csproj", "src/SME.Worker.Agendador.Infra/"]
-COPY ["src/SME.Worker.Agendador.Infra/SME.Worker.Agendador.Infra.csproj", "src/SME.Worker.Agendador.Infra/"]
-COPY ["src/SME.Worker.Agendador.Dominio/SME.Worker.Agendador.Dominio.csproj", "src/SME.Worker.Agendador.Dominio/"]
 COPY ["src/SME.Worker.Agendador.Background.Core/SME.Worker.Agendador.Background.Core.csproj", "src/SME.Worker.Agendador.Background.Core/"]
 COPY ["src/SME.Worker.Agendador.IoC/SME.Worker.Agendador.IoC.csproj", "src/SME.Worker.Agendador.IoC/"]
 COPY ["src/SME.Worker.Agendador.Aplicacao/SME.Worker.Agendador.Aplicacao.csproj", "src/SME.Worker.Agendador.Aplicacao/"]
