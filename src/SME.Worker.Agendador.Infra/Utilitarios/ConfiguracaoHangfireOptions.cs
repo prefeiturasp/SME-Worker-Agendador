@@ -6,5 +6,6 @@
         public int BackgroundWorkerQueuePollInterval { get; set; }
         public int BackgroundWorkerParallelDegree { get; set; }
         public string ConnectionString { get; set; }
+        public int RedisDbNumber { get; set; }
     }
 }

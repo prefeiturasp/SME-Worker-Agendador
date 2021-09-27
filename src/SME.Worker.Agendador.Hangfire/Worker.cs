@@ -1,4 +1,5 @@
 ﻿using Hangfire;
+using Hangfire.Redis;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -49,6 +50,7 @@ namespace SME.Worker.Agendador.Hangfire
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var mediator = (IMediator)serviceProvider.GetService(typeof(IMediator));
 
+            var redisStorageOptions = new RedisStorageOptions() { Db = configuracaoHangfireOptions.RedisDbNumber };
 
             GlobalConfiguration.Configuration
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
@@ -56,7 +58,7 @@ namespace SME.Worker.Agendador.Hangfire
                 .UseRecommendedSerializerSettings()
                 .UseActivator(new HangfireActivator(serviceCollection.BuildServiceProvider(), mediator))
                 .UseFilter<AutomaticRetryAttribute>(new AutomaticRetryAttribute() { Attempts = 0 })
-                .UseRedisStorage(configuracaoHangfireOptions.ConnectionString);
+                .UseRedisStorage(configuracaoHangfireOptions.ConnectionString, redisStorageOptions);
 
             GlobalJobFilters.Filters.Add(new ContextFilterAttribute());
 

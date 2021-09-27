@@ -88,7 +88,7 @@ namespace SME.Worker.Agendador.Api.Services
             WorkerService.ConfigurarDependenciasApi(services);                        
             WorkerService.ConfigurarHangfire(services, configuracaoHangfireOptions);            
 
-            Orquestrador.Registrar(new Processor(configuracaoHangfireOptions.ConnectionString));
+            Orquestrador.Registrar(new Processor(configuracaoHangfireOptions.ConnectionString, configuracaoHangfireOptions.RedisDbNumber));
             RegistraServicosRecorrentes.Registrar();
 
             services.AddMemoryCache();

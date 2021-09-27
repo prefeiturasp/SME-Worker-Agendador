@@ -1,5 +1,5 @@
 ﻿using Hangfire;
-using Microsoft.Extensions.Configuration;
+using Hangfire.Redis;
 using SME.Worker.Agendador.Background;
 using SME.Worker.Agendador.Background.Core.Interfaces;
 using System;
@@ -10,11 +10,13 @@ namespace SME.Worker.Agendador.Hangfire
     public class Processor : IProcessor
     {
         private readonly string connectionString;
+        private readonly int redisDbNumber;
 
-        public Processor(string connectionString)
+        public Processor(string connectionString, int redisDbNumber)
         {
-            
+
             this.connectionString = connectionString;
+            this.redisDbNumber = redisDbNumber;
         }
 
         public bool Registrado { get; private set; }
@@ -41,11 +43,13 @@ namespace SME.Worker.Agendador.Hangfire
 
         public void Registrar()
         {
+            var redisStorageOptions = new RedisStorageOptions() { Db = redisDbNumber };
+
             GlobalConfiguration.Configuration
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                 .UseSimpleAssemblyNameTypeSerializer()
                 .UseRecommendedSerializerSettings()
-                .UseRedisStorage(connectionString);
+                .UseRedisStorage(connectionString, redisStorageOptions);
 
             GlobalJobFilters.Filters.Add(new ContextFilterAttribute());
 
