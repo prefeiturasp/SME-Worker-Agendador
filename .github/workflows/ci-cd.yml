@@ -11,10 +11,28 @@ on:
 
 jobs:
    
+  sonar-dev:
+
+    runs-on: master
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Sonar
+        uses: luizhpriotto/action_images@sonarscanner-v1.0
+        env:
+          DOTNET_PROJECT: SME-Worker-Agendador.sln
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST: http://sonar.sme.prefeitura.sp.gov.br/
+          SONAR_EXTRA_ARG: >
+            /d:sonar.cs.opencover.reportsPaths='"teste/SME.SERAp.Aplicacao.Test/coverage.opencover.xml","teste/SME.SERAp.Dominio.Test/coverage.opencover.xml"'
+            /d:sonar.coverage.exclusions='"**Test*.cs"'
+   
   build:
 
     runs-on: master
-
+    needs: [ sonar-dev ] 
     steps:
       - uses: actions/checkout@v2     
       -  name: Login to registry
