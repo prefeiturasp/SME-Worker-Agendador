@@ -1,7 +1,9 @@
 ﻿using MediatR;
+using SME.Worker.Agendador.Infra;
 using System;
+using System.Threading.Tasks;
 
-namespace SME.Worker.Agendador.Aplicacao.CasosDeUso
+namespace SME.Worker.Agendador.Aplicacao
 {
     public abstract class AbstractUseCase
     {
