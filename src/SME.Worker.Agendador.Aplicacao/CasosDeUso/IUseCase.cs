@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SME.Worker.Agendador.Aplicacao.CasosDeUso
+namespace SME.Worker.Agendador.Aplicacao
 {
     public interface IUseCase<in TParameter, TResponse>
     {
