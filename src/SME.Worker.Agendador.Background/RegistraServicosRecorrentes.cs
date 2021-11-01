@@ -34,6 +34,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.RotasAgendamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.SerapEstudantes;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Aplicacao;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoRegistrosPedagogicos;
 
 namespace SME.Worker.Agendador.Background
 {
@@ -82,8 +83,6 @@ namespace SME.Worker.Agendador.Background
 
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoReuniaoPedagogicaUseCase>(c => c.Executar(), Cron.Daily(5, 15));
 
-            Cliente.ExecutarPeriodicamente<IExecutaNotificacaoPeriodoFechamentoUseCase>(c => c.Executar(), Cron.Daily(5, 15));
-
             Cliente.ExecutarPeriodicamente<IPublicarPendenciaAusenciaRegistroIndividualUseCase>(c => c.Executar(), Cron.Daily(2));
 
             // de segunda a sexta as 11 horas
@@ -116,6 +115,8 @@ namespace SME.Worker.Agendador.Background
 
             // Removido até melhoria de performance prevista
             Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoFrequenciaTurmaSyncUseCase>(c => c.Executar(), Cron.Daily(6));
+
+            Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoRegistrosPedagogicosUseCase>(c => c.Executar(), Cron.Daily(6));
 
             Cliente.ExecutarPeriodicamente<IConsolidacaoDiariosBordoTurmasUseCase>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Saturday, 23));
 
@@ -179,8 +180,6 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoUeFechamentosInsuficientesUseCase>(c => c.Executar(), oneMinute);
 
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoReuniaoPedagogicaUseCase>(c => c.Executar(), oneMinute);
-
-            Cliente.ExecutarPeriodicamente<IExecutaNotificacaoPeriodoFechamentoUseCase>(c => c.Executar(), oneMinute);
 
             Cliente.ExecutarPeriodicamente<IPublicarPendenciaAusenciaRegistroIndividualUseCase>(c => c.Executar(), oneMinute);
 

@@ -47,7 +47,7 @@ jobs:
              docker build . --file src/SME.Worker.Agendador.Api/Dockerfile --tag ${{ secrets.REGISTRY_HOST }}/${GITHUB_REF##*/}/sme-worker-agendador
              docker push ${{ secrets.REGISTRY_HOST }}/${GITHUB_REF##*/}/sme-worker-agendador 
            
-  deploy-release:
+  deploy:
   
     runs-on: master
     needs: [ build ]    

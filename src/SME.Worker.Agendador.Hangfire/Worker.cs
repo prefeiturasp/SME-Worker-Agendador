@@ -68,7 +68,7 @@ namespace SME.Worker.Agendador.Hangfire
             hangFireServer = new BackgroundJobServer(new BackgroundJobServerOptions()
             {
                 WorkerCount = workerCount,
-                Queues = new[] { "sgp" }
+                Queues = new[] { "default" }
             });
         }
     }
