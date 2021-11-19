@@ -47,7 +47,7 @@ jobs:
              docker build . --file src/SME.Worker.Agendador.Api/Dockerfile --tag ${{ secrets.REGISTRY_HOST }}/${GITHUB_REF##*/}/sme-worker-agendador
              docker push ${{ secrets.REGISTRY_HOST }}/${GITHUB_REF##*/}/sme-worker-agendador 
            
-  deploy:
+  deploy-dev:
   
     runs-on: master
     needs: [ build ]    
@@ -61,3 +61,20 @@ jobs:
           RANCHER_TOKEN: ${{ secrets.RANCHER_TOKEN }}
           WORKLOAD: sme-agendador-worker
           NAMESPACE: sme-agendador
+          
+  deploy-release:
+  
+    runs-on: master
+    if: ${{ github.ref == 'refs/heads/release' }}
+    needs: [ build ]    
+    environment:
+      name: release
+    steps:
+      - name: Redeploy
+        uses: luizhpriotto/action_images@kubectl-v1.0
+        env: 
+          RANCHER_URL: ${{ secrets.RANCHER_URL }}
+          RANCHER_TOKEN: ${{ secrets.RANCHER_TOKEN }}
+          WORKLOAD: sme-agendador-worker
+          NAMESPACE: sme-agendador       
+ 
