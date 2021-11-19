@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoRegistrosPedagogicos
+namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaPerfilUsuario
 {
     public interface IExecutarRemoverAtribuicaoPendenciaUsuariosUseCase
     {
