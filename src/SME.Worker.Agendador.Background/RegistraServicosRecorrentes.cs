@@ -35,6 +35,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.SerapEstudantes;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Aplicacao;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoRegistrosPedagogicos;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaPerfilUsuario;
 
 namespace SME.Worker.Agendador.Background
 {
