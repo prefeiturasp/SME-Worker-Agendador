@@ -13,7 +13,6 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaPerfilUsuario
         }
         public async Task Executar()
         {
-            SentrySdk.AddBreadcrumb($"Mensagem ExecutarRemoverAtribuicaoPendenciaUsuariosUseCase", "Rabbit - ExecutarRemoverAtribuicaoPendenciaUsuariosUseCase");
 
             await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RemoverAtribuicaoPendenciaUsuariosUseCase, string.Empty, Guid.NewGuid()));
         }
