@@ -140,6 +140,8 @@ namespace SME.Worker.Agendador.Background
 
             //ToDo: Eduardo - Verificar regra, esta dando erro de validação no PublicarFilaSerapEstudantesCommand
             //Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
+
+            Cliente.ExecutarPeriodicamente<IExecutarRemoverAtribuicaoPendenciaUsuariosUseCase>(c => c.Executar(), Cron.Daily(5));
         }
 
 

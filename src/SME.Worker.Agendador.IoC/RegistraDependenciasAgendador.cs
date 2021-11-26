@@ -105,6 +105,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IExecutarConsolidacaoFrequenciaTurmaSyncUseCase, ExecutarConsolidacaoFrequenciaTurmaSyncUseCase>();
             services.TryAddScopedWorkerService<IConsolidacaoDiariosBordoTurmasUseCase, ConsolidacaoDiariosBordoTurmasUseCase>();
             services.TryAddScopedWorkerService<IExecutarConsolidacaoRegistrosPedagogicosUseCase, ExecutarConsolidacaoRegistrosPedagogicosUseCase>();
+            services.TryAddScopedWorkerService<IExecutarRemoverAtribuicaoPendenciaUsuariosUseCase, ExecutarRemoverAtribuicaoPendenciaUsuariosUseCase>();
             services.TryAddScopedWorkerService<IFilaTesteRabbitMQ, FilaTesteRabbitMQ>();
         }
 

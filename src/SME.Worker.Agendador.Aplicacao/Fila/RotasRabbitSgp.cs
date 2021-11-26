@@ -47,6 +47,7 @@
         public const string PendenciasGerais = "sgp.pendencias.gerais";
         public const string ConsolidacaoFrequenciasTurmasCarregar = "sgp.frequencia.turma.carregar";
         public const string ConsolidarRegistrosPedagogicos = "sgp.consolidacao.registros.pedagogicos";
+        public const string RemoverAtribuicaoPendenciaUsuariosUseCase = "sgp.pendencias.perfil.usuario.remover.atribuicao";
 
         //public const string WorkflowAprovacaoExcluir = "sgp.workflow.aprovacao.excluir";
         //public const string NotificacoesDaAulaExcluir = "sgp.notificacoes.aula.excluir";
