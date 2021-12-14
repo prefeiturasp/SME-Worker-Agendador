@@ -15,7 +15,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacoesNiveisCargos
         }
         public async Task Executar()
         {
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.TratarNotificacoesNiveisCargos, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.TratarNotificacoesNiveisCargos, Guid.NewGuid()));
         }
     }
 }

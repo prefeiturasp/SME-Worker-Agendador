@@ -13,7 +13,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais
 
         public async Task Executar()
         {
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.PendenciasGerais, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.PendenciasGerais, Guid.NewGuid()));
         }
     }
 }

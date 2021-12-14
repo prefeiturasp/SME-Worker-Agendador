@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.EncerramentoPlanoAE
         {
             SentrySdk.AddBreadcrumb($"Mensagem EncerrarPlanoAEEEstudantesInativosUseCase", "Rabbit - EncerrarPlanoAEEEstudantesInativosUseCase");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.EncerrarPlanoAEEEstudantesInativos, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.EncerrarPlanoAEEEstudantesInativos, Guid.NewGuid()));
         }
     }
 }

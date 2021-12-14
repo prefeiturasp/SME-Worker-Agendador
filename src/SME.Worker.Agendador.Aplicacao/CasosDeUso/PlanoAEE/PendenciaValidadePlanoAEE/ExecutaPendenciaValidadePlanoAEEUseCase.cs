@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.PendenciaValidadePl
         {
             SentrySdk.AddBreadcrumb($"Mensagem ExecutaPendenciaValidadoPlanoAEEUseCase", "Rabbit - ExecutaPendenciaValidadoPlanoAEEUseCase");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.GerarPendenciaValidadePlanoAEE, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.GerarPendenciaValidadePlanoAEE, Guid.NewGuid()));
         }
     }
 }

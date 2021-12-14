@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaProfessor
         {
             SentrySdk.AddBreadcrumb($"Mensagem PendenciasProfessorUseCase", "Rabbit - PendenciasProfessorUseCase");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaExecutaVerificacaoPendenciasProfessor, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaExecutaVerificacaoPendenciasProfessor, Guid.NewGuid()));
         }
     }
 }

@@ -3,7 +3,7 @@ using SME.Worker.Agendador.Aplicacao.Comandos;
 using System;
 using System.Threading.Tasks;
 
-namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.SerapEstudantes
+namespace SME.Worker.Agendador.Aplicacao
 {
     public class SyncSerapEstudantesProvasUseCase : ISyncSerapEstudantesProvasUseCase
     {
@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.SerapEstudantes
 
         public async Task Executar()
         {
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.SyncSerapEstudantesProvas, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.SyncSerapEstudantesProvas, Guid.NewGuid()));
         }
     }
 }

@@ -14,18 +14,18 @@ using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Aplicacao.Handlers
 {
-    public class PublicarFilaSgpCommandHandler : IRequestHandler<PublicarFilaSgpCommand, bool>
+    public class PublicaFilaRabbitCommandHandler : IRequestHandler<PublicaFilaRabbitCommand, bool>
     {
         private readonly IConfiguration configuration;
         private readonly IAsyncPolicy policy;
 
-        public PublicarFilaSgpCommandHandler(IConfiguration configuration, IReadOnlyPolicyRegistry<string> registry)
+        public PublicaFilaRabbitCommandHandler(IConfiguration configuration, IReadOnlyPolicyRegistry<string> registry)
         {
             this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
             this.policy = registry.Get<IAsyncPolicy>(PoliticaPolly.PublicaFila);
         }
 
-        public async Task<bool> Handle(PublicarFilaSgpCommand command, CancellationToken cancellationToken)
+        public async Task<bool> Handle(PublicaFilaRabbitCommand command, CancellationToken cancellationToken)
         {
             var request = new MensagemRabbit(command.Filtros,
                                              command.CodigoCorrelacao,
@@ -62,7 +62,7 @@ namespace SME.Worker.Agendador.Aplicacao.Handlers
                     var props = _channel.CreateBasicProperties();
                     props.Persistent = true;
 
-                    _channel.BasicPublish(ExchangeSgpRabbit.Sgp, rota, props, body);
+                    _channel.BasicPublish(ExchangeRabbit.Sgp, rota, props, body);
                 }
             }
         }

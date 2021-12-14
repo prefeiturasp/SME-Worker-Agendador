@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoResultadoInsatisf
         {
             SentrySdk.AddBreadcrumb($"Mensagem NotificacaoResultadoInsatisfatorioUseCase", "Rabbit - NotificacaoResultadoInsatisfatorioUseCase");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaNotificacaoResultadoInsatisfatorio, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaNotificacaoResultadoInsatisfatorio, Guid.NewGuid()));
         }
     }
 }

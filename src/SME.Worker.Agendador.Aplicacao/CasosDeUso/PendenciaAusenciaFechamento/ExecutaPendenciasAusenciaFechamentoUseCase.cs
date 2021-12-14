@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaAusenciaFechamento
         {
             SentrySdk.AddBreadcrumb($"Mensagem PendenciasAusenciaFechamentoUseCase", "Rabbit - PendenciasAusenciaFechamentoUseCase");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaExecutaVerificacaoPendenciasAusenciaFechamento, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaExecutaVerificacaoPendenciasAusenciaFechamento, Guid.NewGuid()));
         }
     }
 }

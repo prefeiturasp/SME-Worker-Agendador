@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoFrequenciaUe
         {
             SentrySdk.AddBreadcrumb("Mensagem NotificacaoFrequenciaUe", "Rabbit - NotificacaoFrequenciaUe");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaNotificacaoFrequenciaUe, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaNotificacaoFrequenciaUe, Guid.NewGuid()));
         }
     }
 }

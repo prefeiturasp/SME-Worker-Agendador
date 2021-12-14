@@ -20,7 +20,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.ConciliacaoFreque
         public async Task ProcessarNaData(DateTime dataPeriodo, string turmaCodigo)
         {
             var mensagem = new ConciliacaoFrequenciaTurmasSyncDto(dataPeriodo, turmaCodigo);
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaConciliacaoFrequenciaTurmasSync, mensagem, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaConciliacaoFrequenciaTurmasSync, mensagem, Guid.NewGuid()));
         }
     }
 }

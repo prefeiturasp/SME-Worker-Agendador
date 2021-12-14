@@ -50,7 +50,13 @@ namespace SME.Worker.Agendador.IoC
             RegistrarMediator(services);
             ResgistraDependenciaHttp(services);
             RegistrarContextos(services);
-            RegistrarCasosDeUso(services);
+            //RegistrarCasosDeUso(services);
+            RegistrarCasosDeUsoPre(services);
+        }
+
+        private static void RegistrarCasosDeUsoPre(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<ISyncSerapEstudantesSincronizacaoInstUseCase, SyncSerapEstudantesSincronizacaoInstUseCase>();
         }
 
         private static void RegistrarMediator(IServiceCollection services)

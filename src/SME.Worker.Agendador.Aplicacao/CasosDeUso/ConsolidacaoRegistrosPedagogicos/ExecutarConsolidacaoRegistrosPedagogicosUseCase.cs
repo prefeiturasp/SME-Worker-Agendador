@@ -17,7 +17,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoRegistrosPedagog
         {
             SentrySdk.AddBreadcrumb($"Mensagem ExecutarConsolidacaoRegistrosPedagogicosUseCase", "Rabbit - ExecutarConsolidacaoRegistrosPedagogicosUseCase");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.ConsolidarRegistrosPedagogicos, string.Empty, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.ConsolidarRegistrosPedagogicos, string.Empty, Guid.NewGuid()));
         }
     }
 }

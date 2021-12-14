@@ -1,22 +1,13 @@
 ﻿using MediatR;
+using SME.Worker.Agendador.Infra;
 using System;
 
 namespace SME.Worker.Agendador.Aplicacao.Comandos
 {
-    public class PublicarFilaSgpCommand : IRequest<bool>
+    public class PublicaFilaRabbitCommand : IRequest<bool>
     {
-        public PublicarFilaSgpCommand(string rota, object filtros, Guid codigoCorrelacao, (string Nome, string CodigoRf, Guid PerfilAtual) usuarioLogado, bool notificarErroUsuario = false)
-        {
-            Filtros = filtros;
-            CodigoCorrelacao = codigoCorrelacao;
-            NotificarErroUsuario = notificarErroUsuario;
-            UsuarioLogadoNomeCompleto = usuarioLogado.Nome;
-            UsuarioLogadoRF = usuarioLogado.CodigoRf;
-            PerfilUsuario = usuarioLogado.PerfilAtual;
-            Rota = rota;
-        }
 
-        public PublicarFilaSgpCommand(string rota, object filtros, Guid codigoCorrelacao)
+        public PublicaFilaRabbitCommand(string rota, object filtros, Guid codigoCorrelacao, string exchange = "sme.sgp.workers")
         {
             Filtros = filtros;
             CodigoCorrelacao = codigoCorrelacao;
@@ -25,9 +16,10 @@ namespace SME.Worker.Agendador.Aplicacao.Comandos
             UsuarioLogadoRF = null;
             PerfilUsuario = null;
             Rota = rota;
+            Exchange = exchange ?? throw new ArgumentNullException(nameof(exchange));
         }
 
-        public PublicarFilaSgpCommand(string rota, Guid codigoCorrelacao)
+        public PublicaFilaRabbitCommand(string rota, Guid codigoCorrelacao, string exchange = "sme.sgp.workers")
         {
             Filtros = null;
             CodigoCorrelacao = codigoCorrelacao;
@@ -36,6 +28,7 @@ namespace SME.Worker.Agendador.Aplicacao.Comandos
             UsuarioLogadoNomeCompleto = null;
             UsuarioLogadoRF = null;
             PerfilUsuario = null;
+            Exchange = exchange ?? throw new ArgumentNullException(nameof(exchange));
         }
 
         public string Rota { get; set; }
@@ -45,5 +38,6 @@ namespace SME.Worker.Agendador.Aplicacao.Comandos
         public string UsuarioLogadoRF { get; set; }
         public Guid? PerfilUsuario { get; set; }
         public bool NotificarErroUsuario { get; set; }
+        public string Exchange { get; set; }
     }
 }
