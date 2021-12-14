@@ -53,9 +53,7 @@ namespace SME.Worker.Agendador.Api
 
             WorkerService.Initialize(services, configuracaoHangfireOptions, configuracaoRabbitOptions);
 
-            WorkerConfiguration.Configure(services, configuracaoHangfireOptions);
-            //services.AddHangfireServer();
-            
+            WorkerConfiguration.Configure(services, configuracaoHangfireOptions);            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
