@@ -14,7 +14,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaPerfilUsuario
         public async Task Executar()
         {
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RemoverAtribuicaoPendenciaUsuariosUseCase, string.Empty, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RemoverAtribuicaoPendenciaUsuariosUseCase, string.Empty, Guid.NewGuid()));
         }
     }
 }

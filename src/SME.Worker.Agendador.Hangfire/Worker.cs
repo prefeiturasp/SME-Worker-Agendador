@@ -40,7 +40,8 @@ namespace SME.Worker.Agendador.Hangfire
         private void RegistrarHangfireServer()
         {
             var pollInterval = configuracaoHangfireOptions.BackgroundWorkerQueuePollInterval;
-            Console.WriteLine($"SGP Worker Service - BackgroundWorkerQueuePollInterval parameter = {pollInterval}");
+            
+            Console.WriteLine($"Agendador Worker Service - BackgroundWorkerQueuePollInterval parameter = {pollInterval}");
 
             var assemblyApi = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Api");
             var assemblyApplication = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Aplicacao");
@@ -63,7 +64,7 @@ namespace SME.Worker.Agendador.Hangfire
             GlobalJobFilters.Filters.Add(new ContextFilterAttribute());
 
             var workerCount = configuracaoHangfireOptions.BackgroundWorkerParallelDegree;
-            Console.WriteLine($"SGP Worker Service - BackgroundWorkerParallelDegree parameter = {workerCount}");
+            Console.WriteLine($"Agendador Worker Service - BackgroundWorkerParallelDegree parameter = {workerCount}");
 
             hangFireServer = new BackgroundJobServer(new BackgroundJobServerOptions()
             {

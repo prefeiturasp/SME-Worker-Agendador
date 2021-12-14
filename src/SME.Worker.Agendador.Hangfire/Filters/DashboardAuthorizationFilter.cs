@@ -14,7 +14,7 @@ namespace SME.Worker.Agendador.Hangfire
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
         }
-
+        
         internal bool ReadOnly(DashboardContext dashboardContext)
         {
             var context = dashboardContext.GetHttpContext();

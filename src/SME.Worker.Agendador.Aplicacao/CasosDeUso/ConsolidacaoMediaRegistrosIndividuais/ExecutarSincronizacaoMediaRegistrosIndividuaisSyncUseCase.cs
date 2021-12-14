@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMediaRegistrosIn
         {
             SentrySdk.AddBreadcrumb($"Mensagem ExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase", "Rabbit - ExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.ConsolidarMediaRegistrosIndividuaisTurma, string.Empty, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.ConsolidarMediaRegistrosIndividuaisTurma, string.Empty, Guid.NewGuid()));
         }
     }
 }

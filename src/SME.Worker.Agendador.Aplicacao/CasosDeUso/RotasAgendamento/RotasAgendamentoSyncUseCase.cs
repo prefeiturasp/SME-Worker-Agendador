@@ -17,7 +17,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.RotasAgendamento
         {
             foreach (var fila in typeof(RotasRabbitSgpAgendamento).ObterConstantesPublicas<string>())
             {
-                await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaAgendamentoTratar, fila, Guid.NewGuid()));
+                await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaAgendamentoTratar, fila, Guid.NewGuid()));
             }
 
             return true;

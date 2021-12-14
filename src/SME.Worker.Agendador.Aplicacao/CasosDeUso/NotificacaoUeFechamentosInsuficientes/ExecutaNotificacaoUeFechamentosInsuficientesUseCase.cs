@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoUeFechamentosInsu
         {
             SentrySdk.AddBreadcrumb($"Mensagem NotificacaoUeFechamentosInsuficientesUseCase", "Rabbit - NotificacaoUeFechamentosInsuficientesUseCase");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaNotificacaoUeFechamentosInsuficientes, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaNotificacaoUeFechamentosInsuficientes, Guid.NewGuid()));
         }
     }
 }

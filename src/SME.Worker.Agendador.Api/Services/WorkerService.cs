@@ -84,12 +84,12 @@ namespace SME.Worker.Agendador.Api.Services
 
         internal static void Initialize(IServiceCollection services, ConfiguracaoHangfireOptions configuracaoHangfireOptions, ConfiguracaoRabbitOptions configuracaoRabbitOptions)
         {
-            services.AddHostedService<WorkerService>();
             WorkerService.ConfigurarDependenciasApi(services);                        
-            WorkerService.ConfigurarHangfire(services, configuracaoHangfireOptions);            
+            WorkerService.ConfigurarHangfire(services, configuracaoHangfireOptions);                   
 
             Orquestrador.Registrar(new Processor(configuracaoHangfireOptions.ConnectionString, configuracaoHangfireOptions.RedisDbNumber));
             RegistraServicosRecorrentes.Registrar();
+            //RegistraServicosRecorrentes.RegistrarPre();
 
             services.AddMemoryCache();
 
