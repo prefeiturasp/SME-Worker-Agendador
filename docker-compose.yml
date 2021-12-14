@@ -1,0 +1,42 @@
+version: '3.4'
+
+services:
+  sme.agendador.redis:
+    container_name: sme_redis
+    image: redis
+    command: redis-server
+    ports:
+      - "6379:6379"
+    networks:
+      - sme-agendador-network-external
+
+  sme.worker.agendador.api:
+    image: ${DOCKER_REGISTRY-}smeworkeragendadorapi
+    build:
+      context: .
+      dockerfile: src/SME.Worker.Agendador.Api/Dockerfile
+    env_file:
+      - agendador.env
+    ports:
+      - "5000:80"
+      - "5001:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    
+  sme.worker.agendador.rabbit:    
+    container_name: sme_rabbitmq
+    image: rabbitmq:3.7-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=bitnami
+    ports:
+      - "5672:5672"
+      - "15672:15672"    
+    networks:
+      - sme-agendador-network-external
+      
+networks:
+  sme-agendador-network-external:
+    external: true
+    driver: bridge
