@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
 
   push:
-    branches: [ development ]
+    branches: [ development, release, master ]
     paths-ignore:
     - ".github/workflows/**"  
   
@@ -124,7 +124,7 @@ jobs:
     if: ${{ github.ref == 'refs/heads/master' }}
     needs: [ build-master ]    
     environment:
-      name: release
+      name: master
     steps:
       - name: Redeploy
         uses: luizhpriotto/action_images@kubectl-v1.0
