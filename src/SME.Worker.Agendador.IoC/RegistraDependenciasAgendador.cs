@@ -50,8 +50,8 @@ namespace SME.Worker.Agendador.IoC
             RegistrarMediator(services);
             ResgistraDependenciaHttp(services);
             RegistrarContextos(services);
-            //RegistrarCasosDeUso(services);
-            RegistrarCasosDeUsoPre(services);
+            RegistrarCasosDeUso(services);
+            //RegistrarCasosDeUsoPre(services);
         }
 
         private static void RegistrarCasosDeUsoPre(IServiceCollection services)
@@ -114,6 +114,8 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IExecutarConsolidacaoRegistrosPedagogicosUseCase, ExecutarConsolidacaoRegistrosPedagogicosUseCase>();
             services.TryAddScopedWorkerService<IExecutarRemoverAtribuicaoPendenciaUsuariosUseCase, ExecutarRemoverAtribuicaoPendenciaUsuariosUseCase>();
             services.TryAddScopedWorkerService<IFilaTesteRabbitMQ, FilaTesteRabbitMQ>();
+            
+            services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
 
         private static void ResgistraDependenciaHttp(IServiceCollection services)
