@@ -12,8 +12,8 @@ namespace SME.Worker.Agendador.Hangfire.Configurations
             app.UseHangfireDashboard("/worker", new DashboardOptions()
             {
                 IsReadOnlyFunc = filter.ReadOnly,
-                Authorization = new[] { filter },
-                StatsPollingInterval = 10000, // atualiza a cada 10s
+                Authorization = new[] { filter },                
+                StatsPollingInterval = 10000, // atualiza a cada 10s                
             });
         }
     }
