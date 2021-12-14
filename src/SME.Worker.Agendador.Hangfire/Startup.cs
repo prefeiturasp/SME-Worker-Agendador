@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RabbitMQ.Client;
 using SME.Worker.Agendador.Hangfire.Configurations;
+using SME.Worker.Agendador.IoC.Extensions;
 
 namespace SME.Worker.Agendador.Hangfire
 {
@@ -20,8 +22,8 @@ namespace SME.Worker.Agendador.Hangfire
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddRabbit(Configuration);
         }
-            //WorkerConfiguration.Configure(services, this.ConnectionString);
+            
     }
 }

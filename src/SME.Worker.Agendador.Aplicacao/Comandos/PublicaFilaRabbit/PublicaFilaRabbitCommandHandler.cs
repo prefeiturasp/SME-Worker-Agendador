@@ -1,12 +1,11 @@
 ﻿using MediatR;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Polly;
 using Polly.Registry;
 using RabbitMQ.Client;
 using SME.GoogleClassroom.Infra;
-using SME.Worker.Agendador.Infra;
 using SME.Worker.Agendador.Aplicacao.Comandos;
+using SME.Worker.Agendador.Infra;
 using System;
 using System.Text;
 using System.Threading;
@@ -16,13 +15,15 @@ namespace SME.Worker.Agendador.Aplicacao.Handlers
 {
     public class PublicaFilaRabbitCommandHandler : IRequestHandler<PublicaFilaRabbitCommand, bool>
     {
-        private readonly IConfiguration configuration;
-        private readonly IAsyncPolicy policy;
 
-        public PublicaFilaRabbitCommandHandler(IConfiguration configuration, IReadOnlyPolicyRegistry<string> registry)
+        private readonly IAsyncPolicy policy;
+        private readonly IConnection conexaoRabbit;
+
+        public PublicaFilaRabbitCommandHandler(IReadOnlyPolicyRegistry<string> registry, IConnection conexaoRabbit)
         {
-            this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+
             this.policy = registry.Get<IAsyncPolicy>(PoliticaPolly.PublicaFila);
+            this.conexaoRabbit = conexaoRabbit ?? throw new ArgumentNullException(nameof(conexaoRabbit));
         }
 
         public async Task<bool> Handle(PublicaFilaRabbitCommand command, CancellationToken cancellationToken)
@@ -40,32 +41,17 @@ namespace SME.Worker.Agendador.Aplicacao.Handlers
             });
             var body = Encoding.UTF8.GetBytes(mensagem);
 
-            await policy.ExecuteAsync(() => PublicarMensagem(command.Rota, body));
+            await policy.ExecuteAsync(async () => await PublicarMensagem(command.Rota, body, command.Exchange));
 
             return true;
         }
 
-        private async Task PublicarMensagem(string rota, byte[] body)
+        private async Task PublicarMensagem(string rota, byte[] body, string exchange)
         {
-            var factory = new ConnectionFactory
-            {
-                HostName = configuration.GetSection("ConfiguracaoRabbit:HostName").Value,
-                UserName = configuration.GetSection("ConfiguracaoRabbit:UserName").Value,
-                Password = configuration.GetSection("ConfiguracaoRabbit:Password").Value,
-                VirtualHost = configuration.GetSection("ConfiguracaoRabbit:Virtualhost").Value
-            };
-
-            using (var conexaoRabbit = factory.CreateConnection())
-            {
-                using (IModel _channel = conexaoRabbit.CreateModel())
-                {
-                    var props = _channel.CreateBasicProperties();
-                    props.Persistent = true;
-
-                    _channel.BasicPublish(ExchangeRabbit.Sgp, rota, props, body);
-                }
-            }
+            using IModel _channel = conexaoRabbit.CreateModel();
+            var props = _channel.CreateBasicProperties();
+            props.Persistent = true;
+            await Task.Run(() => _channel.BasicPublish(exchange, rota, props, body));
         }
-
     }
 }
