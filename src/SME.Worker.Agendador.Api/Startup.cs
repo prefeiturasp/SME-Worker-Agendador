@@ -9,6 +9,7 @@ using SME.Worker.Agendador.Api.Services;
 using SME.Worker.Agendador.Hangfire.Configurations;
 using SME.Worker.Agendador.Infra;
 using SME.Worker.Agendador.Infra.Utilitarios;
+using SME.Worker.Agendador.IoC.Extensions;
 
 namespace SME.Worker.Agendador.Api
 {
@@ -48,13 +49,11 @@ namespace SME.Worker.Agendador.Api
 
             services.AddSingleton(googleClassroomSyncOptions);
 
+            services.AddRabbit(Configuration);
 
             WorkerService.Initialize(services, configuracaoHangfireOptions, configuracaoRabbitOptions);
 
-            WorkerConfiguration.Configure(services, configuracaoHangfireOptions);
-            services.AddHangfireServer();
-            
-
+            WorkerConfiguration.Configure(services, configuracaoHangfireOptions);            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

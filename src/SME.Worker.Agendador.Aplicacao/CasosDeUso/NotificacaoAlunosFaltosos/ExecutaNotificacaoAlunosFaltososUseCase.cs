@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAlunosFaltosos
         {
             SentrySdk.AddBreadcrumb("Mensagem NotificacaoAlunosFaltosos", "Rabbit - NotificacaoAlunosFaltosos");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaNotificacaoAlunosFaltosos, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaNotificacaoAlunosFaltosos, Guid.NewGuid()));
         }
     }
 }

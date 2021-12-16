@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoPeriodoFechamento
         {
             SentrySdk.AddBreadcrumb($"Mensagem NotificacaoPeriodoFechamento", "Rabbit - NotificacaoPeriodoFechamento");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaNotificacaoPeriodoFechamento, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaNotificacaoPeriodoFechamento, Guid.NewGuid()));
         }
     }
 }

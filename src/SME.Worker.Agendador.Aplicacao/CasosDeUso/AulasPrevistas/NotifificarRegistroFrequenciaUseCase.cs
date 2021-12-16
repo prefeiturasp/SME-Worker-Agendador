@@ -13,7 +13,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas
 
         public async Task Executar()
         {
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaNotificacaoAulasPrevistasSync, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaNotificacaoAulasPrevistasSync, Guid.NewGuid()));
         }
     }
 }

@@ -14,7 +14,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.ComponentesCurriculares
         }
         public async Task Executar()
         {
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.SincronizarComponentesCurricularesEol, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.SincronizarComponentesCurricularesEol, Guid.NewGuid()));
         }
     }
 }

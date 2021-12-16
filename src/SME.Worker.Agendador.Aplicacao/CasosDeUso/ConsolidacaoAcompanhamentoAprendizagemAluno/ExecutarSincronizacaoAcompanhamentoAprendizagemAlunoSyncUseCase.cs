@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoAcompanhamentoAp
         {
             SentrySdk.AddBreadcrumb($"Mensagem ExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase", "Rabbit - ExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.ConsolidarAcompanhamentoAprendizagemAluno, string.Empty, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.ConsolidarAcompanhamentoAprendizagemAluno, string.Empty, Guid.NewGuid()));
         }
     }
 }

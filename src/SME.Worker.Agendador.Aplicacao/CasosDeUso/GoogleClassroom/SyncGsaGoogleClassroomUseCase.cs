@@ -17,7 +17,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.GoogleClassroom
 
         public async Task Executar()
         {
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.SyncGsaGoogleClassroom, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.SyncGsaGoogleClassroom, Guid.NewGuid()));
 
         }
     }

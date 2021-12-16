@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEE
         {
             SentrySdk.AddBreadcrumb($"Mensagem ExecutaNotificacaoPlanoAEEEmAbertoUseCase", "Rabbit - ExecutaNotificacaoPlanoAEEEmAbertoUseCase");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.NotificarPlanoAEEEmAberto, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.NotificarPlanoAEEEmAberto, Guid.NewGuid()));
         }
     }
 }

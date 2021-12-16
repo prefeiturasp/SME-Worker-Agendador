@@ -13,7 +13,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.ObjetivoAprendizagem
 
         public async Task Executar()
         {
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.SincronizarObjetivosComJurema, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.SincronizarObjetivosComJurema, Guid.NewGuid()));
         }
     }
 }

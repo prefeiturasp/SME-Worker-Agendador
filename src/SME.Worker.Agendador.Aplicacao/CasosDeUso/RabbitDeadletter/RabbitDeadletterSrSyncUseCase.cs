@@ -20,7 +20,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.RabbitDeadletter
         {
             foreach (var fila in typeof(RotasRabbitSgpRelatorios).ObterConstantesPublicas<string>())
             {
-                await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaRabbitSRDeadletterTratar, fila, Guid.NewGuid()));
+                await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaRabbitSRDeadletterTratar, fila, Guid.NewGuid()));
             }
         }
     }

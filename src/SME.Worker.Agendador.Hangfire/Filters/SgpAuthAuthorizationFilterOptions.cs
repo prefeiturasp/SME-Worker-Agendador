@@ -30,7 +30,7 @@ namespace SME.Worker.Agendador.Hangfire
 
             RequireSsl = false;
             SslRedirect = false;
-            LoginCaseSensitive = true;
+            LoginCaseSensitive = true;            
             Users = new[]
             {
                 new BasicAuthAuthorizationUser

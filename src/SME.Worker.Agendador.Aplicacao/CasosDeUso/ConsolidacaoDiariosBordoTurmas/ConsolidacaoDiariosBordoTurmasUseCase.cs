@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao
         {
             SentrySdk.AddBreadcrumb($"Mensagem ConsolidacaoDiariosBordoTurmasUseCase", "Rabbit - ConsolidacaoDiariosBordoTurmasUseCase");
 
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.ConsolidarDiariosBordoCarregar, string.Empty, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.ConsolidarDiariosBordoCarregar, string.Empty, Guid.NewGuid()));
         }
     }
 }

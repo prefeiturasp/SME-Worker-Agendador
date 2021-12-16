@@ -15,13 +15,13 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica
         }
         public void Executar()
         {
-            mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaSincronizarAulasInfatil, Guid.NewGuid()));
+            mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaSincronizarAulasInfatil, Guid.NewGuid()));
         }
 
         public async Task<bool> Executar(long codigoTurma)
         {
             return await mediator
-                .Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaSincronizarAulasInfatil, codigoTurma, Guid.NewGuid()));
+                .Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaSincronizarAulasInfatil, codigoTurma, Guid.NewGuid()));
         }
     }
 }

@@ -15,7 +15,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaRegistroIndividual
         public async Task Executar()
         {
             SentrySdk.AddBreadcrumb($"Mensagem {nameof(PublicarPendenciaAusenciaRegistroIndividualUseCase)}", $"Rabbit - {nameof(PublicarPendenciaAusenciaRegistroIndividualUseCase)}");
-            await mediator.Send(new PublicarFilaSgpCommand(RotasRabbitSgp.RotaPendenciaAusenciaRegistroIndividual, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaPendenciaAusenciaRegistroIndividual, Guid.NewGuid()));
         }
     }
 }

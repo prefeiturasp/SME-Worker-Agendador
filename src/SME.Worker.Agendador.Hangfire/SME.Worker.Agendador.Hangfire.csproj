@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SME.Worker.Agendador.Background.Core\SME.Worker.Agendador.Background.Core.csproj" />
     <ProjectReference Include="..\SME.Worker.Agendador.Background\SME.Worker.Agendador.Background.csproj" />
+    <ProjectReference Include="..\SME.Worker.Agendador.IoC\SME.Worker.Agendador.IoC.csproj" />
   </ItemGroup>
 
 </Project>
