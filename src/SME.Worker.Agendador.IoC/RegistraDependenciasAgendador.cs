@@ -51,13 +51,7 @@ namespace SME.Worker.Agendador.IoC
             ResgistraDependenciaHttp(services);
             RegistrarContextos(services);
             RegistrarCasosDeUso(services);
-            //RegistrarCasosDeUsoPre(services);
-        }
-
-        private static void RegistrarCasosDeUsoPre(IServiceCollection services)
-        {
-            services.TryAddScopedWorkerService<ISyncSerapEstudantesSincronizacaoInstUseCase, SyncSerapEstudantesSincronizacaoInstUseCase>();
-        }
+        }        
 
         private static void RegistrarMediator(IServiceCollection services)
         {
@@ -70,9 +64,19 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
 
-
-
         private static void RegistrarCasosDeUso(IServiceCollection services)
+        {
+            RegistrarCasosDeUsoSgp(services);
+            RegistrarCasosDeUsoSerap(services);
+        }
+
+        private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<ISyncSerapEstudantesSincronizacaoInstUseCase, SyncSerapEstudantesSincronizacaoInstUseCase>();
+            services.TryAddScopedWorkerService<IIniciarProcessoFinalizarProvasAutomaticamenteUseCase, IniciarProcessoFinalizarProvasAutomaticamenteUseCase>();
+        }
+
+        private static void RegistrarCasosDeUsoSgp(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<INotifificarRegistroFrequenciaUseCase, NotifificarRegistroFrequenciaUseCase>();
             services.TryAddScopedWorkerService<IExecutaNotificacaoAulasPrevistasUseCase, ExecutaNotificacaoAulasPrevistasUseCase>();

@@ -89,7 +89,6 @@ namespace SME.Worker.Agendador.Api.Services
 
             Orquestrador.Registrar(new Processor(configuracaoHangfireOptions.ConnectionString, configuracaoHangfireOptions.RedisDbNumber));
             RegistraServicosRecorrentes.Registrar();
-            //RegistraServicosRecorrentes.RegistrarPre();
 
             services.AddMemoryCache();
 

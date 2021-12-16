@@ -41,15 +41,16 @@
         public const string SincronizarComponentesCurriculares = "sgp.sincronizar.componentes.curriculares";
         public const string SincronizarComponentesCurricularesEol = "sgp.sincronizar.componentes.curriculares.eol";
         public const string SyncGeralGoogleClassroom = "sgp.sync.geral.google.classroom";
-        public const string SyncGsaGoogleClassroom = "sgp.sync.gsa.google.classroom";
-        public const string SyncSerapEstudantesProvas = "sgp.sync.serap.estudantes.provas";
+        public const string SyncGsaGoogleClassroom = "sgp.sync.gsa.google.classroom";        
         public const string TratarNotificacoesNiveisCargos = "sgp.tratar.notificacoes.niveis.cargos";
         public const string PendenciasGerais = "sgp.pendencias.gerais";
         public const string ConsolidacaoFrequenciasTurmasCarregar = "sgp.frequencia.turma.carregar";
         public const string ConsolidarRegistrosPedagogicos = "sgp.consolidacao.registros.pedagogicos";
         public const string RemoverAtribuicaoPendenciaUsuariosUseCase = "sgp.pendencias.perfil.usuario.remover.atribuicao";
 
-      
+        public const string SyncSerapEstudantesProvas = "sgp.sync.serap.estudantes.provas";
+        public const string IniciarProcessoFinalizarProvasAutomaticamente = "serap.estudante.prova.finalizar.automaticamente.iniciar";
+
 
     }
 }
