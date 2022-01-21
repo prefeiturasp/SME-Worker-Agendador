@@ -50,14 +50,8 @@ namespace SME.Worker.Agendador.IoC
             RegistrarMediator(services);
             ResgistraDependenciaHttp(services);
             RegistrarContextos(services);
-            //RegistrarCasosDeUso(services);
-            RegistrarCasosDeUsoPre(services);
-        }
-
-        private static void RegistrarCasosDeUsoPre(IServiceCollection services)
-        {
-            services.TryAddScopedWorkerService<ISyncSerapEstudantesSincronizacaoInstUseCase, SyncSerapEstudantesSincronizacaoInstUseCase>();
-        }
+            RegistrarCasosDeUso(services);
+        }        
 
         private static void RegistrarMediator(IServiceCollection services)
         {
@@ -70,9 +64,20 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
 
-
-
         private static void RegistrarCasosDeUso(IServiceCollection services)
+        {
+            RegistrarCasosDeUsoSgp(services);
+            RegistrarCasosDeUsoSerap(services);
+        }
+
+        private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<IRabbitDeadletterSerapSyncUseCase, RabbitDeadletterSerapSyncUseCase>();
+            services.TryAddScopedWorkerService<ISyncSerapEstudantesSincronizacaoInstUseCase, SyncSerapEstudantesSincronizacaoInstUseCase>();
+            services.TryAddScopedWorkerService<IIniciarProcessoFinalizarProvasAutomaticamenteUseCase, IniciarProcessoFinalizarProvasAutomaticamenteUseCase>();
+        }
+
+        private static void RegistrarCasosDeUsoSgp(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<INotifificarRegistroFrequenciaUseCase, NotifificarRegistroFrequenciaUseCase>();
             services.TryAddScopedWorkerService<IExecutaNotificacaoAulasPrevistasUseCase, ExecutaNotificacaoAulasPrevistasUseCase>();
@@ -113,7 +118,10 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IConsolidacaoDiariosBordoTurmasUseCase, ConsolidacaoDiariosBordoTurmasUseCase>();
             services.TryAddScopedWorkerService<IExecutarConsolidacaoRegistrosPedagogicosUseCase, ExecutarConsolidacaoRegistrosPedagogicosUseCase>();
             services.TryAddScopedWorkerService<IExecutarRemoverAtribuicaoPendenciaUsuariosUseCase, ExecutarRemoverAtribuicaoPendenciaUsuariosUseCase>();
+            services.TryAddScopedWorkerService<IExecutarVarreduraFechamentosEmProcessamentoPendentes, ExecutarVarreduraFechamentosEmProcessamentoPendentes>();
             services.TryAddScopedWorkerService<IFilaTesteRabbitMQ, FilaTesteRabbitMQ>();
+            
+            services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
 
         private static void ResgistraDependenciaHttp(IServiceCollection services)
