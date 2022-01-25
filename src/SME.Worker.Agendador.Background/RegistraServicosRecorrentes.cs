@@ -25,6 +25,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaAusenciaFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaPerfilUsuario;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaProfessor;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaRegistroIndividual;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasAula;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.EncerramentoPlanoAEEEstudantesInativos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEEmAberto;
@@ -74,6 +75,7 @@ namespace SME.Worker.Agendador.Background
 
             // Executa as 02:00 
             Cliente.ExecutarPeriodicamente<IPendenciasGeraisUseCase>(c => c.Executar(), Cron.Daily(5));
+            Cliente.ExecutarPeriodicamente<IPendenciasAulaUseCase>(c => c.Executar(), Cron.Daily(5));
 
             Cliente.ExecutarPeriodicamente<IExecutaPendenciasProfessorAvaliacaoUseCase>(c => c.Executar(), Cron.Daily(5));
 
