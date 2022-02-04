@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
 
   push:
-    branches: [ development, master, release ]
+    branches: [ development, release, master ]
     paths-ignore:
     - ".github/workflows/**"  
   
@@ -64,8 +64,6 @@ jobs:
           RANCHER_TOKEN: ${{ secrets.RANCHER_TOKEN }}
           WORKLOAD: sme-agendador-worker
           NAMESPACE: sme-agendador
-
-
    
   build-release:
 
@@ -101,6 +99,7 @@ jobs:
           WORKLOAD: sme-agendador-worker
           NAMESPACE: sme-agendador
 
+
   build-master:
 
     runs-on: master
@@ -123,9 +122,9 @@ jobs:
   
     runs-on: master
     if: ${{ github.ref == 'refs/heads/master' }}
-    needs: [ build-release ]    
+    needs: [ build-master ]    
     environment:
-      name: release
+      name: master
     steps:
       - name: Redeploy
         uses: luizhpriotto/action_images@kubectl-v1.0
