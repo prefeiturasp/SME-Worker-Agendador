@@ -75,6 +75,7 @@ namespace SME.Worker.Agendador.IoC
         {
             services.TryAddScopedWorkerService<IRabbitDeadletterSerapSyncUseCase, RabbitDeadletterSerapSyncUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesSincronizacaoInstUseCase, SyncSerapEstudantesSincronizacaoInstUseCase>();
+
             services.TryAddScopedWorkerService<IIniciarProcessoFinalizarProvasAutomaticamenteUseCase, IniciarProcessoFinalizarProvasAutomaticamenteUseCase>();
         }
 

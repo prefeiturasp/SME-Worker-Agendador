@@ -142,7 +142,7 @@ namespace SME.Worker.Agendador.Background
 
             Cliente.ExecutarPeriodicamente<IRotasAgendamentoSyncUseCase>(c => c.Executar(), Cron.Daily(10));
 
-            //Cliente.ExecutarPeriodicamente<IExecutarSyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
+            Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
 
             //ToDo: Eduardo - Verificar regra, esta dando erro de validação no PublicarFilaSerapEstudantesCommand
             //Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
