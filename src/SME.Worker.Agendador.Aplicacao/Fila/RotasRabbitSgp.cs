@@ -51,7 +51,7 @@
         public const string VarreduraFechamentosTurmaDisciplinaEmProcessamentoPendentes = "sgp.fechamento.turma.disciplina.processamento.varredura";
 
         public const string SyncSerapEstudantesProvas = "sgp.sync.serap.estudantes.provas";
-        public const string IniciarProcessoFinalizarProvasAutomaticamente = "serap.estudante.prova.finalizar.automaticamente.iniciar";
+       
 
 
     }

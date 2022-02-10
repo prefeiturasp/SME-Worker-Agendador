@@ -15,7 +15,7 @@ namespace SME.Worker.Agendador.Aplicacao
         }
         public async Task<bool> Executar()
         {
-            return await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.IniciarProcessoFinalizarProvasAutomaticamente, Guid.NewGuid(), ExchangeRabbit.SerapEstudantes));
+            return await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSerap.IniciarProcessoFinalizarProvasAutomaticamente, Guid.NewGuid(), ExchangeRabbit.SerapEstudantes));
         }
     }
 }
