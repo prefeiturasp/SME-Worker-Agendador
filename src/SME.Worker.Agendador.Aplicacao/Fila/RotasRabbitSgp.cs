@@ -49,10 +49,8 @@
         public const string ConsolidarRegistrosPedagogicos = "sgp.consolidacao.registros.pedagogicos";
         public const string RemoverAtribuicaoPendenciaUsuariosUseCase = "sgp.pendencias.perfil.usuario.remover.atribuicao";
         public const string VarreduraFechamentosTurmaDisciplinaEmProcessamentoPendentes = "sgp.fechamento.turma.disciplina.processamento.varredura";
+        public const string EncerrarEncaminhamentoAEEAutomaticoSync = "sgp.encaminhamento.aee.encerrar.automatico.sync";
 
         public const string SyncSerapEstudantesProvas = "sgp.sync.serap.estudantes.provas";
-       
-
-
     }
 }
