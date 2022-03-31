@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
 
   push:
-    branches: [ development, release, master ]
+    branches: [ development, release, release-r2, master ]
     paths-ignore:
     - ".github/workflows/**"  
   
