@@ -13,7 +13,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.EncerrarEncaminhamentoAeeAut
 
         public async Task Executar()
         {
-            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.EncerrarEncaminhamentoAEEAutomaticoSync, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.EncerrarEncaminhamentoAEEAutomaticoSync, string.Empty, Guid.NewGuid()));
         }
     }
 }
