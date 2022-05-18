@@ -120,8 +120,7 @@ namespace SME.Worker.Agendador.Background
 
             Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoMatriculaTurmasUseCase>(c => c.Executar(), Cron.Daily(10));
 
-            // Removido até melhoria de performance prevista
-            Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoFrequenciaTurmaSyncUseCase>(c => c.Executar(), Cron.Daily(6));
+            Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoFrequenciaTurmaSyncUseCase>(c => c.Executar(), Cron.Daily(17));
 
             Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoRegistrosPedagogicosUseCase>(c => c.Executar(), Cron.Daily(6));
 

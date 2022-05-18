@@ -1,27 +1,21 @@
 ﻿using MediatR;
 using SME.Worker.Agendador.Aplicacao.Comandos;
+using SME.Worker.Agendador.Infra;
 using System;
 using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica
 {
-    public class SincronizarAulasInfantilUseCase : ISincronizarAulasInfantilUseCase
+    public class SincronizarAulasInfantilUseCase : AbstractUseCase, ISincronizarAulasInfantilUseCase
     {
-        private readonly IMediator mediator;
-
         public SincronizarAulasInfantilUseCase(IMediator mediator)
+            : base(mediator)
         {
-            this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-        }
-        public void Executar()
-        {
-            mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaSincronizarAulasInfatil, Guid.NewGuid()));
         }
 
-        public async Task<bool> Executar(long codigoTurma)
+        public async Task Executar()
         {
-            return await mediator
-                .Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaSincronizarAulasInfatil, codigoTurma, Guid.NewGuid()));
-        }
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaSincronizarAulasInfatil, Guid.NewGuid()));
+        }        
     }
 }
