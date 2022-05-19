@@ -52,8 +52,5 @@
         public const string EncerrarEncaminhamentoAEEAutomaticoSync = "sgp.encaminhamento.aee.encerrar.automatico.sync";
 
         public const string SyncSerapEstudantesProvas = "sgp.sync.serap.estudantes.provas";
-        public const string IniciarProcessoFinalizarProvasAutomaticamente = "serap.estudante.prova.finalizar.automaticamente.iniciar";
-
-
     }
 }

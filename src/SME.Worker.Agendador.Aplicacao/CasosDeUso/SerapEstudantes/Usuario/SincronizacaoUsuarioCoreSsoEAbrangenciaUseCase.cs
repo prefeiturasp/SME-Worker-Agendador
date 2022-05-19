@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Aplicacao
 {
-    public class IniciarProcessoFinalizarProvasAutomaticamenteUseCase : IIniciarProcessoFinalizarProvasAutomaticamenteUseCase
+    public class SincronizacaoUsuarioCoreSsoEAbrangenciaUseCase : ISincronizacaoUsuarioCoreSsoEAbrangenciaUseCase
     {
         protected readonly IMediator mediator;
-        public IniciarProcessoFinalizarProvasAutomaticamenteUseCase(IMediator mediator)
+
+        public SincronizacaoUsuarioCoreSsoEAbrangenciaUseCase(IMediator mediator)
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
+
         public async Task<bool> Executar()
         {
-            return await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSerap.IniciarProcessoFinalizarProvasAutomaticamente, Guid.NewGuid(), ExchangeRabbit.SerapEstudantes));
+            return await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSerap.UsuarioCoreSsoSync, Guid.NewGuid(), ExchangeRabbit.SerapEstudantes));
         }
     }
 }
