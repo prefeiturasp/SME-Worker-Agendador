@@ -52,5 +52,6 @@
         public const string EncerrarEncaminhamentoAEEAutomaticoSync = "sgp.encaminhamento.aee.encerrar.automatico.sync";
 
         public const string SyncSerapEstudantesProvas = "sgp.sync.serap.estudantes.provas";
+        public const string RotaReprocessarDiarioBordoPendenciaDevolutivaPorDre = "sgp.diario.bordo.pendencia.devolutiva.dre";
     }
 }
