@@ -2,13 +2,11 @@
 using Hangfire.Redis;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SME.Worker.Agendador.Background;
 using SME.Worker.Agendador.Background.Core.Interfaces;
 using SME.Worker.Agendador.Infra.Utilitarios;
 using System;
-using System.IO;
 
 namespace SME.Worker.Agendador.Hangfire
 {
