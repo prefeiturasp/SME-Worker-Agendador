@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using SME.Worker.Agendador.Aplicacao;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.AtribuicaoDeResponsaveis;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ComponentesCurriculares;
@@ -54,12 +55,12 @@ namespace SME.Worker.Agendador.IoC
             ResgistraDependenciaHttp(services);
             RegistrarContextos(services);
             RegistrarCasosDeUso(services);
-        }        
+        }
 
         private static void RegistrarMediator(IServiceCollection services)
         {
             var assembly = AppDomain.CurrentDomain.Load("SME.Worker.Agendador.Aplicacao");
-            services.AddMediatR(assembly);            
+            services.AddMediatR(assembly);
         }
 
         private static void RegistrarContextos(IServiceCollection services)
@@ -124,7 +125,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase, ExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase, ExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase>();
             services.TryAddScopedWorkerService<IRotasAgendamentoSyncUseCase, RotasAgendamentoSyncUseCase>();
-            
+
             services.TryAddScopedWorkerService<IExecutarConsolidacaoFrequenciaTurmaSyncUseCase, ExecutarConsolidacaoFrequenciaTurmaSyncUseCase>();
             services.TryAddScopedWorkerService<IConsolidacaoDiariosBordoTurmasUseCase, ConsolidacaoDiariosBordoTurmasUseCase>();
             services.TryAddScopedWorkerService<IExecutarConsolidacaoRegistrosPedagogicosUseCase, ExecutarConsolidacaoRegistrosPedagogicosUseCase>();
@@ -133,7 +134,8 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IEncerrarEncaminhamentoAEEAutomaticoSyncUseCase, EncerrarEncaminhamentoAEEAutomaticoSyncUseCase>();
             services.TryAddScopedWorkerService<IFilaTesteRabbitMQ, FilaTesteRabbitMQ>();
             services.TryAddScopedWorkerService<IReprocessarDiarioBordoPendenciaDevolutivaUseCase, ReprocessarDiarioBordoPendenciaDevolutivaUseCase>();
-            
+            services.TryAddScopedWorkerService<IAtribuicaoResponsaveisUsecase, AtribuicaoResponsaveisUseCase>();
+
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
 

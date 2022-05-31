@@ -41,7 +41,7 @@
         public const string SincronizarComponentesCurriculares = "sgp.sincronizar.componentes.curriculares";
         public const string SincronizarComponentesCurricularesEol = "sgp.sincronizar.componentes.curriculares.eol";
         public const string SyncGeralGoogleClassroom = "sgp.sync.geral.google.classroom";
-        public const string SyncGsaGoogleClassroom = "sgp.sync.gsa.google.classroom";        
+        public const string SyncGsaGoogleClassroom = "sgp.sync.gsa.google.classroom";
         public const string TratarNotificacoesNiveisCargos = "sgp.tratar.notificacoes.niveis.cargos";
         public const string PendenciasGerais = "sgp.pendencias.gerais";
         public const string ExecutaPendenciasAula = "sgp.pendencias.aulas.executa";
@@ -53,5 +53,6 @@
 
         public const string SyncSerapEstudantesProvas = "sgp.sync.serap.estudantes.provas";
         public const string RotaReprocessarDiarioBordoPendenciaDevolutivaPorDre = "sgp.diario.bordo.pendencia.devolutiva.dre";
+        public const string RotaAtribuicaoDeResponsaveis = "sgp.adm.atribuicao.responsaveis";
     }
 }
