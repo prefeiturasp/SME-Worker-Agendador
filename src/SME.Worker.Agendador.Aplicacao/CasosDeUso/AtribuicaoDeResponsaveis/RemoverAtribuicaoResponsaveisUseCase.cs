@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Aplicacao
 {
-    public class AtribuicaoResponsaveisUseCase : IAtribuicaoResponsaveisUseCase
+    public class RemoverAtribuicaoResponsaveisUseCase : IRemoverAtribuicaoResponsaveisUseCase
     {
         private readonly IMediator _mediator;
 
-        public AtribuicaoResponsaveisUseCase(IMediator mediator)
+        public RemoverAtribuicaoResponsaveisUseCase(IMediator mediator)
         {
             _mediator = mediator ?? throw new System.ArgumentNullException(nameof(mediator));
         }
 
         public async Task Executar()
         {
-            await _mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaAtribuicaoDeResponsaveis, Guid.NewGuid()));
+            await _mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.RotaRemoverAtribuicaoDeResponsaveis, Guid.NewGuid()));
         }
    
     }
