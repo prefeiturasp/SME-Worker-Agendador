@@ -133,7 +133,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IEncerrarEncaminhamentoAEEAutomaticoSyncUseCase, EncerrarEncaminhamentoAEEAutomaticoSyncUseCase>();
             services.TryAddScopedWorkerService<IFilaTesteRabbitMQ, FilaTesteRabbitMQ>();
             services.TryAddScopedWorkerService<IReprocessarDiarioBordoPendenciaDevolutivaUseCase, ReprocessarDiarioBordoPendenciaDevolutivaUseCase>();
-            services.TryAddScopedWorkerService<IAtribuicaoResponsaveisUseCase, AtribuicaoResponsaveisUseCase>();
+            services.TryAddScopedWorkerService<IRemoverAtribuicaoResponsaveisUseCase, RemoverAtribuicaoResponsaveisUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
