@@ -159,7 +159,7 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IReprocessarDiarioBordoPendenciaDevolutivaUseCase>(c => c.Executar(),Cron.Daily(21));
 
             //executa 1 vez ao dia, as 01:00
-            Cliente.ExecutarPeriodicamente<IExecutarRemoverAtribuicaoPendenciaUsuariosUseCase>(c => c.Executar(),Cron.Daily(1));
+            Cliente.ExecutarPeriodicamente<IRemoverAtribuicaoResponsaveisUseCase>(c => c.Executar(),Cron.Daily(1));
         }
 
         public static void RegistrarServicosSerap()
