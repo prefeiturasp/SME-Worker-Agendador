@@ -155,7 +155,7 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IEncerrarEncaminhamentoAEEAutomaticoSyncUseCase>(c => c.Executar(), Cron.Daily(9));
 
             //TODO: Pendencia Devolutiva 1 Vez ao Dia a noite 
-            Cliente.ExecutarPeriodicamente<IReprocessarDiarioBordoPendenciaDevolutivaUseCase>(c => c.Executar(),Cron.Daily(21));
+            //Cliente.ExecutarPeriodicamente<IReprocessarDiarioBordoPendenciaDevolutivaUseCase>(c => c.Executar(),Cron.Daily(21));
         }
 
         public static void RegistrarServicosSerap()
