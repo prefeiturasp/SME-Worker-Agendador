@@ -13,7 +13,7 @@ namespace SME.Worker.Agendador.Aplicacao
 
         public async Task Executar()
         {
-            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.VarreduraFechamentosTurmaDisciplinaEmProcessamentoPendentes, string.Empty, Guid.NewGuid(), null));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.VarreduraFechamentosTurmaDisciplinaEmProcessamentoPendentes, string.Empty, Guid.NewGuid()));
         }
     }
 }
