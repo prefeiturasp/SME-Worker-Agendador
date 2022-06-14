@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using SME.Worker.Agendador.Aplicacao.Comandos;
+using SME.Worker.Agendador.Infra;
 using System;
 using System.Threading.Tasks;
 
