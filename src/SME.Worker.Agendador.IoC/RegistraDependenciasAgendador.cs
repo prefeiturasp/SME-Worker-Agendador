@@ -91,6 +91,7 @@ namespace SME.Worker.Agendador.IoC
         private static void RegistrarCasosDeUsoSerapAcompanhamento(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<IIniciarSyncAcompanhamentoUseCase, IniciarSyncAcompanhamentoUseCase>();
+            services.TryAddScopedWorkerService<ITratarDeadletterSerapAcompanhamentoSyncUseCase, TratarDeadletterSerapAcompanhamentoSyncUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSgp(IServiceCollection services)
