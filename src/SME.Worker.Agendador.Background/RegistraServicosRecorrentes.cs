@@ -160,6 +160,8 @@ namespace SME.Worker.Agendador.Background
 
             // Executar rotina de notificar aprovação de fechamento nota, uma vez ao dia, às 02:00am
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoAprovacaoFechamentoNotaUseCase>(c => c.Executar(), Cron.Daily(2));
+            
+            Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoUseCase>(c => c.Executar(), Cron.Daily(5, 30));
         }
 
         public static void RegistrarServicosSerap()
