@@ -1,8 +1,9 @@
 using System.Threading.Tasks;
 
-namespace SME.Worker.Agendador.Aplicacao;
-
-public interface IInserirInformacoesListagemListaoEolUseCase
+namespace SME.Worker.Agendador.Aplicacao
 {
-    Task Executar();
+    public interface IInserirInformacoesListagemListaoEolUseCase
+    {
+        Task Executar();
+    }
 }

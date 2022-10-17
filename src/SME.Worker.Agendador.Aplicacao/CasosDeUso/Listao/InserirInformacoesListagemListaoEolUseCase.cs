@@ -3,16 +3,19 @@ using System.Threading.Tasks;
 using MediatR;
 using SME.Worker.Agendador.Aplicacao.Comandos;
 
-namespace SME.Worker.Agendador.Aplicacao;
-
-public class InserirInformacoesListagemListaoEolUseCase : AbstractUseCase, IInserirInformacoesListagemListaoEolUseCase
+namespace SME.Worker.Agendador.Aplicacao
 {
-    public InserirInformacoesListagemListaoEolUseCase(IMediator mediator) : base(mediator)
+    public class InserirInformacoesListagemListaoEolUseCase : AbstractUseCase,
+        IInserirInformacoesListagemListaoEolUseCase
     {
-    }
-    
-    public async Task Executar()
-    {
-        await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitEol.InserirInformacoesListagemDoListaoEolSync, Guid.NewGuid()));
+        public InserirInformacoesListagemListaoEolUseCase(IMediator mediator) : base(mediator)
+        {
+        }
+
+        public async Task Executar()
+        {
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitEol.InserirInformacoesListagemDoListaoEolSync,
+                Guid.NewGuid()));
+        }
     }
 }
