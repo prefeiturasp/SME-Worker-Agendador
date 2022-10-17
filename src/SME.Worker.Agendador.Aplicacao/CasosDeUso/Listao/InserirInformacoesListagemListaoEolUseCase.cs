@@ -15,7 +15,7 @@ namespace SME.Worker.Agendador.Aplicacao
         public async Task Executar()
         {
             await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitEol.InserirInformacoesListagemDoListaoEolSync,
-                Guid.NewGuid()));
+                Guid.NewGuid(), "ExchangeApiEol"));
         }
     }
 }
