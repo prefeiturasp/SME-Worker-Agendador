@@ -1,6 +1,7 @@
-namespace SME.Worker.Agendador.Aplicacao;
-
-public class RotasRabbitEol
+namespace SME.Worker.Agendador.Aplicacao
 {
-    public const string InserirInformacoesListagemDoListaoEolSync = "ApiEol:CargaESTurmaComponentesCommand";
+    public class RotasRabbitEol
+    {
+        public const string InserirInformacoesListagemDoListaoEolSync = "ApiEol:CargaESTurmaComponentesCommand";
+    }
 }
