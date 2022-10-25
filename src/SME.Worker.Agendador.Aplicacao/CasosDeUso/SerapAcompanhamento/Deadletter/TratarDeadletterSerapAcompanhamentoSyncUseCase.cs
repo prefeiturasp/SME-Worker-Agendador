@@ -1,23 +1,23 @@
 ﻿using MediatR;
-using SME.Worker.Agendador.Aplicacao.Comandos;
 using SME.Worker.Agendador.Infra;
 using System;
 using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Aplicacao
 {
-    public class SyncSerapEstudantesProvasUseCase : ISyncSerapEstudantesProvasUseCase
+    public class TratarDeadletterSerapAcompanhamentoSyncUseCase : ITratarDeadletterSerapAcompanhamentoSyncUseCase
     {
+
         protected readonly IMediator mediator;
 
-        public SyncSerapEstudantesProvasUseCase(IMediator mediator)
+        public TratarDeadletterSerapAcompanhamentoSyncUseCase(IMediator mediator)
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         public async Task Executar()
         {
-            await mediator.Send(new PublicarFilaSerapEstudantesCommand(RotasRabbitSerap.ProvaSync, Guid.NewGuid()));
+            await mediator.Send(new PublicarFilaSerapAcompanhamentoCommand(RotasRabbitSerapAcompanhamento.DeadLetterSync, Guid.NewGuid()));
         }
     }
 }

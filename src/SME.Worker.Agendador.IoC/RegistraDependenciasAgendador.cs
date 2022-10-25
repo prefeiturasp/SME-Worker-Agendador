@@ -72,6 +72,7 @@ namespace SME.Worker.Agendador.IoC
             RegistrarCasosDeUsoSgp(services);
             RegistrarCasosDeUsoSerap(services);
             RegistrarCasoDeUsoEol(services);
+            RegistrarCasosDeUsoSerapAcompanhamento(services);
         }
 
         private static void RegistrarCasoDeUsoEol(IServiceCollection services)
@@ -91,6 +92,12 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<ISyncSerapEstudantesSincronizacaoInstUseCase, SyncSerapEstudantesSincronizacaoInstUseCase>();
             services.TryAddScopedWorkerService<IIniciarProcessoFinalizarProvasAutomaticamenteUseCase, IniciarProcessoFinalizarProvasAutomaticamenteUseCase>();
             services.TryAddScopedWorkerService<ISincronizacaoUsuarioCoreSsoEAbrangenciaUseCase, SincronizacaoUsuarioCoreSsoEAbrangenciaUseCase>();
+        }
+
+        private static void RegistrarCasosDeUsoSerapAcompanhamento(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<IIniciarSyncAcompanhamentoUseCase, IniciarSyncAcompanhamentoUseCase>();
+            services.TryAddScopedWorkerService<ITratarDeadletterSerapAcompanhamentoSyncUseCase, TratarDeadletterSerapAcompanhamentoSyncUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSgp(IServiceCollection services)
