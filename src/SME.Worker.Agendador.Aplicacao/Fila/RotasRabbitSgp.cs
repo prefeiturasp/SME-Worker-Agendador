@@ -55,5 +55,6 @@
         public const string SyncSerapEstudantesProvas = "sgp.sync.serap.estudantes.provas";
         public const string RotaReprocessarDiarioBordoPendenciaDevolutivaPorDre = "sgp.diario.bordo.pendencia.devolutiva.dre";
         public const string RotaRemoverAtribuicaoDeResponsaveis = "sgp.remover.atribuicao.responsaveis";
+        public const string RotaNotificacaoAprovacaoNotaPosConselho = "sgp.conselho.classe.nota.pos.conselho.aprovacao.notificar";
     }
 }
