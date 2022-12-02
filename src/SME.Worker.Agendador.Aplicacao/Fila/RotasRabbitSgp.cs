@@ -12,6 +12,7 @@
         public const string RotaNotificacaoResultadoInsatisfatorio = "sgp.notificacao.nova.resultado.insatisfatorio";
         public const string RotaNotificacaoReuniaoPedagogica = "sgp.evento.reuniao.pedagogica.notificar";
         public const string RotaNotificacaoPeriodoFechamento = "sgp.periodo.fechamento.notificar";
+        public const string RotaNotificacaoAprovacaoFechamento = "sgp.fechamento.nota.aprovacao.notificar";
         public const string RotaNotificacaoFrequenciaUe = "sgp.frequencia.ue.notificar";
         public const string RotaPendenciaAusenciaRegistroIndividual = "sgp.pendencias.professor.ausencia.registro.individual";
         public const string RotaValidacaoAusenciaConciliacaoFrequenciaTurma = "sgp.frequencia.turma.conciliacao.validar";
@@ -52,8 +53,7 @@
         public const string EncerrarEncaminhamentoAEEAutomaticoSync = "sgp.encaminhamento.aee.encerrar.automatico.sync";
 
         public const string SyncSerapEstudantesProvas = "sgp.sync.serap.estudantes.provas";
-        public const string IniciarProcessoFinalizarProvasAutomaticamente = "serap.estudante.prova.finalizar.automaticamente.iniciar";
-
-
+        public const string RotaReprocessarDiarioBordoPendenciaDevolutivaPorDre = "sgp.diario.bordo.pendencia.devolutiva.dre";
+        public const string RotaRemoverAtribuicaoDeResponsaveis = "sgp.remover.atribuicao.responsaveis";
     }
 }
