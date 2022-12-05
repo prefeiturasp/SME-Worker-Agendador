@@ -56,5 +56,6 @@
         public const string RotaReprocessarDiarioBordoPendenciaDevolutivaPorDre = "sgp.diario.bordo.pendencia.devolutiva.dre";
         public const string RotaRemoverAtribuicaoDeResponsaveis = "sgp.remover.atribuicao.responsaveis";
         public const string RotaNotificacaoAprovacaoNotaPosConselho = "sgp.conselho.classe.nota.pos.conselho.aprovacao.notificar";
+        public const string RotaNotificacaoAprovacaoParecerConclusivoConselhoClasse = "sgp.conselho.classe.parecer.conclusivo.aprovacao.notificar";
     }
 }
