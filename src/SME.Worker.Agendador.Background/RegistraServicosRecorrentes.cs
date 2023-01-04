@@ -10,6 +10,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMatriculaTurma;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMediaRegistrosIndividuais;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoRegistrosPedagogicos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Devolutiva;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncaminhamentoNAAPA;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncerrarEncaminhamentoAeeAutomatico;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.ConciliacaoFrequenciaTurmas;
@@ -33,7 +34,6 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.EncerramentoPlanoAEEEst
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEEmAberto;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEExpirado;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.PendenciaValidadePlanoAEE;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.RabbitDeadletter;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.RotasAgendamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Background.Core;
@@ -46,7 +46,13 @@ namespace SME.Worker.Agendador.Background
         {
             RegistrarServicosSgp();
             RegistrarServicosSerap();
+            RegistrarServicoEol();
             RegistrarServicosSerapAcompanhamento();
+        }
+
+        private static void RegistrarServicoEol()
+        {
+            Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));            
         }
 
         public static void RegistrarServicosSgp()
@@ -134,9 +140,6 @@ namespace SME.Worker.Agendador.Background
 
             Cliente.ExecutarPeriodicamente<IConciliacaoFrequenciaTurmasCronUseCase>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Saturday, 23));
 
-            //De 10 em 10 minutos
-            Cliente.ExecutarPeriodicamente<IRabbitDeadletterSgpSyncUseCase>(c => c.Executar(), Cron.MinuteInterval(10));
-
             Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase>(c => c.Executar(), Cron.Daily(9));
 
             // Consolidação Acompanhamento Aprendizagem do Aluno
@@ -158,8 +161,18 @@ namespace SME.Worker.Agendador.Background
             //TODO: Pendencia Devolutiva 1 Vez ao Dia a noite 
             Cliente.ExecutarPeriodicamente<IReprocessarDiarioBordoPendenciaDevolutivaUseCase>(c => c.Executar(),Cron.Daily(21));
 
+            // Executar rotina de remoção de responsavéis, uma vez ao dia, a noite às 01:00
+            Cliente.ExecutarPeriodicamente<IRemoverAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(1));
+
+
             // Executar rotina de notificar aprovação de fechamento nota, uma vez ao dia, às 02:00am
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoAprovacaoFechamentoNotaUseCase>(c => c.Executar(), Cron.Daily(2));
+            // Executar rotina de notificar aprovação de nota pos conselho classe, uma vez ao dia, às 02:00am
+            Cliente.ExecutarPeriodicamente<IExecutaNotificacaoNotaPosConselhoClasseUseCase>(c => c.Executar(), Cron.Daily(5));
+            // Executar rotina de notificar aprovação de pareceres conclusivos conselho de classe, uma vez ao dia, às 02:00am
+            Cliente.ExecutarPeriodicamente<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>(c => c.Executar(), Cron.Daily(5));
+            // Executar rotina de atualizar as informações do encaminhamento NAAPA, uma vez ao dia, às 07:00am
+            Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoEncaminhamentoNAAPA>(c => c.Executar(), Cron.Daily(10));
         }
 
         public static void RegistrarServicosSerap()

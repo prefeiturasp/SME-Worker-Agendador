@@ -11,6 +11,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMatriculaTurma;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMediaRegistrosIndividuais;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoRegistrosPedagogicos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Devolutiva;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncaminhamentoNAAPA;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncerrarEncaminhamentoAeeAutomatico;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.FilaTesteRabbitMQ;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia;
@@ -71,7 +72,13 @@ namespace SME.Worker.Agendador.IoC
         {
             RegistrarCasosDeUsoSgp(services);
             RegistrarCasosDeUsoSerap(services);
+            RegistrarCasoDeUsoEol(services);
             RegistrarCasosDeUsoSerapAcompanhamento(services);
+        }
+
+        private static void RegistrarCasoDeUsoEol(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<IInserirInformacoesListagemListaoEolUseCase, InserirInformacoesListagemListaoEolUseCase>();            
         }
 
         private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
@@ -127,7 +134,6 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IConciliacaoFrequenciaTurmasCronUseCase, ConciliacaoFrequenciaTurmasCronUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoDevolutivasPorTurmaInfantilSyncUseCase, ExecutarSincronizacaoDevolutivasPorTurmaInfantilSyncUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoAulasRegenciaAutomaticasUseCase, ExecutarSincronizacaoAulasRegenciaAutomaticasUseCase>();
-            services.TryAddScopedWorkerService<IRabbitDeadletterSgpSyncUseCase, RabbitDeadletterSgpSyncUseCase>();
             services.TryAddScopedWorkerService<IRabbitDeadletterSrSyncUseCase, RabbitDeadletterSrSyncUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase, ExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase, ExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase>();
@@ -141,7 +147,13 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IEncerrarEncaminhamentoAEEAutomaticoSyncUseCase, EncerrarEncaminhamentoAEEAutomaticoSyncUseCase>();
             services.TryAddScopedWorkerService<IFilaTesteRabbitMQ, FilaTesteRabbitMQ>();
             services.TryAddScopedWorkerService<IReprocessarDiarioBordoPendenciaDevolutivaUseCase, ReprocessarDiarioBordoPendenciaDevolutivaUseCase>();
-            
+            services.TryAddScopedWorkerService<IRemoverAtribuicaoResponsaveisUseCase, RemoverAtribuicaoResponsaveisUseCase>();
+
+            services.TryAddScopedWorkerService<IExecutaNotificacaoNotaPosConselhoClasseUseCase, ExecutaNotificacaoNotaPosConselhoClasseUseCase>();
+            services.TryAddScopedWorkerService<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase, ExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>();
+
+            services.TryAddScopedWorkerService<IAtualizarInformacoesDoEncaminhamentoNAAPA, AtualizarInformacoesDoEncaminhamentoNAAPA>();
+
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
 
