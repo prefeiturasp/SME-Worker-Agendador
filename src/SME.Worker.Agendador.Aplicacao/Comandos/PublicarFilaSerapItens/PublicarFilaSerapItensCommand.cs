@@ -20,11 +20,11 @@ namespace SME.Worker.Agendador.Aplicacao
             {
                 RuleFor(c => c.Fila)
                    .NotEmpty()
-                   .WithMessage("O nome da fila deve ser informado para publicar na fila do Serap estudantes.");
+                   .WithMessage("O nome da fila deve ser informado para publicar na fila do Serap itens.");
 
                 RuleFor(c => c.Mensagem)
                    .NotEmpty()
-                   .WithMessage("O objeto da mensagem ser informado para publicar na fila do Serap estudantes.");
+                   .WithMessage("O objeto da mensagem ser informado para publicar na fila do Serap itens.");
 
             }
         }
