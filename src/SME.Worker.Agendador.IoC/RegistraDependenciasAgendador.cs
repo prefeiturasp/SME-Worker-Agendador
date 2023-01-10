@@ -141,6 +141,9 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IFilaTesteRabbitMQ, FilaTesteRabbitMQ>();
             services.TryAddScopedWorkerService<IReprocessarDiarioBordoPendenciaDevolutivaUseCase, ReprocessarDiarioBordoPendenciaDevolutivaUseCase>();
 
+            services.TryAddScopedWorkerService<IExecutaNotificacaoNotaPosConselhoClasseUseCase, ExecutaNotificacaoNotaPosConselhoClasseUseCase>();
+            services.TryAddScopedWorkerService<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase, ExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>();
+
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
 
