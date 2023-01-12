@@ -11,6 +11,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMatriculaTurma;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMediaRegistrosIndividuais;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoRegistrosPedagogicos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Devolutiva;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncaminhamentoNAAPA;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncerrarEncaminhamentoAeeAutomatico;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.FilaTesteRabbitMQ;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia;
@@ -143,6 +144,8 @@ namespace SME.Worker.Agendador.IoC
 
             services.TryAddScopedWorkerService<IExecutaNotificacaoNotaPosConselhoClasseUseCase, ExecutaNotificacaoNotaPosConselhoClasseUseCase>();
             services.TryAddScopedWorkerService<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase, ExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>();
+
+            services.TryAddScopedWorkerService<IAtualizarInformacoesDoEncaminhamentoNAAPA, AtualizarInformacoesDoEncaminhamentoNAAPA>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
