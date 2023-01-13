@@ -48,6 +48,7 @@ namespace SME.Worker.Agendador.Background
             RegistrarServicosSerap();
             RegistrarServicoEol();
             RegistrarServicosSerapAcompanhamento();
+            RegistrarServicosSerapItens();
         }
 
         private static void RegistrarServicoEol()
@@ -193,6 +194,11 @@ namespace SME.Worker.Agendador.Background
         {
             Cliente.ExecutarPeriodicamente<IIniciarSyncAcompanhamentoUseCase>(c => c.Executar(), Cron.Daily(22));
             Cliente.ExecutarPeriodicamente<ITratarDeadletterSerapAcompanhamentoSyncUseCase>(c => c.Executar(), Cron.MinuteInterval(59));
+        }
+
+        public static void RegistrarServicosSerapItens()
+        {
+            Cliente.ExecutarPeriodicamente<IIniciarImportacoesSerapItensUseCase>(c => c.Executar(), Cron.Daily(23));
         }
     }
 }
