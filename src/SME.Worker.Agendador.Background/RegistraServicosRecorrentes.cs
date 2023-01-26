@@ -54,7 +54,8 @@ namespace SME.Worker.Agendador.Background
         
         private static void RegistrarServicoEol()
         {
-            Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));            
+            Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));
+            Cliente.ExecutarPeriodicamente<IInserirUsuariosEolElasticSearch>(c => c.Executar(), Cron.Daily(8, 30));
         }        
 
         public static void RegistrarServicosSgp()
