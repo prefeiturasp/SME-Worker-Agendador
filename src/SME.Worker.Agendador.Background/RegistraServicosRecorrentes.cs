@@ -56,6 +56,7 @@ namespace SME.Worker.Agendador.Background
         {
             Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));
             Cliente.ExecutarPeriodicamente<IInserirFuncionariosEolElasticSearchUseCase>(c => c.Executar(), Cron.Daily(8, 30));
+            Cliente.ExecutarPeriodicamente<IInserirComponentesTurmasProfessoresEolElasticSearchUseCase>(c => c.Executar(), Cron.Daily(8, 30));
         }        
 
         public static void RegistrarServicosSgp()
