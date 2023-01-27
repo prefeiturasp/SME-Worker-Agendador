@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Aplicacao
 {
-    public interface IInserirUsuariosEolElasticSearch
+    public interface IInserirFuncionariosEolElasticSearchUseCase
     {
         Task Executar();
     }
