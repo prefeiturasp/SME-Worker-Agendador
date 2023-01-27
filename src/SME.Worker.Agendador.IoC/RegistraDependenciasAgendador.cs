@@ -71,9 +71,16 @@ namespace SME.Worker.Agendador.IoC
         private static void RegistrarCasosDeUso(IServiceCollection services)
         {
             RegistrarCasosDeUsoSgp(services);
+            RegistrarCasoDeUsoEol(services);
             RegistrarCasosDeUsoSerap(services);
             RegistrarCasosDeUsoSerapAcompanhamento(services);
             RegistrarCasosDeUsoSerapItens(services);
+        }
+
+        private static void RegistrarCasoDeUsoEol(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<IInserirInformacoesListagemListaoEolUseCase, InserirInformacoesListagemListaoEolUseCase>();
+            services.TryAddScopedWorkerService<IInserirFuncionariosEolElasticSearchUseCase, InserirFuncionariosEolElasticSearchUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
