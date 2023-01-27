@@ -48,7 +48,7 @@ namespace SME.Worker.Agendador.Background
             RegistrarServicoEol();
             RegistrarServicosSerapAcompanhamento();
         }
-
+      
         private static void RegistrarServicoEol()
         {
             Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));            
@@ -115,7 +115,8 @@ namespace SME.Worker.Agendador.Background
             //Cliente.ExecutarPeriodicamente<IExecutaSyncGsaGoogleClassroomUseCase>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Sunday, 10));
             Cliente.ExecutarPeriodicamente<ISyncGsaGoogleClassroomUseCase>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Sunday, 10));
 
-            Cliente.ExecutarPeriodicamente<IExecutaEncerramentoPlanoAEEEstudantesInativosUseCase>(c => c.Executar(), Cron.Daily(8));
+            //Encerramnto de planos diariamente às 22 horas
+            Cliente.ExecutarPeriodicamente<IExecutaEncerramentoPlanoAEEEstudantesInativosUseCase>(c => c.Executar(), "0 01 * * *");
 
             Cliente.ExecutarPeriodicamente<IExecutaPendenciaValidadePlanoAEEUseCase>(c => c.Executar(), Cron.Daily(8));
 
@@ -166,6 +167,10 @@ namespace SME.Worker.Agendador.Background
 
             // Executar rotina de notificar aprovação de fechamento nota, uma vez ao dia, às 02:00am
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoAprovacaoFechamentoNotaUseCase>(c => c.Executar(), Cron.Daily(2));
+            // Executar rotina de notificar aprovação de nota pos conselho classe, uma vez ao dia, às 02:00am
+            Cliente.ExecutarPeriodicamente<IExecutaNotificacaoNotaPosConselhoClasseUseCase>(c => c.Executar(), Cron.Daily(5));
+            // Executar rotina de notificar aprovação de pareceres conclusivos conselho de classe, uma vez ao dia, às 02:00am
+            Cliente.ExecutarPeriodicamente<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>(c => c.Executar(), Cron.Daily(5));
         }
 
         public static void RegistrarServicosSerap()
@@ -173,18 +178,21 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IRabbitDeadletterSerapSyncUseCase>(c => c.Executar(), Cron.MinuteInterval(59));
 
             Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
+            Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesSincronizacaoInstUseCase>(c => c.Executar(), Cron.Daily(1));
+            
             Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesProvasBibUseCase>(c => c.Executar(), Cron.Daily(2));
             Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesQuestaoCompletaUseCase>(c => c.Executar(), Cron.Daily(2));
             Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesAlunoProvaProficienciaUseCase>(c => c.Executar(), Cron.Daily(2));
 
-            Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesSincronizacaoInstUseCase>(c => c.Executar(), Cron.Daily(10));
             Cliente.ExecutarPeriodicamente<IIniciarProcessoFinalizarProvasAutomaticamenteUseCase>(c => c.Executar(), Cron.Daily(23));
+            
             Cliente.ExecutarPeriodicamente<ISincronizacaoUsuarioCoreSsoEAbrangenciaUseCase>(c => c.Executar(), Cron.Daily(10));
         }
 
         public static void RegistrarServicosSerapAcompanhamento()
         {
-            Cliente.ExecutarPeriodicamente<IIniciarSyncAcompanhamentoUseCase>(c => c.Executar(), Cron.Daily(22));
+            Cliente.ExecutarPeriodicamente<IIniciarSyncAcompanhamentoUseCase>(c => c.Executar(), Cron.Daily(3));
+            
             Cliente.ExecutarPeriodicamente<ITratarDeadletterSerapAcompanhamentoSyncUseCase>(c => c.Executar(), Cron.MinuteInterval(59));
         }
     }
