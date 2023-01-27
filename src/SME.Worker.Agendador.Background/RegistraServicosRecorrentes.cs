@@ -49,11 +49,11 @@ namespace SME.Worker.Agendador.Background
             RegistrarServicoEol();
             RegistrarServicosSerapAcompanhamento();
         }
-        
+      
         private static void RegistrarServicoEol()
         {
             Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));            
-        }        
+        }
 
         public static void RegistrarServicosSgp()
         {
