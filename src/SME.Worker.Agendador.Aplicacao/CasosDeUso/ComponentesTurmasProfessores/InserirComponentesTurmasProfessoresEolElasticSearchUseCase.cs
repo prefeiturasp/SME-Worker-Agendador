@@ -14,7 +14,7 @@ namespace SME.Worker.Agendador.Aplicacao
 
         public async Task Executar()
         {
-            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitEol.InserirComponentesTurmasProfessoresEolElasticSearchSync,
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitEol.InserirComponentesTurmasProfessoresEolElasticSearchSync,DateTime.Now.Year,
                 Guid.NewGuid(), "ExchangeApiEol"));
         }
     }
