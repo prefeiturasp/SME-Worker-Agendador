@@ -183,8 +183,6 @@ namespace SME.Worker.Agendador.Background
 
         public static void RegistrarServicosSerap()
         {
-            Cliente.ExecutarPeriodicamente<IRabbitDeadletterSerapSyncUseCase>(c => c.Executar(), Cron.MinuteInterval(59));
-
             Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
             Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesSincronizacaoInstUseCase>(c => c.Executar(), Cron.Daily(1));
             
@@ -200,8 +198,6 @@ namespace SME.Worker.Agendador.Background
         public static void RegistrarServicosSerapAcompanhamento()
         {
             Cliente.ExecutarPeriodicamente<IIniciarSyncAcompanhamentoUseCase>(c => c.Executar(), Cron.Daily(3));
-            
-            Cliente.ExecutarPeriodicamente<ITratarDeadletterSerapAcompanhamentoSyncUseCase>(c => c.Executar(), Cron.MinuteInterval(59));
         }
 
         public static void RegistrarServicosSerapItens()

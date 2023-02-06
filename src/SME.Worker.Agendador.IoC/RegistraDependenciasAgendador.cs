@@ -85,8 +85,6 @@ namespace SME.Worker.Agendador.IoC
 
         private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
         {
-            services.TryAddScopedWorkerService<IRabbitDeadletterSerapSyncUseCase, RabbitDeadletterSerapSyncUseCase>();
-
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasUseCase, SyncSerapEstudantesProvasUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasBibUseCase, SyncSerapEstudantesProvasBibUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesQuestaoCompletaUseCase, SyncSerapEstudantesQuestaoCompletaUseCase>();
@@ -100,7 +98,6 @@ namespace SME.Worker.Agendador.IoC
         private static void RegistrarCasosDeUsoSerapAcompanhamento(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<IIniciarSyncAcompanhamentoUseCase, IniciarSyncAcompanhamentoUseCase>();
-            services.TryAddScopedWorkerService<ITratarDeadletterSerapAcompanhamentoSyncUseCase, TratarDeadletterSerapAcompanhamentoSyncUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerapItens(IServiceCollection services)
