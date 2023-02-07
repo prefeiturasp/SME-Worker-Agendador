@@ -57,5 +57,6 @@
         public const string RotaRemoverAtribuicaoDeResponsaveis = "sgp.remover.atribuicao.responsaveis";
         public const string RotaNotificacaoAprovacaoNotaPosConselho = "sgp.conselho.classe.nota.pos.conselho.aprovacao.notificar";
         public const string RotaNotificacaoAprovacaoParecerConclusivoConselhoClasse = "sgp.conselho.classe.parecer.conclusivo.aprovacao.notificar";
+        public const string ExecutarAtualizacaoDasInformacoesEncaminhamentoNAAPA = "sgp.atualizar.informacoes.encaminhamento.naapa";
     }
 }

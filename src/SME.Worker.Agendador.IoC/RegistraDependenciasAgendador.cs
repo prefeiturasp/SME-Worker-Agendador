@@ -11,6 +11,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMatriculaTurma;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMediaRegistrosIndividuais;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoRegistrosPedagogicos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Devolutiva;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncaminhamentoNAAPA;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncerrarEncaminhamentoAeeAutomatico;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.FilaTesteRabbitMQ;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia;
@@ -70,8 +71,16 @@ namespace SME.Worker.Agendador.IoC
         private static void RegistrarCasosDeUso(IServiceCollection services)
         {
             RegistrarCasosDeUsoSgp(services);
+            RegistrarCasoDeUsoEol(services);
             RegistrarCasosDeUsoSerap(services);
             RegistrarCasosDeUsoSerapAcompanhamento(services);
+            RegistrarCasosDeUsoSerapItens(services);
+        }
+
+        private static void RegistrarCasoDeUsoEol(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<IInserirInformacoesListagemListaoEolUseCase, InserirInformacoesListagemListaoEolUseCase>();
+            services.TryAddScopedWorkerService<IInserirFuncionariosEolElasticSearchUseCase, InserirFuncionariosEolElasticSearchUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
@@ -92,6 +101,11 @@ namespace SME.Worker.Agendador.IoC
         {
             services.TryAddScopedWorkerService<IIniciarSyncAcompanhamentoUseCase, IniciarSyncAcompanhamentoUseCase>();
             services.TryAddScopedWorkerService<ITratarDeadletterSerapAcompanhamentoSyncUseCase, TratarDeadletterSerapAcompanhamentoSyncUseCase>();
+        }
+
+        private static void RegistrarCasosDeUsoSerapItens(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<IIniciarImportacoesSerapItensUseCase, IniciarImportacoesSerapItensUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSgp(IServiceCollection services)
@@ -143,6 +157,8 @@ namespace SME.Worker.Agendador.IoC
 
             services.TryAddScopedWorkerService<IExecutaNotificacaoNotaPosConselhoClasseUseCase, ExecutaNotificacaoNotaPosConselhoClasseUseCase>();
             services.TryAddScopedWorkerService<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase, ExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>();
+
+            services.TryAddScopedWorkerService<IAtualizarInformacoesDoEncaminhamentoNAAPA, AtualizarInformacoesDoEncaminhamentoNAAPA>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
