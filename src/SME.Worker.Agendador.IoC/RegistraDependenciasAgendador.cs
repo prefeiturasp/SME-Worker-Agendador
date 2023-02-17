@@ -33,6 +33,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaProfessor;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaRegistroIndividual;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasAula;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais.RemoverPendencias;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.EncerramentoPlanoAEEEstudantesInativos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEEmAberto;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEExpirado;
@@ -159,6 +160,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase, ExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>();
 
             services.TryAddScopedWorkerService<IAtualizarInformacoesDoEncaminhamentoNAAPA, AtualizarInformacoesDoEncaminhamentoNAAPA>();
+            services.TryAddScopedWorkerService<IRemoverPendenciasNoFinalDoAnoLetivoUseCase, RemoverPendenciasNoFinalDoAnoLetivoUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
