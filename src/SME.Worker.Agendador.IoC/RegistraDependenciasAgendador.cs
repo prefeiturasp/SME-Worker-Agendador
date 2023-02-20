@@ -28,6 +28,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoUeFechamentosInsufici
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacoesNiveisCargos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ObjetivoAprendizagem;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaAusenciaFechamento;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaCalendarioUe.ExcluirPendenciaCalendarioAnoAnterior;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaPerfilUsuario;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaProfessor;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaRegistroIndividual;
@@ -159,6 +160,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase, ExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>();
 
             services.TryAddScopedWorkerService<IAtualizarInformacoesDoEncaminhamentoNAAPA, AtualizarInformacoesDoEncaminhamentoNAAPA>();
+            services.TryAddScopedWorkerService<IExcluirPendenciaCalendarioAnoAnteriorUseCase,ExcluirPendenciaCalendarioAnoAnteriorUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
