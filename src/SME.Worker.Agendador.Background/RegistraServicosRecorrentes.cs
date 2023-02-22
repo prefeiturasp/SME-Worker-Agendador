@@ -31,6 +31,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaProfessor;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaRegistroIndividual;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasAula;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais.RemoverPendencias;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.EncerramentoPlanoAEEEstudantesInativos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEEmAberto;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEExpirado;
@@ -183,6 +184,8 @@ namespace SME.Worker.Agendador.Background
 
             //Executa rotina de exclusão de pendencia calendario no primeiro dia do ano às 00:00am
             Cliente.ExecutarPeriodicamente<IExcluirPendenciaCalendarioAnoAnteriorUseCase>(c => c.Executar(),Cron.Yearly(1,1,3));
+            //Executa rotina de exclusão de pendência no primeiro dia do ano às 00:00am
+            Cliente.ExecutarPeriodicamente<IRemoverPendenciasNoFinalDoAnoLetivoUseCase>(c => c.Executar(), Cron.Yearly(1, 1, 3));
         }
 
         public static void RegistrarServicosSerap()
