@@ -14,7 +14,6 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncaminhamentoNAAPA;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncerrarEncaminhamentoAeeAutomatico;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.ConciliacaoFrequenciaTurmas;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.GoogleClassroom;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAlunosFaltosos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAndamentoFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoFrequenciaUe;
@@ -114,12 +113,6 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoFrequenciaUeUseCase>(c => c.Executar(), Cron.Daily(5, 15));
 
             //Cliente.ExecutarPeriodicamente<IRemoveConexaoIdleUseCase>(c => c.Executar(), Cron.MinuteInterval(30));
-
-            //Cliente.ExecutarPeriodicamente<IExecutarSyncGeralGoogleClassroomUseCase>(c => c.Executar(), Cron.Daily(11));
-            Cliente.ExecutarPeriodicamente<ISyncGeralGoogleClassroomUseCase>(c => c.Executar(), Cron.Daily(11));
-
-            //Cliente.ExecutarPeriodicamente<IExecutaSyncGsaGoogleClassroomUseCase>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Sunday, 10));
-            Cliente.ExecutarPeriodicamente<ISyncGsaGoogleClassroomUseCase>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Sunday, 10));
 
             //Encerramnto de planos diariamente às 22 horas
             Cliente.ExecutarPeriodicamente<IExecutaEncerramentoPlanoAEEEstudantesInativosUseCase>(c => c.Executar(), "0 01 * * *");
