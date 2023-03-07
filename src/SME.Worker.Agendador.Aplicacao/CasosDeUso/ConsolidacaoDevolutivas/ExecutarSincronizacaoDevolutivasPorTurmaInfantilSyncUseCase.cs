@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoDevolutivas
         {
             SentrySdk.AddBreadcrumb($"Mensagem ExecutarSincronizacaoDevolutivasPorTurmaInfantilSyncUseCase", "Rabbit - ExecutarSincronizacaoDevolutivasPorTurmaInfantilSyncUseCase");
 
-            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.ConsolidarDevolutivasPorTurmaInfantil, string.Empty, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.ConsolidarDevolutivasPorUE, string.Empty, Guid.NewGuid()));
         }
     }
 }
