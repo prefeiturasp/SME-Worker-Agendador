@@ -16,7 +16,6 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.ConciliacaoFrequenciaTurmas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAlunosFaltosos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAndamentoFechamento;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoFrequenciaUe;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoInicioFimPeriodoFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoResultadoInsatisfatorio;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoReuniaoPedagogica;
@@ -24,11 +23,13 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoUeFechamentosInsufici
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacoesNiveisCargos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ObjetivoAprendizagem;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaAusenciaFechamento;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaCalendarioUe.ExcluirPendenciaCalendarioAnoAnterior;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaPerfilUsuario;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaProfessor;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaRegistroIndividual;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasAula;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais.RemoverPendencias;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.EncerramentoPlanoAEEEstudantesInativos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEEmAberto;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEExpirado;
@@ -108,8 +109,6 @@ namespace SME.Worker.Agendador.Background
 
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoInicioFimPeriodoFechamentoUseCase>(c => c.Executar(), Cron.Daily(5, 15));
 
-            Cliente.ExecutarPeriodicamente<IExecutaNotificacaoFrequenciaUeUseCase>(c => c.Executar(), Cron.Daily(5, 15));
-
             //Cliente.ExecutarPeriodicamente<IRemoveConexaoIdleUseCase>(c => c.Executar(), Cron.MinuteInterval(30));
 
             //Encerramnto de planos diariamente às 22 horas
@@ -172,6 +171,11 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>(c => c.Executar(), Cron.Daily(5));
             // Executar rotina de atualizar as informações do encaminhamento NAAPA, uma vez ao dia, às 07:00am
             Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoEncaminhamentoNAAPA>(c => c.Executar(), Cron.Daily(10));
+
+            //Executa rotina de exclusão de pendencia calendario no primeiro dia do ano às 00:00am
+            Cliente.ExecutarPeriodicamente<IExcluirPendenciaCalendarioAnoAnteriorUseCase>(c => c.Executar(),Cron.Yearly(1,1,3));
+            //Executa rotina de exclusão de pendência no primeiro dia do ano às 00:00am
+            Cliente.ExecutarPeriodicamente<IRemoverPendenciasNoFinalDoAnoLetivoUseCase>(c => c.Executar(), Cron.Yearly(1, 1, 3));
         }
 
         public static void RegistrarServicosSerap()

@@ -19,7 +19,6 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.ConciliacaoFrequencia
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.GoogleClassroom;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAlunosFaltosos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAndamentoFechamento;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoFrequenciaUe;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoInicioFimPeriodoFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoPeriodoFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoResultadoInsatisfatorio;
@@ -28,11 +27,13 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoUeFechamentosInsufici
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacoesNiveisCargos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ObjetivoAprendizagem;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaAusenciaFechamento;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaCalendarioUe.ExcluirPendenciaCalendarioAnoAnterior;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaPerfilUsuario;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaProfessor;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaRegistroIndividual;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasAula;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais.RemoverPendencias;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.EncerramentoPlanoAEEEstudantesInativos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEEmAberto;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEExpirado;
@@ -129,7 +130,6 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IPublicarPendenciaAusenciaRegistroIndividualUseCase, PublicarPendenciaAusenciaRegistroIndividualUseCase>();
             services.TryAddScopedWorkerService<ITratarNotificacoesNiveisCargosUseCase, TratarNotificacoesNiveisCargosUseCase>();
             services.TryAddScopedWorkerService<IExecutaNotificacaoInicioFimPeriodoFechamentoUseCase, ExecutaNotificacaoInicioFimPeriodoFechamentoUseCase>();
-            services.TryAddScopedWorkerService<IExecutaNotificacaoFrequenciaUeUseCase, ExecutaNotificacaoFrequenciaUeUseCase>();
             services.TryAddScopedWorkerService<ISyncGeralGoogleClassroomUseCase, SyncGeralGoogleClassroomUseCase>();
             services.TryAddScopedWorkerService<ISyncGsaGoogleClassroomUseCase, SyncGsaGoogleClassroomUseCase>();
             services.TryAddScopedWorkerService<IExecutaEncerramentoPlanoAEEEstudantesInativosUseCase, ExecutaEncerramentoPlanoAEEEstudantesInativosUseCase>();
@@ -161,6 +161,8 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase, ExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>();
 
             services.TryAddScopedWorkerService<IAtualizarInformacoesDoEncaminhamentoNAAPA, AtualizarInformacoesDoEncaminhamentoNAAPA>();
+            services.TryAddScopedWorkerService<IExcluirPendenciaCalendarioAnoAnteriorUseCase,ExcluirPendenciaCalendarioAnoAnteriorUseCase>();
+            services.TryAddScopedWorkerService<IRemoverPendenciasNoFinalDoAnoLetivoUseCase, RemoverPendenciasNoFinalDoAnoLetivoUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
