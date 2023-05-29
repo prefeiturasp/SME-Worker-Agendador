@@ -165,6 +165,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IExcluirPendenciaCalendarioAnoAnteriorUseCase,ExcluirPendenciaCalendarioAnoAnteriorUseCase>();
             services.TryAddScopedWorkerService<IRemoverPendenciasNoFinalDoAnoLetivoUseCase, RemoverPendenciasNoFinalDoAnoLetivoUseCase>();
             services.TryAddScopedWorkerService<IAtualizarTotalizadoresDePendenciaUseCase, AtualizarTotalizadoresDePendenciaUseCase>();
+            services.TryAddScopedWorkerService<IAtualizarCargaDashboardConsolidadoEncaminhamentoNAAPA, AtualizarCargaDashboardConsolidadoEncaminhamentoNAAPA>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
