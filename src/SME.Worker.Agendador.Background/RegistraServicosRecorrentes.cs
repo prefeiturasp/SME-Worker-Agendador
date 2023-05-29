@@ -180,6 +180,9 @@ namespace SME.Worker.Agendador.Background
 
             // Executar rotina de atualizar do totalizadores de pendências, uma vez ao dia, às 07:00am
             Cliente.ExecutarPeriodicamente<IAtualizarTotalizadoresDePendenciaUseCase>(c => c.Executar(), Cron.Daily(10));
+
+            // Executar rotina de atualizar carga dashboard consolidado NAAPA, uma vez ao dia, às 05:00am
+            Cliente.ExecutarPeriodicamente<IAtualizarCargaDashboardConsolidadoEncaminhamentoNAAPA>(c => c.Executar(), Cron.Daily(8));
         }
 
         public static void RegistrarServicosSerap()
