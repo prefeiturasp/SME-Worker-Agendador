@@ -62,5 +62,6 @@
         public const string RotaExecutarExclusaoPendenciasNoFinalDoAnoLetivoPorAno = "sgp.pendencias.excluir.final.anoletivo.ano";
         public const string ExecutarAtualizacaoDosTotalizadoresDasPendencias = "sgp.atualizar.totalizadores.pendencias";
         public const string ExecutarCargaConsolidadoEncaminhamentoNAAPA = "sgp.carga.consolidado.encaminhamento.naapa";
+        public const string ExecutarAtualizacaoDasInformacoesPlanoAEE = "sgp.atualizar.informacoes.plano.aee";
     }
 }
