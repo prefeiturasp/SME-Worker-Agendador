@@ -11,6 +11,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMatriculaTurma;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMediaRegistrosIndividuais;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoRegistrosPedagogicos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Devolutiva;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncaminhamentoAEE;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncaminhamentoNAAPA;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncerrarEncaminhamentoAeeAutomatico;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia;
@@ -187,6 +188,12 @@ namespace SME.Worker.Agendador.Background
 
             // Executar rotina de atualizar as informações do plano AEE, uma vez ao dia, às 07:00am
             Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoPlanoAEE>(c => c.Executar(), Cron.Daily(10));
+
+            // Executar rotina de atualizar as turmas regular e SRM ativas do aluno no plano AEE, uma vez ao dia, às 07:00am
+            Cliente.ExecutarPeriodicamente<IAtualizarPlanoAEETurmaAlunoUseCase>(c => c.Executar(), Cron.Daily(10));
+
+            // Executar rotina de atualizar as turmas regular e SRM ativas do aluno no encaminhamento AEE, uma vez ao dia, às 07:00am
+            Cliente.ExecutarPeriodicamente<IAtualizarEncaminhamentoAEETurmaAlunoUseCase>(c => c.Executar(), Cron.Daily(10));
         }
 
         public static void RegistrarServicosSerap()

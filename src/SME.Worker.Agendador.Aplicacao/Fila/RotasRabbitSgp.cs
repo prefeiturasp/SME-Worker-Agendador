@@ -63,5 +63,7 @@
         public const string ExecutarAtualizacaoDosTotalizadoresDasPendencias = "sgp.atualizar.totalizadores.pendencias";
         public const string ExecutarCargaConsolidadoEncaminhamentoNAAPA = "sgp.carga.consolidado.encaminhamento.naapa";
         public const string ExecutarAtualizacaoDasInformacoesPlanoAEE = "sgp.atualizar.informacoes.plano.aee";
+        public const string ExecutarAtualizacaoTabelaPlanoAEETurmaAluno = "plano.aee.turma.aluno.sync";
+        public const string ExecutarAtualizacaoTabelaEncaminhamentoAEETurmaAluno = "encaminhamento.aee.turma.aluno.sync";
     }
 }
