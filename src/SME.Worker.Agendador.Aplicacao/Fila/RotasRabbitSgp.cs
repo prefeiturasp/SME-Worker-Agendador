@@ -26,7 +26,6 @@
         public const string RotaConciliacaoFrequenciaTurmasSync = "sgp.frequencia.turma.conciliacao.sync";
         public const string RotaNotificacaoAlunosFaltosos = "sgp.aulas.alunos.faltosos.notificar";
         public const string RotaNotificacaoAulasPrevistasSync = "sgp.aulas.previstas.notificacao.sync";
-        public const string RotaRabbitDeadletterTratar = "sgp.rabbit.deadletter.tratar";
         public const string ConsolidarDevolutivasPorUE = "sgp.consolidacao.devolutivas.turma.infantil.ue";
         public const string ConsolidarDevolutivasPorTurmaInfantil = "sgp.consolidacao.devolutivas.turma.infantil";
         public const string ConsolidarDiariosBordoCarregar = "sgp.consolidacao.diarios.bordo.carregar";
@@ -34,7 +33,6 @@
         public const string ConsolidarMediaRegistrosIndividuaisTurma = "sgp.consolidacao.media.registros.individuais.turma";
         public const string ConsolidarAcompanhamentoAprendizagemAluno = "sgp.sincronizacao.acompanhamento.aprendizado.aluno";
         public const string RotaAgendamentoTratar = "sgp.agendamento.tratar";
-        public const string RotaRabbitSRDeadletterTratar = "sgp.sr.rabbit.deadletter.tratar";
         public const string NotifificarRegistroFrequencia = "sgp.registro.frequencia.notificacao";
         public const string SincronizarObjetivosComJurema = "sgp.sincronizar.objetivos.com.jurema";
         public const string NotificarAlunosFaltososBimestre = "sgp.alunos.faltosos.bimestre.notificacao";

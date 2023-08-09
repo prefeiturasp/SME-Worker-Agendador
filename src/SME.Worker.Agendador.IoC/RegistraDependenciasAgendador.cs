@@ -41,7 +41,6 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.EncerramentoPlanoAEEEst
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEEmAberto;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEExpirado;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.PendenciaValidadePlanoAEE;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.RabbitDeadletter;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.RotasAgendamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.SerapEstudantes;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
@@ -144,8 +143,6 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IConciliacaoFrequenciaTurmasCronUseCase, ConciliacaoFrequenciaTurmasCronUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoDevolutivasPorTurmaInfantilSyncUseCase, ExecutarSincronizacaoDevolutivasPorTurmaInfantilSyncUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoAulasRegenciaAutomaticasUseCase, ExecutarSincronizacaoAulasRegenciaAutomaticasUseCase>();
-            services.TryAddScopedWorkerService<IRabbitDeadletterSgpSyncUseCase, RabbitDeadletterSgpSyncUseCase>();
-            services.TryAddScopedWorkerService<IRabbitDeadletterSrSyncUseCase, RabbitDeadletterSrSyncUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase, ExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase, ExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase>();
             services.TryAddScopedWorkerService<IRotasAgendamentoSyncUseCase, RotasAgendamentoSyncUseCase>();
