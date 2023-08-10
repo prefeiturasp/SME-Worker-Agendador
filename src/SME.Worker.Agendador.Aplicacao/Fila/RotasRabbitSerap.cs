@@ -8,6 +8,7 @@
         public const string UsuarioCoreSsoSync = "serap.estudante.usuario.coresso.sync";
         public const string QuestaoCompletaSync = "serap.estudante.questao.completa.legado.sync";
         public const string ProvaBIBSync = "serap.estudante.provabib.sync";
+        public const string ProvaTAISync = "serap.estudante.provatai.sync";
         public const string AlunoProvaProficienciaAsync = "serap.estudante.aluno.prova.proficiencia.sync";
     }
 }
