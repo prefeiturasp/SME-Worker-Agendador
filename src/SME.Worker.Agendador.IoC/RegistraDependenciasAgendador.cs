@@ -91,7 +91,7 @@ namespace SME.Worker.Agendador.IoC
 
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasUseCase, SyncSerapEstudantesProvasUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasBibUseCase, SyncSerapEstudantesProvasBibUseCase>();
-            services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasTaiUseCase, SyncSerapEstudantesProvasTaiUseCase>();
+            // TODO: REMOVIDO TEMPORARIAMENTE services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasTaiUseCase, SyncSerapEstudantesProvasTaiUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesQuestaoCompletaUseCase, SyncSerapEstudantesQuestaoCompletaUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesAlunoProvaProficienciaUseCase, SyncSerapEstudantesAlunoProvaProficienciaUseCase>();
 
