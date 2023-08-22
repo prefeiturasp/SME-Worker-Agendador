@@ -183,6 +183,8 @@ namespace SME.Worker.Agendador.Background
 
             // Executar rotina de atualizar carga dashboard consolidado NAAPA, uma vez ao dia, às 05:00am
             Cliente.ExecutarPeriodicamente<IAtualizarCargaDashboardConsolidadoEncaminhamentoNAAPA>(c => c.Executar(), Cron.Daily(8));
+            // Executar rotina de atualizar carga agrupamentos atribuições de componentes território saber, uma vez ao dia, às 03:00am
+            Cliente.ExecutarPeriodicamente<ISincronismoAgrupamentoComponentesTerritorioEolUseCase>(c => c.Executar(), Cron.Daily(6));
         }
 
         public static void RegistrarServicosSerap()
