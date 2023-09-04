@@ -163,6 +163,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IRemoverPendenciasNoFinalDoAnoLetivoUseCase, RemoverPendenciasNoFinalDoAnoLetivoUseCase>();
             services.TryAddScopedWorkerService<IAtualizarTotalizadoresDePendenciaUseCase, AtualizarTotalizadoresDePendenciaUseCase>();
             services.TryAddScopedWorkerService<IAtualizarCargaDashboardConsolidadoEncaminhamentoNAAPA, AtualizarCargaDashboardConsolidadoEncaminhamentoNAAPA>();
+            services.TryAddScopedWorkerService<INotificarInatividadeDoAtendimentoNAAPAUseCase, NotificarInatividadeDoAtendimentoNAAPAUseCase>();
 
             services.TryAddScopedWorkerService<IAtualizarInformacoesDoPlanoAEE, AtualizarInformacoesDoPlanoAEE>();
             services.TryAddScopedWorkerService<IAtualizarPlanoAEETurmaAlunoUseCase, AtualizarPlanoAEETurmaAlunoUseCase>();
