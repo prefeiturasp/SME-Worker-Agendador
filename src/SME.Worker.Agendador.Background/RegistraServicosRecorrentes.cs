@@ -159,8 +159,8 @@ namespace SME.Worker.Agendador.Background
             //TODO: Pendencia Devolutiva 1 Vez ao Dia a noite 
             Cliente.ExecutarPeriodicamente<IReprocessarDiarioBordoPendenciaDevolutivaUseCase>(c => c.Executar(),Cron.Daily(21));
 
-            // Executar rotina de remoção de responsavéis, uma vez ao dia, a noite às 01:00
-            Cliente.ExecutarPeriodicamente<IRemoverAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(1));
+            // Executar rotina de remoção de responsavéis, uma vez ao dia, às 10:30
+            Cliente.ExecutarPeriodicamente<IRemoverAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(10, 30));
 
 
             // Executar rotina de notificar aprovação de fechamento nota, uma vez ao dia, às 02:00am
