@@ -13,7 +13,6 @@
         public const string RotaNotificacaoReuniaoPedagogica = "sgp.evento.reuniao.pedagogica.notificar";
         public const string RotaNotificacaoPeriodoFechamento = "sgp.periodo.fechamento.notificar";
         public const string RotaNotificacaoAprovacaoFechamento = "sgp.fechamento.nota.aprovacao.notificar";
-        public const string RotaNotificacaoFrequenciaUe = "sgp.frequencia.ue.notificar";
         public const string RotaPendenciaAusenciaRegistroIndividual = "sgp.pendencias.professor.ausencia.registro.individual";
         public const string RotaValidacaoAusenciaConciliacaoFrequenciaTurma = "sgp.frequencia.turma.conciliacao.validar";
         public const string EncerrarPlanoAEEEstudantesInativos = "plano.aee.encerrar.inativos";
@@ -27,14 +26,13 @@
         public const string RotaConciliacaoFrequenciaTurmasSync = "sgp.frequencia.turma.conciliacao.sync";
         public const string RotaNotificacaoAlunosFaltosos = "sgp.aulas.alunos.faltosos.notificar";
         public const string RotaNotificacaoAulasPrevistasSync = "sgp.aulas.previstas.notificacao.sync";
-        public const string RotaRabbitDeadletterTratar = "sgp.rabbit.deadletter.tratar";
+        public const string ConsolidarDevolutivasPorUE = "sgp.consolidacao.devolutivas.turma.infantil.ue";
         public const string ConsolidarDevolutivasPorTurmaInfantil = "sgp.consolidacao.devolutivas.turma.infantil";
         public const string ConsolidarDiariosBordoCarregar = "sgp.consolidacao.diarios.bordo.carregar";
         public const string CarregarDadosUeTurmaRegenciaAutomaticamente = "aulas.automaticas.regencia.ue.turma.carregar";
         public const string ConsolidarMediaRegistrosIndividuaisTurma = "sgp.consolidacao.media.registros.individuais.turma";
         public const string ConsolidarAcompanhamentoAprendizagemAluno = "sgp.sincronizacao.acompanhamento.aprendizado.aluno";
         public const string RotaAgendamentoTratar = "sgp.agendamento.tratar";
-        public const string RotaRabbitSRDeadletterTratar = "sgp.sr.rabbit.deadletter.tratar";
         public const string NotifificarRegistroFrequencia = "sgp.registro.frequencia.notificacao";
         public const string SincronizarObjetivosComJurema = "sgp.sincronizar.objetivos.com.jurema";
         public const string NotificarAlunosFaltososBimestre = "sgp.alunos.faltosos.bimestre.notificacao";
@@ -58,5 +56,13 @@
         public const string RotaNotificacaoAprovacaoNotaPosConselho = "sgp.conselho.classe.nota.pos.conselho.aprovacao.notificar";
         public const string RotaNotificacaoAprovacaoParecerConclusivoConselhoClasse = "sgp.conselho.classe.parecer.conclusivo.aprovacao.notificar";
         public const string ExecutarAtualizacaoDasInformacoesEncaminhamentoNAAPA = "sgp.atualizar.informacoes.encaminhamento.naapa";
+        public const string RotaExcluirPendenciaCalendarioAnoAnteriorCalendario = "sgp.pendencias.calendario.excluir.ano.anterior";
+        public const string RotaExecutarExclusaoPendenciasNoFinalDoAnoLetivoPorAno = "sgp.pendencias.excluir.final.anoletivo.ano";
+        public const string ExecutarAtualizacaoDosTotalizadoresDasPendencias = "sgp.atualizar.totalizadores.pendencias";
+        public const string ExecutarCargaConsolidadoEncaminhamentoNAAPA = "sgp.carga.consolidado.encaminhamento.naapa";
+        public const string ExecutarAtualizacaoDasInformacoesPlanoAEE = "sgp.atualizar.informacoes.plano.aee";
+        public const string ExecutarAtualizacaoTabelaPlanoAEETurmaAluno = "plano.aee.turma.aluno.sync";
+        public const string ExecutarAtualizacaoTabelaEncaminhamentoAEETurmaAluno = "encaminhamento.aee.turma.aluno.sync";
+        public const string ExecutarNotificacaoInatividadeAtendimentoNAAPA = "sgp.encaminhamento.naapa.inatividade.atendimento.notificar";
     }
 }
