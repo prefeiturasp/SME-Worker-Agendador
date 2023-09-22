@@ -90,7 +90,7 @@ namespace SME.Worker.Agendador.IoC
         {
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasUseCase, SyncSerapEstudantesProvasUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasBibUseCase, SyncSerapEstudantesProvasBibUseCase>();
-            // TODO: REMOVIDO TEMPORARIAMENTE services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasTaiUseCase, SyncSerapEstudantesProvasTaiUseCase>();
+            services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasTaiUseCase, SyncSerapEstudantesProvasTaiUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesQuestaoCompletaUseCase, SyncSerapEstudantesQuestaoCompletaUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesAlunoProvaProficienciaUseCase, SyncSerapEstudantesAlunoProvaProficienciaUseCase>();
 
@@ -168,7 +168,6 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IAtualizarInformacoesDoPlanoAEE, AtualizarInformacoesDoPlanoAEE>();
             services.TryAddScopedWorkerService<IAtualizarPlanoAEETurmaAlunoUseCase, AtualizarPlanoAEETurmaAlunoUseCase>();
             services.TryAddScopedWorkerService<IAtualizarEncaminhamentoAEETurmaAlunoUseCase, AtualizarEncaminhamentoAEETurmaAlunoUseCase>();
-            services.TryAddScopedWorkerService<ISincronismoAgrupamentoComponentesTerritorioEolUseCase, SincronizarAgrupamentoComponentesTerritorioEolUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
