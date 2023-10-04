@@ -84,6 +84,7 @@ namespace SME.Worker.Agendador.IoC
         {
             services.TryAddScopedWorkerService<IInserirInformacoesListagemListaoEolUseCase, InserirInformacoesListagemListaoEolUseCase>();
             services.TryAddScopedWorkerService<IInserirFuncionariosEolElasticSearchUseCase, InserirFuncionariosEolElasticSearchUseCase>();
+            services.TryAddScopedWorkerService<ISincronismoAgrupamentoComponentesTerritorioEolUseCase, SincronizarAgrupamentoComponentesTerritorioEolUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
@@ -168,7 +169,6 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IAtualizarInformacoesDoPlanoAEE, AtualizarInformacoesDoPlanoAEE>();
             services.TryAddScopedWorkerService<IAtualizarPlanoAEETurmaAlunoUseCase, AtualizarPlanoAEETurmaAlunoUseCase>();
             services.TryAddScopedWorkerService<IAtualizarEncaminhamentoAEETurmaAlunoUseCase, AtualizarEncaminhamentoAEETurmaAlunoUseCase>();
-            services.TryAddScopedWorkerService<ISincronismoAgrupamentoComponentesTerritorioEolUseCase, SincronizarAgrupamentoComponentesTerritorioEolUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
