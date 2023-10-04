@@ -6,9 +6,11 @@ pipeline {
       namespace = "${env.branchname == 'development' ? 'sme-agendador-dev' : env.branchname == 'release' ? 'sme-agendador-hom' : env.branchname == 'release-r2' ? 'sme-agendador-hom2' : 'sme-agendador' }" 
     }
   
-    agent {
-      node { label 'builder' }
-    }
+    agent { kubernetes { 
+              label 'builder'
+              defaultContainer 'builder'
+            }
+          }
 
     options {
       buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
@@ -23,7 +25,11 @@ pipeline {
         }
 
         stage('AnaliseCodigo') {
-          agent { node { label 'dotnet5-sonar' } }
+          agent { kubernetes { 
+              label 'dotnet5-sonar'
+              defaultContainer 'dotnet5-sonar'
+            }
+          }
           when { branch 'development' }
           steps {
              checkout scm
