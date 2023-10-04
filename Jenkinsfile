@@ -30,7 +30,7 @@ pipeline {
               defaultContainer 'dotnet5-sonar'
             }
           }
-          when { branch 'development' }
+          when { branch 'testejenkins2' }
           steps {
              checkout scm
               withSonarQubeEnv('sonarqube-local'){
@@ -42,7 +42,7 @@ pipeline {
         }
 
         stage('Build') {
-          when { anyOf { branch 'master'; branch 'main'; branch "release-r2"; branch 'development'; branch 'release';  } } 
+          when { anyOf { branch 'master'; branch 'main'; branch "release-r2"; branch 'development'; branch 'testejenkins2';  } } 
           steps {
             script {
               imagename1 = "registry.sme.prefeitura.sp.gov.br/${env.branchname}/sme-worker-agendador"
@@ -56,7 +56,7 @@ pipeline {
         }
         
         stage('Deploy'){
-            when { anyOf {  branch 'master'; branch 'main'; branch 'development'; branch 'release'; branch 'release-r2';  } }        
+            when { anyOf {  branch 'master'; branch 'main'; branch 'development'; branch 'release'; branch 'testejenkins2';  } }        
             steps {
                 script{
 
