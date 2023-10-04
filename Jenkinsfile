@@ -44,6 +44,7 @@ pipeline {
         stage('Build') {
           when { anyOf { branch 'master'; branch 'main'; branch "release-r2"; branch 'development'; branch 'release';  } } 
           steps {
+           checkout scm
             script {
               imagename1 = "registry.sme.prefeitura.sp.gov.br/${env.branchname}/sme-worker-agendador"
               dockerImage1 = docker.build(imagename1, "-f src/SME.Worker.Agendador.Api/Dockerfile .")
