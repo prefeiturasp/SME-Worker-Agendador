@@ -7,12 +7,5 @@
         #region Provas
         public static string FilaProvaSync => "serap.estudante.prova.legado.sync";
         #endregion
-
-
-        #region Deadletter
-        public static string FilaDeadletterSync => "serap.deadletter.sync";
-
-        #endregion
-
     }
 }
