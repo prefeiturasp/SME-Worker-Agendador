@@ -16,6 +16,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncaminhamentoNAAPA;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncerrarEncaminhamentoAeeAutomatico;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.ConciliacaoFrequenciaTurmas;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAlunosFaltosos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAndamentoFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoInicioFimPeriodoFechamento;
@@ -221,6 +222,11 @@ namespace SME.Worker.Agendador.Background
         public static void RegistrarServicosSerapItens()
         {
             Cliente.ExecutarPeriodicamente<IIniciarImportacoesSerapItensUseCase>(c => c.Executar(), Cron.Daily(23));
+        }
+
+        public static void RegistrarServicosMetricas()
+        {
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaAcessosSGPUseCase>(c => c.Executar(), Cron.Daily(2,59));
         }
     }
 }
