@@ -59,6 +59,8 @@ namespace SME.Worker.Agendador.Background
         {
             Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));
             Cliente.ExecutarPeriodicamente<IInserirFuncionariosEolElasticSearchUseCase>(c => c.Executar(), Cron.Daily(8, 30));
+            // Executar rotina de atualizar carga agrupamentos atribuições de componentes território saber, uma vez ao dia, às 05:30am
+            Cliente.ExecutarPeriodicamente<ISincronismoAgrupamentoComponentesTerritorioEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));
         }        
 
         public static void RegistrarServicosSgp()
@@ -160,8 +162,8 @@ namespace SME.Worker.Agendador.Background
             //TODO: Pendencia Devolutiva 1 Vez ao Dia a noite 
             Cliente.ExecutarPeriodicamente<IReprocessarDiarioBordoPendenciaDevolutivaUseCase>(c => c.Executar(),Cron.Daily(21));
 
-            // Executar rotina de remoção de responsavéis, uma vez ao dia, a noite às 01:00
-            Cliente.ExecutarPeriodicamente<IRemoverAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(1));
+            // Executar rotina de remoção de responsavéis, uma vez ao dia, às 10:30
+            Cliente.ExecutarPeriodicamente<IRemoverAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(10, 30));
 
 
             // Executar rotina de notificar aprovação de fechamento nota, uma vez ao dia, às 02:00am
@@ -192,6 +194,9 @@ namespace SME.Worker.Agendador.Background
 
             // Executar rotina de atualizar as turmas regular e SRM ativas do aluno no encaminhamento AEE, uma vez ao dia, às 07:00am
             Cliente.ExecutarPeriodicamente<IAtualizarEncaminhamentoAEETurmaAlunoUseCase>(c => c.Executar(), Cron.Daily(10));
+
+            // Executar rotina de noficação de inatividade do atendimento do encaminhamento naapa, uma vez ao dia, às 07:00am
+            Cliente.ExecutarPeriodicamente<INotificarInatividadeDoAtendimentoNAAPAUseCase>(c => c.Executar(), Cron.Daily(10));
         }
 
         public static void RegistrarServicosSerap()
