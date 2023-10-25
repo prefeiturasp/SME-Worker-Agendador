@@ -5,11 +5,11 @@ using SME.Worker.Agendador.Infra;
 
 namespace SME.Worker.Agendador.Aplicacao
 {
-    public class DownloadBackgroundUseCase : IDownloadBackgroundUseCase
+    public class TesteWebpushSyncUseCase : ITesteWebpushSyncUseCase
     {
         private readonly IMediator mediator;
 
-        public DownloadBackgroundUseCase(IMediator mediator)
+        public TesteWebpushSyncUseCase(IMediator mediator)
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }

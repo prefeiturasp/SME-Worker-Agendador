@@ -2,7 +2,7 @@
 
 namespace SME.Worker.Agendador.Aplicacao
 {
-    public interface IDownloadBackgroundUseCase
+    public interface ITesteWebpushSyncUseCase
     {
         Task Executar();
     }
