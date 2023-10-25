@@ -5,11 +5,11 @@ using SME.Worker.Agendador.Infra;
 
 namespace SME.Worker.Agendador.Aplicacao
 {
-    public class TesteWebpushSyncUseCase : ITesteWebpushSyncUseCase
+    public class ProvaWebPushTesteSyncUseCase : IProvaWebPushTesteSyncUseCase
     {
         private readonly IMediator mediator;
 
-        public TesteWebpushSyncUseCase(IMediator mediator)
+        public ProvaWebPushTesteSyncUseCase(IMediator mediator)
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
