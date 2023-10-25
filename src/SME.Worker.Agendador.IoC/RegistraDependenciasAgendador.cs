@@ -98,6 +98,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<ISyncSerapEstudantesSincronizacaoInstUseCase, SyncSerapEstudantesSincronizacaoInstUseCase>();
             services.TryAddScopedWorkerService<IIniciarProcessoFinalizarProvasAutomaticamenteUseCase, IniciarProcessoFinalizarProvasAutomaticamenteUseCase>();
             services.TryAddScopedWorkerService<ISincronizacaoUsuarioCoreSsoEAbrangenciaUseCase, SincronizacaoUsuarioCoreSsoEAbrangenciaUseCase>();
+            services.TryAddScopedWorkerService<IWebPushTestSyncUseCase, WebPushTestSyncUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerapAcompanhamento(IServiceCollection services)
