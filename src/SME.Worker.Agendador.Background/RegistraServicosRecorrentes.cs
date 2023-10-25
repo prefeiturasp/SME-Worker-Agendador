@@ -206,7 +206,7 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesAlunoProvaProficienciaUseCase>(c => c.Executar(), Cron.Daily(2));
             Cliente.ExecutarPeriodicamente<IIniciarProcessoFinalizarProvasAutomaticamenteUseCase>(c => c.Executar(), Cron.Daily(23));
             Cliente.ExecutarPeriodicamente<ISincronizacaoUsuarioCoreSsoEAbrangenciaUseCase>(c => c.Executar(), Cron.Daily(10));
-            Cliente.ExecutarPeriodicamente<IProvaWebPushTesteSyncUseCase>(c => c.Executar(), "0 */6 * * *");
+            Cliente.ExecutarPeriodicamente<IWebPushTestSyncUseCase>(c => c.Executar(), "0 */6 * * *");
         }
 
         public static void RegistrarServicosSerapAcompanhamento()

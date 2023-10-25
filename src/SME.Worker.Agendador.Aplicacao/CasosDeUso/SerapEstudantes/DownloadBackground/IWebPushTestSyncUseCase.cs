@@ -2,7 +2,7 @@
 
 namespace SME.Worker.Agendador.Aplicacao
 {
-    public interface IProvaWebPushTesteSyncUseCase
+    public interface IWebPushTestSyncUseCase
     {
         Task Executar();
     }
