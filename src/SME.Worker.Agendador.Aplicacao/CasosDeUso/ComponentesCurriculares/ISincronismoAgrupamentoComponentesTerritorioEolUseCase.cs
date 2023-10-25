@@ -2,7 +2,7 @@
 
 namespace SME.Worker.Agendador.Aplicacao
 {
-    public interface ITratarDeadletterSerapAcompanhamentoSyncUseCase
+    public interface ISincronismoAgrupamentoComponentesTerritorioEolUseCase
     {
         Task Executar();
     }
