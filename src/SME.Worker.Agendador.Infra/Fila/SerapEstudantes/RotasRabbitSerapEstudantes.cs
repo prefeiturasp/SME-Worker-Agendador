@@ -7,7 +7,7 @@
         #region Provas
 
         public static string FilaProvaSync => "serap.estudante.prova.legado.sync";
-        public static string WebPushTest => "serap.estudante.prova.webpush.teste";
+        public static string WebPushTestSync => "serap.estudante.prova.webpush.teste.sync";
 
         #endregion
 
