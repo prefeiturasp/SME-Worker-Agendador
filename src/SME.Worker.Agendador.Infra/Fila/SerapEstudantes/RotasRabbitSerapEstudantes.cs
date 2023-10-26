@@ -5,14 +5,10 @@
         public static string ExchangeSerapEstudantes => "serap.estudante.workers";
 
         #region Provas
+
         public static string FilaProvaSync => "serap.estudante.prova.legado.sync";
-        #endregion
-
-
-        #region Deadletter
-        public static string FilaDeadletterSync => "serap.deadletter.sync";
+        public static string WebPushTestSync => "serap.estudante.prova.webpush.teste.sync";
 
         #endregion
-
     }
 }

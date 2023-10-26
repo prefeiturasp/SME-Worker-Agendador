@@ -85,27 +85,25 @@ namespace SME.Worker.Agendador.IoC
         {
             services.TryAddScopedWorkerService<IInserirInformacoesListagemListaoEolUseCase, InserirInformacoesListagemListaoEolUseCase>();
             services.TryAddScopedWorkerService<IInserirFuncionariosEolElasticSearchUseCase, InserirFuncionariosEolElasticSearchUseCase>();
+            services.TryAddScopedWorkerService<ISincronismoAgrupamentoComponentesTerritorioEolUseCase, SincronizarAgrupamentoComponentesTerritorioEolUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
         {
-            services.TryAddScopedWorkerService<IRabbitDeadletterSerapSyncUseCase, RabbitDeadletterSerapSyncUseCase>();
-
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasUseCase, SyncSerapEstudantesProvasUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasBibUseCase, SyncSerapEstudantesProvasBibUseCase>();
-            // TODO: REMOVIDO TEMPORARIAMENTE services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasTaiUseCase, SyncSerapEstudantesProvasTaiUseCase>();
+            // todo: Por hora, manter manualmente pelo Rabbit services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasTaiUseCase, SyncSerapEstudantesProvasTaiUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesQuestaoCompletaUseCase, SyncSerapEstudantesQuestaoCompletaUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesAlunoProvaProficienciaUseCase, SyncSerapEstudantesAlunoProvaProficienciaUseCase>();
-
             services.TryAddScopedWorkerService<ISyncSerapEstudantesSincronizacaoInstUseCase, SyncSerapEstudantesSincronizacaoInstUseCase>();
             services.TryAddScopedWorkerService<IIniciarProcessoFinalizarProvasAutomaticamenteUseCase, IniciarProcessoFinalizarProvasAutomaticamenteUseCase>();
             services.TryAddScopedWorkerService<ISincronizacaoUsuarioCoreSsoEAbrangenciaUseCase, SincronizacaoUsuarioCoreSsoEAbrangenciaUseCase>();
+            services.TryAddScopedWorkerService<IWebPushTestSyncUseCase, WebPushTestSyncUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerapAcompanhamento(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<IIniciarSyncAcompanhamentoUseCase, IniciarSyncAcompanhamentoUseCase>();
-            services.TryAddScopedWorkerService<ITratarDeadletterSerapAcompanhamentoSyncUseCase, TratarDeadletterSerapAcompanhamentoSyncUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerapItens(IServiceCollection services)
@@ -168,6 +166,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IRemoverPendenciasNoFinalDoAnoLetivoUseCase, RemoverPendenciasNoFinalDoAnoLetivoUseCase>();
             services.TryAddScopedWorkerService<IAtualizarTotalizadoresDePendenciaUseCase, AtualizarTotalizadoresDePendenciaUseCase>();
             services.TryAddScopedWorkerService<IAtualizarCargaDashboardConsolidadoEncaminhamentoNAAPA, AtualizarCargaDashboardConsolidadoEncaminhamentoNAAPA>();
+            services.TryAddScopedWorkerService<INotificarInatividadeDoAtendimentoNAAPAUseCase, NotificarInatividadeDoAtendimentoNAAPAUseCase>();
 
             services.TryAddScopedWorkerService<IAtualizarInformacoesDoPlanoAEE, AtualizarInformacoesDoPlanoAEE>();
             services.TryAddScopedWorkerService<IAtualizarPlanoAEETurmaAlunoUseCase, AtualizarPlanoAEETurmaAlunoUseCase>();

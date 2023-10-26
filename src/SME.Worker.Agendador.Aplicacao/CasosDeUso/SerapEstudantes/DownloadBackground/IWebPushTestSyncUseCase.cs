@@ -2,7 +2,7 @@
 
 namespace SME.Worker.Agendador.Aplicacao
 {
-    public interface ITratarDeadletterSerapAcompanhamentoSyncUseCase
+    public interface IWebPushTestSyncUseCase
     {
         Task Executar();
     }
