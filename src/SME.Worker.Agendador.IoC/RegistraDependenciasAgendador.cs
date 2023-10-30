@@ -20,6 +20,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.ConciliacaoFrequenciaTurmas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.IdentificarFrequenciaAlunoPresencasMaiorTotalAulas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.GoogleClassroom;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAlunosFaltosos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAndamentoFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoInicioFimPeriodoFechamento;
@@ -79,6 +80,7 @@ namespace SME.Worker.Agendador.IoC
             RegistrarCasosDeUsoSerap(services);
             RegistrarCasosDeUsoSerapAcompanhamento(services);
             RegistrarCasosDeUsoSerapItens(services);
+            RegistrarCasoDeUsoMetricas(services);
         }
 
         private static void RegistrarCasoDeUsoEol(IServiceCollection services)
@@ -86,6 +88,28 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IInserirInformacoesListagemListaoEolUseCase, InserirInformacoesListagemListaoEolUseCase>();
             services.TryAddScopedWorkerService<IInserirFuncionariosEolElasticSearchUseCase, InserirFuncionariosEolElasticSearchUseCase>();
             services.TryAddScopedWorkerService<ISincronismoAgrupamentoComponentesTerritorioEolUseCase, SincronizarAgrupamentoComponentesTerritorioEolUseCase>();
+        }
+
+        private static void RegistrarCasoDeUsoMetricas(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<IRegistrarMetricaAcessosSGPUseCase, RegistrarMetricaAcessosSGPUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaConselhoClasseDuplicadoUseCase, RegistrarMetricaConselhoClasseDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaConselhoClasseAlunoDuplicadoUseCase, RegistrarMetricaConselhoClasseAlunoDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaConselhoClasseNotaDuplicadoUseCase, RegistrarMetricaConselhoClasseNotaDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaFechamentoTurmaDuplicadoUseCase, RegistrarMetricaFechamentoTurmaDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaFechamentoTurmaDisciplinaDuplicadoUseCase, RegistrarMetricaFechamentoTurmaDisciplinaDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaFechamentoAlunoDuplicadoUseCase, RegistrarMetricaFechamentoAlunoDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaFechamentoNotaDuplicadoUseCase, RegistrarMetricaFechamentoNotaDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaConsolidacaoCCNotaNuloUseCase, RegistrarMetricaConsolidacaoCCNotaNuloUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaDuplicacaoConsolidacaoCCAlunoTurmaUseCase, RegistrarMetricaDuplicacaoConsolidacaoCCAlunoTurmaUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaDuplicacaoConsolidacaoCCNotaUseCase, RegistrarMetricaDuplicacaoConsolidacaoCCNotaUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaConselhoClasseNaoConsolidadoUseCase, RegistrarMetricaConselhoClasseNaoConsolidadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaFrequenciaAlunoInconsistenteUseCase, RegistrarMetricaFrequenciaAlunoInconsistenteUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaFrequenciaAlunoDuplicadoUseCase, RegistrarMetricaFrequenciaAlunoDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaRegistroFrequenciaDuplicadoUseCase, RegistrarMetricaRegistroFrequenciaDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaRegistroFrequenciaAlunoDuplicadoUseCase, RegistrarMetricaRegistroFrequenciaAlunoDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaConsolidacaoFrequenciaAlunoMensalInconsistenteUseCase, RegistrarMetricaConsolidacaoFrequenciaAlunoMensalInconsistenteUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaDiarioBordoDuplicadoUseCase, RegistrarMetricaDiarioBordoDuplicadoUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
