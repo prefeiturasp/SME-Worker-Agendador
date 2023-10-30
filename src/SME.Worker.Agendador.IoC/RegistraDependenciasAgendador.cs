@@ -18,6 +18,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.EncerrarEncaminhamentoAeeAutomat
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.FilaTesteRabbitMQ;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.ConciliacaoFrequenciaTurmas;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.IdentificarFrequenciaAlunoPresencasMaiorTotalAulas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.GoogleClassroom;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAlunosFaltosos;
@@ -115,13 +116,13 @@ namespace SME.Worker.Agendador.IoC
         {
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasUseCase, SyncSerapEstudantesProvasUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasBibUseCase, SyncSerapEstudantesProvasBibUseCase>();
-            // TODO: REMOVIDO TEMPORARIAMENTE services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasTaiUseCase, SyncSerapEstudantesProvasTaiUseCase>();
+            // todo: Por hora, manter manualmente pelo Rabbit services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasTaiUseCase, SyncSerapEstudantesProvasTaiUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesQuestaoCompletaUseCase, SyncSerapEstudantesQuestaoCompletaUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesAlunoProvaProficienciaUseCase, SyncSerapEstudantesAlunoProvaProficienciaUseCase>();
-
             services.TryAddScopedWorkerService<ISyncSerapEstudantesSincronizacaoInstUseCase, SyncSerapEstudantesSincronizacaoInstUseCase>();
             services.TryAddScopedWorkerService<IIniciarProcessoFinalizarProvasAutomaticamenteUseCase, IniciarProcessoFinalizarProvasAutomaticamenteUseCase>();
             services.TryAddScopedWorkerService<ISincronizacaoUsuarioCoreSsoEAbrangenciaUseCase, SincronizacaoUsuarioCoreSsoEAbrangenciaUseCase>();
+            services.TryAddScopedWorkerService<IWebPushTestSyncUseCase, WebPushTestSyncUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerapAcompanhamento(IServiceCollection services)
@@ -166,6 +167,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IConciliacaoFrequenciaTurmasCronUseCase, ConciliacaoFrequenciaTurmasCronUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoDevolutivasPorTurmaInfantilSyncUseCase, ExecutarSincronizacaoDevolutivasPorTurmaInfantilSyncUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoAulasRegenciaAutomaticasUseCase, ExecutarSincronizacaoAulasRegenciaAutomaticasUseCase>();
+            services.TryAddScopedWorkerService<IIdentificarFrequenciaAlunoPresencasMaiorTotalAulasUseCase, IdentificarFrequenciaAlunoPresencasMaiorTotalAulasUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase, ExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase>();
             services.TryAddScopedWorkerService<IExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase, ExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase>();
             services.TryAddScopedWorkerService<IRotasAgendamentoSyncUseCase, RotasAgendamentoSyncUseCase>();
