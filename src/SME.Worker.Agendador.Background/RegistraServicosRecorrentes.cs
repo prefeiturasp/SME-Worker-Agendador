@@ -49,6 +49,7 @@ namespace SME.Worker.Agendador.Background
         public static void Registrar()
         {
             RegistrarServicosSgp();
+            RegistrarServicosMetricas();
             RegistrarServicosSerap();
             RegistrarServicoEol();
             RegistrarServicosSerapAcompanhamento();
@@ -227,6 +228,23 @@ namespace SME.Worker.Agendador.Background
         public static void RegistrarServicosMetricas()
         {
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaAcessosSGPUseCase>(c => c.Executar(), Cron.Daily(2,59));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseNotaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,30));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentoTurmaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentoTurmaDisciplinaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentoAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,30));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentoNotaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,45));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConsolidacaoCCNotaNuloUseCase>(c => c.Executar(), Cron.Daily(5));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaDuplicacaoConsolidacaoCCAlunoTurmaUseCase>(c => c.Executar(), Cron.Daily(5));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaDuplicacaoConsolidacaoCCNotaUseCase>(c => c.Executar(), Cron.Daily(5,15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseNaoConsolidadoUseCase>(c => c.Executar(), Cron.Daily(5));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFrequenciaAlunoInconsistenteUseCase>(c => c.Executar(), Cron.Daily(5));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFrequenciaAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5,15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaRegistroFrequenciaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaRegistroFrequenciaAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5,15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConsolidacaoFrequenciaAlunoMensalInconsistenteUseCase>(c => c.Executar(), Cron.Daily(5,15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaDiarioBordoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5));
         }
     }
 }
