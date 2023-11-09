@@ -55,6 +55,7 @@ namespace SME.Worker.Agendador.Background
             RegistrarServicoEol();
             RegistrarServicosSerapAcompanhamento();
             RegistrarServicosSerapItens();
+            RegistrarServicosConectaFormacao();
         }
         
         private static void RegistrarServicoEol()
@@ -197,7 +198,11 @@ namespace SME.Worker.Agendador.Background
             // Executar rotina de noficação de inatividade do atendimento do encaminhamento naapa, uma vez ao dia, às 07:00am
             Cliente.ExecutarPeriodicamente<INotificarInatividadeDoAtendimentoNAAPAUseCase>(c => c.Executar(), Cron.Daily(10));
         }
-
+        public static void RegistrarServicosConectaFormacao()
+        {
+            // uma vez ao dia, às 05:00am
+            Cliente.ExecutarPeriodicamente<ISincronizacaoInstitucionalDreConectaFormacaoUseCase>(c => c.Executar(), Cron.Daily(8));
+        }
         public static void RegistrarServicosSerap()
         {
             Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
