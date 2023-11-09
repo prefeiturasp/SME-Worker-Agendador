@@ -211,7 +211,7 @@ namespace SME.Worker.Agendador.Background
 
         public static void RegistrarServicosSerapAcompanhamento()
         {
-            Cliente.ExecutarPeriodicamente<IIniciarSyncAcompanhamentoUseCase>(c => c.Executar(), Cron.Daily(3));
+            Cliente.ExecutarPeriodicamente<IIniciarSyncAcompanhamentoUseCase>(c => c.Executar(), Cron.Daily(9));
         }
 
         public static void RegistrarServicosSerapItens()
