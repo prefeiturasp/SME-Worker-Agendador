@@ -60,9 +60,12 @@ namespace SME.Worker.Agendador.Background
         private static void RegistrarServicoEol()
         {
             Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));
-            Cliente.ExecutarPeriodicamente<IInserirFuncionariosEolElasticSearchUseCase>(c => c.Executar(), Cron.Daily(8, 30));
+            // Executar rotina de geração de carga de funcionários/cargos, uma vez ao dia, às 04:30am
+            Cliente.ExecutarPeriodicamente<IInserirFuncionariosEolElasticSearchUseCase>(c => c.Executar(), Cron.Daily(7, 30));
             // Executar rotina de atualizar carga agrupamentos atribuições de componentes território saber, uma vez ao dia, às 05:30am
             Cliente.ExecutarPeriodicamente<ISincronismoAgrupamentoComponentesTerritorioEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));
+            // Executar rotina de geração de carga de abrangencias/perfis do usuário (deve executar após IInserirFuncionariosEolElasticSearchUseCase), uma vez ao dia, às 06:00am
+            Cliente.ExecutarPeriodicamente<IGerarAbrangenciasPerfisUsuarioElasticSearchUseCase>(c => c.Executar(), Cron.Daily(09, 00));
         }        
 
         public static void RegistrarServicosSgp()
@@ -196,6 +199,9 @@ namespace SME.Worker.Agendador.Background
 
             // Executar rotina de noficação de inatividade do atendimento do encaminhamento naapa, uma vez ao dia, às 07:00am
             Cliente.ExecutarPeriodicamente<INotificarInatividadeDoAtendimentoNAAPAUseCase>(c => c.Executar(), Cron.Daily(10));
+
+            // Executar geração de cache de atribuicoes responsaveis/esporádicas (deve executar antes IGerarAbrangenciasPerfisUsuarioElasticSearchUseCase), uma vez ao dia, às 05:30am
+            Cliente.ExecutarPeriodicamente<IGerarCacheAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(08, 30));
         }
 
         public static void RegistrarServicosSerap()
