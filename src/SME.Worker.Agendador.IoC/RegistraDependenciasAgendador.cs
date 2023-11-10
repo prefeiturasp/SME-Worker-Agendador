@@ -5,6 +5,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.AtualizarTotalizadoresDePendenci
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ComponentesCurriculares;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConectaFormacao.SincronizacaoInstitucionalDre;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoAcompanhamentoAprendizagemAluno;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoDevolutivas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoFrequenciaTurma;
@@ -81,6 +82,7 @@ namespace SME.Worker.Agendador.IoC
             RegistrarCasosDeUsoSerapAcompanhamento(services);
             RegistrarCasosDeUsoSerapItens(services);
             RegistrarCasoDeUsoMetricas(services);
+            RegistrarCasosDeUsoConectaFormação(services);
         }
 
         private static void RegistrarCasoDeUsoEol(IServiceCollection services)
@@ -136,6 +138,10 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IIniciarImportacoesSerapItensUseCase, IniciarImportacoesSerapItensUseCase>();
         }
 
+        private static void RegistrarCasosDeUsoConectaFormação(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<ISincronizacaoInstitucionalDreConectaFormacaoUseCase, SincronizacaoInstitucionalDreConectaFormacaoUseCase>();
+        }
         private static void RegistrarCasosDeUsoSgp(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<INotifificarRegistroFrequenciaUseCase, NotifificarRegistroFrequenciaUseCase>();

@@ -55,6 +55,7 @@ namespace SME.Worker.Agendador.Background
             RegistrarServicoEol();
             RegistrarServicosSerapAcompanhamento();
             RegistrarServicosSerapItens();
+            RegistrarServicosConectaFormacao();
         }
         
         private static void RegistrarServicoEol()
@@ -203,7 +204,11 @@ namespace SME.Worker.Agendador.Background
             // Executar geração de cache de atribuicoes responsaveis/esporádicas (deve executar antes IGerarAbrangenciasPerfisUsuarioElasticSearchUseCase), uma vez ao dia, às 05:30am
             Cliente.ExecutarPeriodicamente<IGerarCacheAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(08, 30));
         }
-
+        public static void RegistrarServicosConectaFormacao()
+        {
+            // uma vez ao dia, às 05:00am
+            Cliente.ExecutarPeriodicamente<ISincronizacaoInstitucionalDreConectaFormacaoUseCase>(c => c.Executar(), Cron.Daily(8));
+        }
         public static void RegistrarServicosSerap()
         {
             Cliente.ExecutarPeriodicamente<ISyncSerapEstudantesProvasUseCase>(c => c.Executar(), Cron.Daily(1));
