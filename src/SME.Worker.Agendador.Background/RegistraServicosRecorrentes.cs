@@ -60,7 +60,8 @@ namespace SME.Worker.Agendador.Background
         
         private static void RegistrarServicoEol()
         {
-            Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));
+            // Executar rotina de geração de carga de turmas/componentes, uma vez ao dia, às 06:30am
+            Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), Cron.Daily(09, 30));
             // Executar rotina de geração de carga de funcionários/cargos, uma vez ao dia, às 04:30am
             Cliente.ExecutarPeriodicamente<IInserirFuncionariosEolElasticSearchUseCase>(c => c.Executar(), Cron.Daily(7, 30));
             // Executar rotina de atualizar carga agrupamentos atribuições de componentes território saber, uma vez ao dia, às 05:30am
