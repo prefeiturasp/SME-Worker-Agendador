@@ -10,5 +10,6 @@
         public const string ProvaBIBSync = "serap.estudante.provabib.sync";
         public const string ProvaTAISync = "serap.estudante.provatai.sync";
         public const string AlunoProvaProficienciaAsync = "serap.estudante.aluno.prova.proficiencia.sync";
+        public const string PropagarCache = "serap.estudante.propagar.cache";
     }
 }
