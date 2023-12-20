@@ -20,7 +20,8 @@
         public const string DuplicacaoRegistroFrequenciaAluno = "sgp.metricas.registro.frequencia.aluno.duplicado";
         public const string ConsolidacaoFrequenciaAlunoMensalInconsistente = "sgp.metricas.consolidacao.frequencia.aluno.mensal.inconsistente";
         public const string DuplicacaoDiarioBordo = "sgp.metricas.diario.bordo.duplicado";
-        public const string RegistrosFrequencia = "sgp.metricas.registro.frequencia.dia";
+        public const string RegistrosFrequenciaDiarios = "sgp.metricas.registro.frequencia.dia";
+        public const string DiariosBordoDiarios = "sgp.metricas.diario.bordo.dia";
 
     }
 }
