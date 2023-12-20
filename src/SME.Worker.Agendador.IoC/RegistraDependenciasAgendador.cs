@@ -113,6 +113,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IRegistrarMetricaRegistroFrequenciaAlunoDuplicadoUseCase, RegistrarMetricaRegistroFrequenciaAlunoDuplicadoUseCase>();
             services.TryAddScopedWorkerService<IRegistrarMetricaConsolidacaoFrequenciaAlunoMensalInconsistenteUseCase, RegistrarMetricaConsolidacaoFrequenciaAlunoMensalInconsistenteUseCase>();
             services.TryAddScopedWorkerService<IRegistrarMetricaDiarioBordoDuplicadoUseCase, RegistrarMetricaDiarioBordoDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaRegistrosFrequenciaUseCase, RegistrarMetricaRegistrosFrequenciaUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerap(IServiceCollection services)

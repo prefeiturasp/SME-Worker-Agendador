@@ -42,6 +42,8 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.PendenciaValidadePlanoA
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.RotasAgendamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Background.Core;
+using System.Runtime.Intrinsics.X86;
+using System.Security.Cryptography;
 
 namespace SME.Worker.Agendador.Background
 {
@@ -236,6 +238,8 @@ namespace SME.Worker.Agendador.Background
         public static void RegistrarServicosMetricas()
         {
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaAcessosSGPUseCase>(c => c.Executar(), Cron.Daily(2,59));
+            //Uma vez ao dia, às 01:00am
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaRegistrosFrequenciaUseCase>(c => c.Executar(), Cron.Daily(4));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,15));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseNotaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,30));
