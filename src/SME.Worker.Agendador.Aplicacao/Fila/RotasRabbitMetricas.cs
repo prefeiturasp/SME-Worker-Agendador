@@ -22,6 +22,6 @@
         public const string DuplicacaoDiarioBordo = "sgp.metricas.diario.bordo.duplicado";
         public const string RegistrosFrequenciaDiarios = "sgp.metricas.registro.frequencia.dia";
         public const string DiariosBordoDiarios = "sgp.metricas.diario.bordo.dia";
-
+        public const string DevolutivasDiarioBordoMensais = "sgp.metricas.devolutiva.diario.bordo.mes";
     }
 }
