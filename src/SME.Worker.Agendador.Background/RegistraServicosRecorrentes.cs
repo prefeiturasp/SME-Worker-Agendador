@@ -259,7 +259,7 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaRegistrosFrequenciaUseCase>(c => c.Executar(), Cron.Daily(4));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaDiariosBordoUseCase>(c => c.Executar(), Cron.Daily(4));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaDevolutivasDiarioBordoUseCase>(c => c.Executar(), Cron.Daily(4));
-
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaAulasCJUseCase>(c => c.Executar(), Cron.Daily(4));
         }
     }
 }
