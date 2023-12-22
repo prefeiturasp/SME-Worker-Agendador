@@ -20,5 +20,12 @@
         public const string DuplicacaoRegistroFrequenciaAluno = "sgp.metricas.registro.frequencia.aluno.duplicado";
         public const string ConsolidacaoFrequenciaAlunoMensalInconsistente = "sgp.metricas.consolidacao.frequencia.aluno.mensal.inconsistente";
         public const string DuplicacaoDiarioBordo = "sgp.metricas.diario.bordo.duplicado";
+        public const string RegistrosFrequenciaDiarios = "sgp.metricas.registro.frequencia.dia";
+        public const string DiariosBordoDiarios = "sgp.metricas.diario.bordo.dia";
+        public const string DevolutivasDiarioBordoMensais = "sgp.metricas.devolutiva.diario.bordo.mes";
+        public const string AulasCJMensais = "sgp.metricas.aula.cj.mes";
+        public const string EncaminhamentosAEEMensais = "sgp.metricas.encaminhamento.aee.mes";
+        public const string PlanosAEEMensais = "sgp.metricas.plano.aee.mes";
+        public const string PlanosAulaDiarios = "sgp.metricas.plano.aula.dia";
     }
 }

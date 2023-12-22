@@ -113,6 +113,13 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IRegistrarMetricaRegistroFrequenciaAlunoDuplicadoUseCase, RegistrarMetricaRegistroFrequenciaAlunoDuplicadoUseCase>();
             services.TryAddScopedWorkerService<IRegistrarMetricaConsolidacaoFrequenciaAlunoMensalInconsistenteUseCase, RegistrarMetricaConsolidacaoFrequenciaAlunoMensalInconsistenteUseCase>();
             services.TryAddScopedWorkerService<IRegistrarMetricaDiarioBordoDuplicadoUseCase, RegistrarMetricaDiarioBordoDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaRegistrosFrequenciaUseCase, RegistrarMetricaRegistrosFrequenciaUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaDiariosBordoUseCase, RegistrarMetricaDiariosBordoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaDevolutivasDiarioBordoUseCase, RegistrarMetricaDevolutivasDiarioBordoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaAulasCJUseCase, RegistrarMetricaAulasCJUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaEncaminhamentosAEEUseCase, RegistrarMetricaEncaminhamentosAEEUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaPlanosAEEUseCase, RegistrarMetricaPlanosAEEUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaPlanosAulaUseCase, RegistrarMetricaPlanosAulaUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
