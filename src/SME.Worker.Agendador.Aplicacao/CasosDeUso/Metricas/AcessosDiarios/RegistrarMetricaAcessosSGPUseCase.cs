@@ -12,6 +12,6 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas
         }
 
         public Task Executar()
-            => mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitMetricas.AcessosSGP, new { Data = DateTime.Now.Date.ToUniversalTime() }, Guid.NewGuid()));
+            => mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitMetricas.AcessosSGP, Guid.NewGuid()));
     }
 }
