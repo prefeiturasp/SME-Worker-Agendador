@@ -12,6 +12,6 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas
         }
 
         public Task Executar()
-            => mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitMetricas.DiariosBordoDiarios, new { Data = DateTime.Now.Date.AddDays(-1) }, Guid.NewGuid()));
+            => mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitMetricas.DiariosBordoDiarios, Guid.NewGuid()));
     }
 }
