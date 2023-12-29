@@ -2,7 +2,7 @@
 {
     public static class RotasRabbitMetricas
     {
-        public const string AcessosSGP = "sgp.metricas.sgp.acessos";
+        public const string AcessosSGP = "sgp.metricas.acessos";
         public const string DuplicacaoConselhoClasse = "sgp.metricas.conselho.classe.duplicado";
         public const string DuplicacaoConselhoClasseAluno = "sgp.metricas.conselho.classe.aluno.duplicado";
         public const string DuplicacaoConselhoClasseNota = "sgp.metricas.conselho.classe.nota.duplicado";
