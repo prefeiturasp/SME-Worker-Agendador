@@ -121,6 +121,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IRegistrarMetricaPlanosAEEUseCase, RegistrarMetricaPlanosAEEUseCase>();
             services.TryAddScopedWorkerService<IRegistrarMetricaPlanosAulaUseCase, RegistrarMetricaPlanosAulaUseCase>();
             services.TryAddScopedWorkerService<IRegistrarMetricaFechamentosNotaUseCase, RegistrarMetricaFechamentosNotaUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarMetricaConselhosClasseAlunoUseCase, RegistrarMetricaConselhosClasseAlunoUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
