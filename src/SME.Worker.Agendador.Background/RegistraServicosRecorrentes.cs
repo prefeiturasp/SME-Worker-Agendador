@@ -267,6 +267,7 @@ namespace SME.Worker.Agendador.Background
             //Uma vez ao dia, às 02:00am
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentosNotaUseCase>(c => c.Executar(), Cron.Daily(5));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhosClasseAlunoUseCase>(c => c.Executar(), Cron.Daily(5));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentosTurmaDisciplinaUseCase>(c => c.Executar(), Cron.Daily(5));
         }
     }
 }
