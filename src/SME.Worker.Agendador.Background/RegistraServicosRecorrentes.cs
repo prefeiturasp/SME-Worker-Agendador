@@ -18,6 +18,9 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.ConciliacaoFrequenciaTurmas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.IdentificarFrequenciaAlunoPresencasMaiorTotalAulas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas.DevolutivaDuplicado;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas.DevolutivaMaisDeUmDiario;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas.DevolutivaSemDiario;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAlunosFaltosos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAndamentoFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoInicioFimPeriodoFechamento;
@@ -256,6 +259,9 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaRegistroFrequenciaAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5,15));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaConsolidacaoFrequenciaAlunoMensalInconsistenteUseCase>(c => c.Executar(), Cron.Daily(5,15));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaDiarioBordoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5));
+            Cliente.ExecutarPeriodicamente<IRegistrarDevolutivaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5));
+            Cliente.ExecutarPeriodicamente<IRegistrarDevolutivaMaisDeUmaNoDiarioUseCase>(c => c.Executar(), Cron.Daily(5));
+            Cliente.ExecutarPeriodicamente<IRegistrarDevolutivaSemDiarioUseCase>(c => c.Executar(), Cron.Daily(5));
             //Uma vez ao dia, às 01:00am
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaRegistrosFrequenciaUseCase>(c => c.Executar(), Cron.Daily(4));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaDiariosBordoUseCase>(c => c.Executar(), Cron.Daily(4));
