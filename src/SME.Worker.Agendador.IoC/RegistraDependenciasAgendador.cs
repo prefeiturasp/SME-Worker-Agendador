@@ -22,6 +22,9 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.ConciliacaoFrequencia
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Frequencia.IdentificarFrequenciaAlunoPresencasMaiorTotalAulas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.GoogleClassroom;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas.DevolutivaDuplicado;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas.DevolutivaMaisDeUmDiario;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas.DevolutivaSemDiario;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAlunosFaltosos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAndamentoFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoInicioFimPeriodoFechamento;
@@ -120,6 +123,9 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IRegistrarMetricaEncaminhamentosAEEUseCase, RegistrarMetricaEncaminhamentosAEEUseCase>();
             services.TryAddScopedWorkerService<IRegistrarMetricaPlanosAEEUseCase, RegistrarMetricaPlanosAEEUseCase>();
             services.TryAddScopedWorkerService<IRegistrarMetricaPlanosAulaUseCase, RegistrarMetricaPlanosAulaUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarDevolutivaDuplicadoUseCase, RegistrarDevolutivaDuplicadoUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarDevolutivaMaisDeUmaNoDiarioUseCase, RegistrarDevolutivaMaisDeUmaNoDiarioUseCase>();
+            services.TryAddScopedWorkerService<IRegistrarDevolutivaSemDiarioUseCase, RegistrarDevolutivaSemDiarioUseCase>();
         }
 
         private static void RegistrarCasosDeUsoSerap(IServiceCollection services)
