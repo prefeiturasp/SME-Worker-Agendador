@@ -136,7 +136,7 @@ namespace SME.Worker.Agendador.IoC
         {
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasUseCase, SyncSerapEstudantesProvasUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasBibUseCase, SyncSerapEstudantesProvasBibUseCase>();
-            // todo: Por hora, manter manualmente pelo Rabbit services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasTaiUseCase, SyncSerapEstudantesProvasTaiUseCase>();
+            services.TryAddScopedWorkerService<ISyncSerapEstudantesProvasTaiUseCase, SyncSerapEstudantesProvasTaiUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesQuestaoCompletaUseCase, SyncSerapEstudantesQuestaoCompletaUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesAlunoProvaProficienciaUseCase, SyncSerapEstudantesAlunoProvaProficienciaUseCase>();
             services.TryAddScopedWorkerService<ISyncSerapEstudantesSincronizacaoInstUseCase, SyncSerapEstudantesSincronizacaoInstUseCase>();
