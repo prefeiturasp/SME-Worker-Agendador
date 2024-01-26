@@ -65,5 +65,6 @@
         public const string ExecutarAtualizacaoTabelaEncaminhamentoAEETurmaAluno = "encaminhamento.aee.turma.aluno.sync";
         public const string IdentificarFrequenciaAlunoPresencasMaiorTotalAulas = "sgp.frequencia.aluno.identificar.presencas.maior.total.aulas";
         public const string ExecutarNotificacaoInatividadeAtendimentoNAAPA = "sgp.encaminhamento.naapa.inatividade.atendimento.notificar";
+        public const string GerarCacheAtribuicaoResponsaveis = "sgp.gerar.atribuicao.responsaveis.cache";
     }
 }
