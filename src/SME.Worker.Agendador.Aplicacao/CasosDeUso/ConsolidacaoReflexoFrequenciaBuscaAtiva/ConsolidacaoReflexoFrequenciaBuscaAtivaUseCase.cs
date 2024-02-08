@@ -16,7 +16,7 @@ namespace SME.Worker.Agendador.Aplicacao
         {
             SentrySdk.AddBreadcrumb($"Mensagem ConsolidacaoReflexoFrequenciaBuscaAtivaUseCase", "Rabbit - ConsolidacaoReflexoFrequenciaBuscaAtivaUseCase");
 
-            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.ConsolidarReflexoFrequenciaBuscaAtiva, string.Empty, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.ConsolidarReflexoFrequenciaBuscaAtiva, Guid.NewGuid()));
         }
     }
 }
