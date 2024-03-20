@@ -209,6 +209,9 @@ namespace SME.Worker.Agendador.Background
 
             // Executar geração de cache de atribuicoes responsaveis/esporádicas (deve executar antes IGerarAbrangenciasPerfisUsuarioElasticSearchUseCase), uma vez ao dia, às 05:30am
             Cliente.ExecutarPeriodicamente<IGerarCacheAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(08, 30));
+
+            // Executar rotina de exclusão das notificações, uma vez ao dia, às 05:00am
+            Cliente.ExecutarPeriodicamente<IExecutarExclusaoDasNotificacoesUseCase>(c => c.Executar(), Cron.Daily(8));
         }
         public static void RegistrarServicosConectaFormacao()
         {
