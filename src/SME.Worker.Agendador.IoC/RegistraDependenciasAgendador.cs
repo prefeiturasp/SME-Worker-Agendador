@@ -53,6 +53,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Infra.Contexto;
 using SME.Worker.Agendador.IoC.Extensions;
 using System;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
 
 namespace SME.Worker.Agendador.IoC
 {
@@ -86,6 +87,7 @@ namespace SME.Worker.Agendador.IoC
             RegistrarCasosDeUsoSerapItens(services);
             RegistrarCasoDeUsoMetricas(services);
             RegistrarCasosDeUsoConectaFormação(services);
+            RegistrarCasosDeUsoCdep(services);
         }
 
         private static void RegistrarCasoDeUsoEol(IServiceCollection services)
@@ -224,6 +226,11 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IExecutaNotificacaoAprovacaoFechamentoNotaUseCase, ExecutaNotificacaoAprovacaoFechamentoNotaUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
+        }
+        
+        private static void RegistrarCasosDeUsoCdep(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase, ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase>();
         }
 
         private static void ResgistraDependenciaHttp(IServiceCollection services)
