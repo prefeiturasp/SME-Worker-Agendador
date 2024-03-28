@@ -47,6 +47,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Background.Core;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
 
 namespace SME.Worker.Agendador.Background
 {
@@ -61,6 +62,7 @@ namespace SME.Worker.Agendador.Background
             RegistrarServicosSerapAcompanhamento();
             RegistrarServicosSerapItens();
             RegistrarServicosConectaFormacao();
+            RegistrarServicosCdep();
         }
         
         private static void RegistrarServicoEol()
@@ -278,6 +280,12 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentosNotaUseCase>(c => c.Executar(), Cron.Daily(5));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhosClasseAlunoUseCase>(c => c.Executar(), Cron.Daily(5));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentosTurmaDisciplinaUseCase>(c => c.Executar(), Cron.Daily(5));
+        }
+        
+         public static void RegistrarServicosCdep()
+        {
+            //todos os dias à 1 da manhã
+            Cliente.ExecutarPeriodicamente<IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase>(c => c.Executar(), Cron.Daily(22));
         }
     }
 }
