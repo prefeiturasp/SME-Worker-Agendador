@@ -10,9 +10,10 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep
         public ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase(IMediator mediator) : base(mediator)
         {}
 
-        public async Task Executar()
+        public async Task<bool> Executar()
         {
             await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitCdep.ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtraso, Guid.NewGuid()));
+            return true;
         }
     }
 }

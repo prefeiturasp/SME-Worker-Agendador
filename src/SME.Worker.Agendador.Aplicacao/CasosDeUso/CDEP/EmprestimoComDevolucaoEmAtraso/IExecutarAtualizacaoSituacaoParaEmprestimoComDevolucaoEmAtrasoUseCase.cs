@@ -4,6 +4,6 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep
 {
     public interface IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase
     {
-        Task Executar();
+        Task<bool> Executar();
     }
 }
