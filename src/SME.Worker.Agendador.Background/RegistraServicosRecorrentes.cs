@@ -3,6 +3,7 @@ using SME.Worker.Agendador.Aplicacao;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AtualizarTotalizadoresDePendencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ComponentesCurriculares;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoAcompanhamentoAprendizagemAluno;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoDevolutivas;
@@ -45,9 +46,6 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.PendenciaValidadePlanoA
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.RotasAgendamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Background.Core;
-using System.Runtime.Intrinsics.X86;
-using System.Security.Cryptography;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
 
 namespace SME.Worker.Agendador.Background
 {
