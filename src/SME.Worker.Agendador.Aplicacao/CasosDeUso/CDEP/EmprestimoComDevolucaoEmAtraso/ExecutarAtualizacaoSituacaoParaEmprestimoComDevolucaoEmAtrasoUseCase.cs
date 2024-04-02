@@ -5,18 +5,15 @@ using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep
 {
-    public class ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase : IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase
+    public class ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase : AbstractUseCase, IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase
     {
-        private readonly IMediator mediator;
+        public ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase(IMediator mediator) : base(mediator)
+        {}
 
-        public ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase(IMediator mediator)
-        {
-            this.mediator = mediator ?? throw new System.ArgumentNullException(nameof(mediator));
-        }
-
-        public async Task Executar()
+        public async Task<bool> Executar()
         {
             await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitCdep.ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtraso, Guid.NewGuid()));
+            return true;
         }
     }
 }
