@@ -231,6 +231,7 @@ namespace SME.Worker.Agendador.IoC
         private static void RegistrarCasosDeUsoCdep(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase, ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase>();
+            services.TryAddScopedWorkerService<INotificacaoVencimentoEmprestimoUseCase, NotificacaoVencimentoEmprestimoUseCase>();
         }
 
         private static void ResgistraDependenciaHttp(IServiceCollection services)

@@ -286,6 +286,7 @@ namespace SME.Worker.Agendador.Background
         {
             //todos os dias à 1 da manhã
             Cliente.ExecutarPeriodicamente<IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase>(c => c.Executar(), Cron.Daily(22));
+            Cliente.ExecutarPeriodicamente<INotificacaoVencimentoEmprestimoUseCase>(c => c.Executar(), Cron.Daily(22));
         }
     }
 }
