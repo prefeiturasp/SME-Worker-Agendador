@@ -214,6 +214,8 @@ namespace SME.Worker.Agendador.Background
 
             // Executar rotina de exclusão das notificações, uma vez ao dia, às 05:00am
             Cliente.ExecutarPeriodicamente<IExecutarExclusaoDasNotificacoesUseCase>(c => c.Executar(), Cron.Daily(8));
+
+            Cliente.ExecutarPeriodicamente<INotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase>(c => c.Executar(), Cron.Daily(2));
         }
         public static void RegistrarServicosConectaFormacao()
         {
