@@ -86,7 +86,7 @@ namespace SME.Worker.Agendador.IoC
             RegistrarCasosDeUsoSerapAcompanhamento(services);
             RegistrarCasosDeUsoSerapItens(services);
             RegistrarCasoDeUsoMetricas(services);
-            RegistrarCasosDeUsoConectaFormação(services);
+            RegistrarCasosDeUsoConectaFormacao(services);
             RegistrarCasosDeUsoCdep(services);
         }
 
@@ -158,7 +158,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IIniciarImportacoesSerapItensUseCase, IniciarImportacoesSerapItensUseCase>();
         }
 
-        private static void RegistrarCasosDeUsoConectaFormação(IServiceCollection services)
+        private static void RegistrarCasosDeUsoConectaFormacao(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<ISincronizacaoInstitucionalDreConectaFormacaoUseCase, SincronizacaoInstitucionalDreConectaFormacaoUseCase>();
         }
@@ -232,6 +232,9 @@ namespace SME.Worker.Agendador.IoC
         private static void RegistrarCasosDeUsoCdep(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase, ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase>();
+            services.TryAddScopedWorkerService<INotificacaoVencimentoEmprestimoUseCase, NotificacaoVencimentoEmprestimoUseCase>();
+            services.TryAddScopedWorkerService<INotificacaoDevolucaoEmprestimoAtrasadoUseCase, NotificacaoDevolucaoEmprestimoAtrasadoUseCase>();
+            services.TryAddScopedWorkerService<INotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase, NotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase>();
         }
 
         private static void ResgistraDependenciaHttp(IServiceCollection services)
