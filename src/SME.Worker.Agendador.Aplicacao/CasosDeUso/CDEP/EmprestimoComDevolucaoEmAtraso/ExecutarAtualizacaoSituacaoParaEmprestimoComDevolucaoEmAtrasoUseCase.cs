@@ -2,6 +2,7 @@
 using SME.Worker.Agendador.Aplicacao.Comandos;
 using System;
 using System.Threading.Tasks;
+using SME.Worker.Agendador.Aplicacao.Constantes;
 
 namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep
 {
@@ -12,7 +13,7 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep
 
         public async Task<bool> Executar()
         {
-            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitCdep.ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtraso, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitCdep.ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtraso, Guid.NewGuid(), ExchangeSmeWorkers.CDEP));
             return true;
         }
     }
