@@ -1,6 +1,7 @@
-﻿namespace SME.Worker.Agendador.Aplicacao.Constantes;
-
-public static class ExchangeSmeWorkers
+﻿namespace SME.Worker.Agendador.Aplicacao.Constantes
 {
-    public const string CDEP = "sme.cdep.workers";
+    public static class ExchangeSmeWorkers
+    {
+        public const string CDEP = "sme.cdep.workers";
+    }
 }
