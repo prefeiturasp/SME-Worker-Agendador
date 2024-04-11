@@ -53,6 +53,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Infra.Contexto;
 using SME.Worker.Agendador.IoC.Extensions;
 using System;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
 
 namespace SME.Worker.Agendador.IoC
 {
@@ -85,7 +86,8 @@ namespace SME.Worker.Agendador.IoC
             RegistrarCasosDeUsoSerapAcompanhamento(services);
             RegistrarCasosDeUsoSerapItens(services);
             RegistrarCasoDeUsoMetricas(services);
-            RegistrarCasosDeUsoConectaFormação(services);
+            RegistrarCasosDeUsoConectaFormacao(services);
+            RegistrarCasosDeUsoCdep(services);
         }
 
         private static void RegistrarCasoDeUsoEol(IServiceCollection services)
@@ -156,7 +158,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IIniciarImportacoesSerapItensUseCase, IniciarImportacoesSerapItensUseCase>();
         }
 
-        private static void RegistrarCasosDeUsoConectaFormação(IServiceCollection services)
+        private static void RegistrarCasosDeUsoConectaFormacao(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<ISincronizacaoInstitucionalDreConectaFormacaoUseCase, SincronizacaoInstitucionalDreConectaFormacaoUseCase>();
         }
@@ -221,8 +223,18 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IAtualizarPlanoAEETurmaAlunoUseCase, AtualizarPlanoAEETurmaAlunoUseCase>();
             services.TryAddScopedWorkerService<IAtualizarEncaminhamentoAEETurmaAlunoUseCase, AtualizarEncaminhamentoAEETurmaAlunoUseCase>();
             services.TryAddScopedWorkerService<IGerarCacheAtribuicaoResponsaveisUseCase, GerarCacheAtribuicaoResponsaveisUseCase>();
+            services.TryAddScopedWorkerService<IExecutaNotificacaoAprovacaoFechamentoNotaUseCase, ExecutaNotificacaoAprovacaoFechamentoNotaUseCase>();
+            services.TryAddScopedWorkerService<INotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase, NotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
+        }
+        
+        private static void RegistrarCasosDeUsoCdep(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase, ExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase>();
+            services.TryAddScopedWorkerService<INotificacaoVencimentoEmprestimoUseCase, NotificacaoVencimentoEmprestimoUseCase>();
+            services.TryAddScopedWorkerService<INotificacaoDevolucaoEmprestimoAtrasadoUseCase, NotificacaoDevolucaoEmprestimoAtrasadoUseCase>();
+            services.TryAddScopedWorkerService<INotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase, NotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase>();
         }
 
         private static void ResgistraDependenciaHttp(IServiceCollection services)
