@@ -17,7 +17,7 @@ namespace SME.Worker.Agendador
 
         public async Task Executar()
         {
-            await _mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.GerarCacheAtribuicaoResponsaveis, Guid.NewGuid()));
+            await _mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.ExecutarExclusaoDasNotificacoes, Guid.NewGuid()));
         }
     }
 }
