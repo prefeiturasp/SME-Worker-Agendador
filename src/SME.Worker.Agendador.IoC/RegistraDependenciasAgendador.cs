@@ -223,7 +223,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IAtualizarPlanoAEETurmaAlunoUseCase, AtualizarPlanoAEETurmaAlunoUseCase>();
             services.TryAddScopedWorkerService<IAtualizarEncaminhamentoAEETurmaAlunoUseCase, AtualizarEncaminhamentoAEETurmaAlunoUseCase>();
             services.TryAddScopedWorkerService<IGerarCacheAtribuicaoResponsaveisUseCase, GerarCacheAtribuicaoResponsaveisUseCase>();
-            services.TryAddScopedWorkerService<IExecutaNotificacaoAprovacaoFechamentoNotaUseCase, ExecutaNotificacaoAprovacaoFechamentoNotaUseCase>();
+            services.TryAddScopedWorkerService<IExecutarExclusaoDasNotificacoesUseCase, ExecutarExclusaoDasNotificacoesUseCase>();
             services.TryAddScopedWorkerService<INotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase, NotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
