@@ -47,6 +47,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Background.Core;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
 
 namespace SME.Worker.Agendador.Background
 {
@@ -61,6 +62,7 @@ namespace SME.Worker.Agendador.Background
             RegistrarServicosSerapAcompanhamento();
             RegistrarServicosSerapItens();
             RegistrarServicosConectaFormacao();
+            RegistrarServicosCdep();
         }
         
         private static void RegistrarServicoEol()
@@ -209,6 +211,11 @@ namespace SME.Worker.Agendador.Background
 
             // Executar geração de cache de atribuicoes responsaveis/esporádicas (deve executar antes IGerarAbrangenciasPerfisUsuarioElasticSearchUseCase), uma vez ao dia, às 05:30am
             Cliente.ExecutarPeriodicamente<IGerarCacheAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(08, 30));
+
+            // Executar rotina de exclusão das notificações, uma vez ao dia, às 05:00am
+            Cliente.ExecutarPeriodicamente<IExecutarExclusaoDasNotificacoesUseCase>(c => c.Executar(), Cron.Daily(8));
+
+            Cliente.ExecutarPeriodicamente<INotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase>(c => c.Executar(), Cron.Daily(2));
         }
         public static void RegistrarServicosConectaFormacao()
         {
@@ -275,6 +282,15 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentosNotaUseCase>(c => c.Executar(), Cron.Daily(5));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhosClasseAlunoUseCase>(c => c.Executar(), Cron.Daily(5));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentosTurmaDisciplinaUseCase>(c => c.Executar(), Cron.Daily(5));
+        }
+        
+         public static void RegistrarServicosCdep()
+        {
+            //todos os dias à 1 da manhã
+            Cliente.ExecutarPeriodicamente<IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase>(c => c.Executar(), Cron.Daily(22));
+            Cliente.ExecutarPeriodicamente<INotificacaoVencimentoEmprestimoUseCase>(c => c.Executar(), Cron.Daily(22));
+            Cliente.ExecutarPeriodicamente<INotificacaoDevolucaoEmprestimoAtrasadoUseCase>(c => c.Executar(), Cron.Daily(22));
+            Cliente.ExecutarPeriodicamente<INotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase>(c => c.Executar(), Cron.Daily(22));
         }
     }
 }
