@@ -224,6 +224,9 @@ namespace SME.Worker.Agendador.Background
         {
             // uma vez ao dia, às 05:00am
             Cliente.ExecutarPeriodicamente<ISincronizacaoInstitucionalDreConectaFormacaoUseCase>(c => c.Executar(), Cron.Daily(8));
+            
+            // uma vez ao dia, às 05:00am
+            Cliente.ExecutarPeriodicamente<IEncerrarInscricoesAutomaticamenteUseCase>(c => c.Executar(), Cron.Daily(8));
         }
         public static void RegistrarServicosSerap()
         {
