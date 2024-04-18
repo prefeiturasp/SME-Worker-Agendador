@@ -161,6 +161,7 @@ namespace SME.Worker.Agendador.IoC
         private static void RegistrarCasosDeUsoConectaFormacao(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<ISincronizacaoInstitucionalDreConectaFormacaoUseCase, SincronizacaoInstitucionalDreConectaFormacaoUseCase>();
+            services.TryAddScopedWorkerService<IEncerrarInscricoesAutomaticamenteUseCase, EncerrarInscricoesAutomaticamenteUseCase>();
         }
         private static void RegistrarCasosDeUsoSgp(IServiceCollection services)
         {
