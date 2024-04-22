@@ -8,5 +8,6 @@ namespace SME.Worker.Agendador.Aplicacao.Fila
     {
         public const string SincronizaEstruturaInstitucionalDre = "conecta.sincronizacao.institucional.dre";
         public const string SincronizaEstruturaInstitucionalDreTratar = "conecta.sincronizacao.institucional.dre.tratar";
+        public const string EncerrarInscricaoAutomaticamente = "conecta.inscricao.encerrar.cursista.inativo";
     }
 }

@@ -161,6 +161,7 @@ namespace SME.Worker.Agendador.IoC
         private static void RegistrarCasosDeUsoConectaFormacao(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<ISincronizacaoInstitucionalDreConectaFormacaoUseCase, SincronizacaoInstitucionalDreConectaFormacaoUseCase>();
+            services.TryAddScopedWorkerService<IEncerrarInscricoesAutomaticamenteUseCase, EncerrarInscricoesAutomaticamenteUseCase>();
         }
         private static void RegistrarCasosDeUsoSgp(IServiceCollection services)
         {
@@ -224,7 +225,10 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IAtualizarEncaminhamentoAEETurmaAlunoUseCase, AtualizarEncaminhamentoAEETurmaAlunoUseCase>();
             services.TryAddScopedWorkerService<ISincronismoAgrupamentoComponentesTerritorioEolUseCase, SincronizarAgrupamentoComponentesTerritorioEolUseCase>();
             services.TryAddScopedWorkerService<IGerarCacheAtribuicaoResponsaveisUseCase, GerarCacheAtribuicaoResponsaveisUseCase>();
-            services.TryAddScopedWorkerService<IExecutaNotificacaoAprovacaoFechamentoNotaUseCase, ExecutaNotificacaoAprovacaoFechamentoNotaUseCase>();
+            services.TryAddScopedWorkerService<IConsolidacaoReflexoFrequenciaBuscaAtivaUseCase, ConsolidacaoReflexoFrequenciaBuscaAtivaUseCase>();
+            
+            services.TryAddScopedWorkerService<IExecutarExclusaoDasNotificacoesUseCase, ExecutarExclusaoDasNotificacoesUseCase>();
+            services.TryAddScopedWorkerService<INotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase, NotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
