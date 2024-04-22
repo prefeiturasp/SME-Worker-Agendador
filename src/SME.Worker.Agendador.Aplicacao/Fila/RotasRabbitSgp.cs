@@ -70,6 +70,6 @@
         public const string ExecutarNotificacaoAlunosBaixaFrequenciaBuscaAtiva = "sgp.frequencia.aluno.percentual.minimo.mes.insuficiente.busca.ativa.notificar";
 
         public const string ConsolidarReflexoFrequenciaBuscaAtiva = "sgp.consolidacao.reflexo.frequencia.busca.ativa";
-        public const string ExecutarAtualizacaoMapeamentoEstudantes = "sgp.atualizar.mapeamento.estudantes";
+        public const string ExecutarAtualizacaoMapeamentoEstudantes = "sgp.mapeamento.estudantes.atualizar";
     }
 }
