@@ -219,6 +219,9 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IExecutarExclusaoDasNotificacoesUseCase>(c => c.Executar(), Cron.Daily(8));
 
             Cliente.ExecutarPeriodicamente<INotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase>(c => c.Executar(), Cron.Daily(2));
+
+            // Executar rotina de atualizar carga dashboard consolidado NAAPA, uma vez ao dia, às 05:00am
+            Cliente.ExecutarPeriodicamente<IAtualizarMapeamentoDosEstudantesUseCase>(c => c.Executar(), Cron.Daily(8));
         }
         public static void RegistrarServicosConectaFormacao()
         {
