@@ -222,6 +222,9 @@ namespace SME.Worker.Agendador.Background
 
             // Executar rotina de atualizar carga dashboard consolidado NAAPA, uma vez ao dia, às 05:00am
             Cliente.ExecutarPeriodicamente<IAtualizarMapeamentoDosEstudantesUseCase>(c => c.Executar(), Cron.Daily(8));
+
+            // Executar rotina uma vez ao dia, às 03:00am
+            Cliente.ExecutarPeriodicamente<IConsolidacaoInformacoesProdutividadeFrequenciaUseCase>(c => c.Executar(), Cron.Daily(6));
         }
         public static void RegistrarServicosConectaFormacao()
         {
