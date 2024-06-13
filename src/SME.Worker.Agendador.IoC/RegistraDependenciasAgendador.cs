@@ -161,6 +161,7 @@ namespace SME.Worker.Agendador.IoC
         private static void RegistrarCasosDeUsoConectaFormacao(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<ISincronizacaoInstitucionalDreConectaFormacaoUseCase, SincronizacaoInstitucionalDreConectaFormacaoUseCase>();
+            services.TryAddScopedWorkerService<IEncerrarInscricoesAutomaticamenteUseCase, EncerrarInscricoesAutomaticamenteUseCase>();
         }
         private static void RegistrarCasosDeUsoSgp(IServiceCollection services)
         {
@@ -227,6 +228,8 @@ namespace SME.Worker.Agendador.IoC
             
             services.TryAddScopedWorkerService<IExecutarExclusaoDasNotificacoesUseCase, ExecutarExclusaoDasNotificacoesUseCase>();
             services.TryAddScopedWorkerService<INotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase, NotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase>();
+            services.TryAddScopedWorkerService<IAtualizarMapeamentoDosEstudantesUseCase, AtualizarMapeamentoDosEstudantesUseCase>();
+            services.TryAddScopedWorkerService<IConsolidacaoInformacoesProdutividadeFrequenciaUseCase, ConsolidacaoInformacoesProdutividadeFrequenciaUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
