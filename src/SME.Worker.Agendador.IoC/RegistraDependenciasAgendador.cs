@@ -54,6 +54,7 @@ using SME.Worker.Agendador.Infra.Contexto;
 using SME.Worker.Agendador.IoC.Extensions;
 using System;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoBoletimProvaAluno;
 
 namespace SME.Worker.Agendador.IoC
 {
@@ -85,6 +86,7 @@ namespace SME.Worker.Agendador.IoC
             RegistrarCasosDeUsoSerap(services);
             RegistrarCasosDeUsoSerapAcompanhamento(services);
             RegistrarCasosDeUsoSerapItens(services);
+            RegistrarCasosDeUsoSerapBoletim(services);
             RegistrarCasoDeUsoMetricas(services);
             RegistrarCasosDeUsoConectaFormacao(services);
             RegistrarCasosDeUsoCdep(services);
@@ -156,6 +158,11 @@ namespace SME.Worker.Agendador.IoC
         private static void RegistrarCasosDeUsoSerapItens(IServiceCollection services)
         {
             services.TryAddScopedWorkerService<IIniciarImportacoesSerapItensUseCase, IniciarImportacoesSerapItensUseCase>();
+        }
+
+        private static void RegistrarCasosDeUsoSerapBoletim(IServiceCollection services)
+        {
+            services.TryAddScopedWorkerService<IExecutarConsolidacaoBoletimProvaAlunoUseCase, ExecutarConsolidacaoBoletimProvaAlunoUseCase>();
         }
 
         private static void RegistrarCasosDeUsoConectaFormacao(IServiceCollection services)
