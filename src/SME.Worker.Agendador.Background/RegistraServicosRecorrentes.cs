@@ -48,6 +48,7 @@ using SME.Worker.Agendador.Background.Core;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoBoletimProvaAluno;
 
 namespace SME.Worker.Agendador.Background
 {
@@ -61,6 +62,7 @@ namespace SME.Worker.Agendador.Background
             RegistrarServicoEol();
             RegistrarServicosSerapAcompanhamento();
             RegistrarServicosSerapItens();
+            RegistrarServicosSerapBoletim();
             RegistrarServicosConectaFormacao();
             RegistrarServicosCdep();
         }
@@ -256,6 +258,11 @@ namespace SME.Worker.Agendador.Background
         public static void RegistrarServicosSerapItens()
         {
             Cliente.ExecutarPeriodicamente<IIniciarImportacoesSerapItensUseCase>(c => c.Executar(), Cron.Daily(23));
+        }
+
+        public static void RegistrarServicosSerapBoletim()
+        {
+            Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoBoletimProvaAlunoUseCase>(c => c.Executar(), Cron.Daily(5));
         }
 
         public static void RegistrarServicosMetricas()
