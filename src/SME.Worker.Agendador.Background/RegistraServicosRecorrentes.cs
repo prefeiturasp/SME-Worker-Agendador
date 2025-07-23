@@ -143,7 +143,7 @@ namespace SME.Worker.Agendador.Background
 
             Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoInstitucionalSyncUseCase>(c => c.Executar(), Cron.Daily(9, 30));
 
-            Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoMatriculaTurmasUseCase>(c => c.Executar(), Cron.Daily(10));
+            Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoMatriculaTurmasUseCase>(c => c.Executar(), Cron.Daily(9, 30));
 
             Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoFrequenciaTurmaSyncUseCase>(c => c.Executar(), Cron.Daily(17));
 
@@ -164,7 +164,7 @@ namespace SME.Worker.Agendador.Background
             // Consolidação Acompanhamento Aprendizagem do Aluno
             Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase>(c => c.Executar(), Cron.Daily(9));
 
-            Cliente.ExecutarPeriodicamente<IRotasAgendamentoSyncUseCase>(c => c.Executar(), Cron.Daily(10));           
+            Cliente.ExecutarPeriodicamente<IRotasAgendamentoSyncUseCase>(c => c.Executar(), Cron.Daily(9, 30));           
 
             Cliente.ExecutarPeriodicamente<IExecutarRemoverAtribuicaoPendenciaUsuariosUseCase>(c => c.Executar(), Cron.Daily(5));
 
@@ -185,31 +185,31 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoNotaPosConselhoClasseUseCase>(c => c.Executar(), Cron.Daily(5));
             // Executar rotina de notificar aprovação de pareceres conclusivos conselho de classe, uma vez ao dia, às 02:00am
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>(c => c.Executar(), Cron.Daily(5));
-            // Executar rotina de atualizar as informações do encaminhamento NAAPA, uma vez ao dia, às 07:00am
-            Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoEncaminhamentoNAAPA>(c => c.Executar(), Cron.Daily(10));
+            // Executar rotina de atualizar as informações do encaminhamento NAAPA, uma vez ao dia, às 06:30am
+            Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoEncaminhamentoNAAPA>(c => c.Executar(), Cron.Daily(9, 30));
 
             //Executa rotina de exclusão de pendencia calendario no primeiro dia do ano às 00:00am
             Cliente.ExecutarPeriodicamente<IExcluirPendenciaCalendarioAnoAnteriorUseCase>(c => c.Executar(),Cron.Yearly(1,1,3));
             //Executa rotina de exclusão de pendência no primeiro dia do ano às 00:00am
             Cliente.ExecutarPeriodicamente<IRemoverPendenciasNoFinalDoAnoLetivoUseCase>(c => c.Executar(), Cron.Yearly(1, 1, 3));
 
-            // Executar rotina de atualizar do totalizadores de pendências, uma vez ao dia, às 07:00am
-            Cliente.ExecutarPeriodicamente<IAtualizarTotalizadoresDePendenciaUseCase>(c => c.Executar(), Cron.Daily(10));
+            // Executar rotina de atualizar do totalizadores de pendências, uma vez ao dia, às 06:30am
+            Cliente.ExecutarPeriodicamente<IAtualizarTotalizadoresDePendenciaUseCase>(c => c.Executar(), Cron.Daily(9, 30));
 
             // Executar rotina de atualizar carga dashboard consolidado NAAPA, uma vez ao dia, às 05:00am
             Cliente.ExecutarPeriodicamente<IAtualizarCargaDashboardConsolidadoEncaminhamentoNAAPA>(c => c.Executar(), Cron.Daily(8));
 
-            // Executar rotina de atualizar as informações do plano AEE, uma vez ao dia, às 07:00am
-            Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoPlanoAEE>(c => c.Executar(), Cron.Daily(10));
+            // Executar rotina de atualizar as informações do plano AEE, uma vez ao dia, às 06:30am
+            Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoPlanoAEE>(c => c.Executar(), Cron.Daily(9, 30));
 
-            // Executar rotina de atualizar as turmas regular e SRM ativas do aluno no plano AEE, uma vez ao dia, às 07:00am
-            Cliente.ExecutarPeriodicamente<IAtualizarPlanoAEETurmaAlunoUseCase>(c => c.Executar(), Cron.Daily(10));
+            // Executar rotina de atualizar as turmas regular e SRM ativas do aluno no plano AEE, uma vez ao dia, às 06:30am
+            Cliente.ExecutarPeriodicamente<IAtualizarPlanoAEETurmaAlunoUseCase>(c => c.Executar(), Cron.Daily(9, 30));
 
-            // Executar rotina de atualizar as turmas regular e SRM ativas do aluno no encaminhamento AEE, uma vez ao dia, às 07:00am
-            Cliente.ExecutarPeriodicamente<IAtualizarEncaminhamentoAEETurmaAlunoUseCase>(c => c.Executar(), Cron.Daily(10));
+            // Executar rotina de atualizar as turmas regular e SRM ativas do aluno no encaminhamento AEE, uma vez ao dia, às 06:30am
+            Cliente.ExecutarPeriodicamente<IAtualizarEncaminhamentoAEETurmaAlunoUseCase>(c => c.Executar(), Cron.Daily(9, 30));
 
-            // Executar rotina de noficação de inatividade do atendimento do encaminhamento naapa, uma vez ao dia, às 07:00am
-            Cliente.ExecutarPeriodicamente<INotificarInatividadeDoAtendimentoNAAPAUseCase>(c => c.Executar(), Cron.Daily(10));
+            // Executar rotina de noficação de inatividade do atendimento do encaminhamento naapa, uma vez ao dia, às 06:30am
+            Cliente.ExecutarPeriodicamente<INotificarInatividadeDoAtendimentoNAAPAUseCase>(c => c.Executar(), Cron.Daily(9, 30));
 
             // Executar geração de cache de atribuicoes responsaveis/esporádicas (deve executar antes IGerarAbrangenciasPerfisUsuarioElasticSearchUseCase), uma vez ao dia, às 05:30am
             Cliente.ExecutarPeriodicamente<IGerarCacheAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(08, 30));
