@@ -72,5 +72,6 @@
         public const string ConsolidarReflexoFrequenciaBuscaAtiva = "sgp.consolidacao.reflexo.frequencia.busca.ativa";
         public const string ExecutarAtualizacaoMapeamentoEstudantes = "sgp.mapeamento.estudantes.atualizar";
         public const string ConsolidarInformacoesProdutividadeFrequencia = "sgp.consolidacao.produtividade.frequencia";
+        public const string ConsolidarInformacoesFrequenciaPainelEducacional = "sgp.consolidacao.frequencia.analise.painel.educacional";
     }
 }
