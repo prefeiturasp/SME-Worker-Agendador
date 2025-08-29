@@ -49,6 +49,7 @@ using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoBoletimProvaAluno;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PainelEducacional;
 
 namespace SME.Worker.Agendador.Background
 {
@@ -227,6 +228,11 @@ namespace SME.Worker.Agendador.Background
 
             // Executar rotina uma vez ao dia, às 03:00am
             Cliente.ExecutarPeriodicamente<IConsolidacaoInformacoesProdutividadeFrequenciaUseCase>(c => c.Executar(), Cron.Daily(6));
+
+            // Executar rotina uma vez ao dia, às 04:00am
+            Cliente.ExecutarPeriodicamente<IConsolidarInformacoesFrequenciaPainelEducacionalUseCase>(c => c.Executar(), Cron.Daily(7));
+
+
         }
         public static void RegistrarServicosConectaFormacao()
         {

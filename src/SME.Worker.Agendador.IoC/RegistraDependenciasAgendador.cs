@@ -55,6 +55,7 @@ using SME.Worker.Agendador.IoC.Extensions;
 using System;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoBoletimProvaAluno;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PainelEducacional;
 
 namespace SME.Worker.Agendador.IoC
 {
@@ -237,6 +238,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<INotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase, NotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase>();
             services.TryAddScopedWorkerService<IAtualizarMapeamentoDosEstudantesUseCase, AtualizarMapeamentoDosEstudantesUseCase>();
             services.TryAddScopedWorkerService<IConsolidacaoInformacoesProdutividadeFrequenciaUseCase, ConsolidacaoInformacoesProdutividadeFrequenciaUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarInformacoesFrequenciaPainelEducacionalUseCase, ConsolidarInformacoesFrequenciaPainelEducacionalUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
