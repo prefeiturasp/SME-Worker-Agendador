@@ -239,6 +239,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IAtualizarMapeamentoDosEstudantesUseCase, AtualizarMapeamentoDosEstudantesUseCase>();
             services.TryAddScopedWorkerService<IConsolidacaoInformacoesProdutividadeFrequenciaUseCase, ConsolidacaoInformacoesProdutividadeFrequenciaUseCase>();
             services.TryAddScopedWorkerService<IConsolidarInformacoesFrequenciaPainelEducacionalUseCase, ConsolidarInformacoesFrequenciaPainelEducacionalUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarIdepPainelEducacionalUseCase, ConsolidarIdepPainelEducacionalUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
