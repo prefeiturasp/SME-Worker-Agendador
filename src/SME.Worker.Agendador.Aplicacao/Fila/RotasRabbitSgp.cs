@@ -74,6 +74,7 @@
         public const string ConsolidarInformacoesProdutividadeFrequencia = "sgp.consolidacao.produtividade.frequencia";
         public const string ConsolidarInformacoesFrequenciaPainelEducacional = "sgp.consolidacao.frequencia.analise.painel.educacional";
         public const string ConsolidarIdepPainelEducacional = "sgp.consolidacao.idep.painel.educacional";
+        public const string ConsolidarVisaoGeralPainelEducacional = "sgp.consolidacao.visao.geral.painel.educacional";
 
         public const string ConsolidarNivelEscritaAlfabetizacao = "sgp.consolidar.nivel.escrita.alfabetizacao";
 
