@@ -244,6 +244,9 @@ namespace SME.Worker.Agendador.Background
             // Executar rotina uma vez ao dia, às 00:50am
             Cliente.ExecutarPeriodicamente<IConsolidarNivelEscritaAlfabetizacaoCriticoUseCase>(c => c.Executar(), Cron.Daily(3, 50));
 
+            // Executar rotina uma vez ao dia, às 01:20am
+            Cliente.ExecutarPeriodicamente<IConsolidarInformacoesPapUseCase>(c => c.Executar(), Cron.Daily(4, 20));
+
         }
         public static void RegistrarServicosConectaFormacao()
         {

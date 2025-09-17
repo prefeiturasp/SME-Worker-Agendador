@@ -243,6 +243,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IConsolidarNivelEscritaAlfabetizacaoUseCase, ConsolidarNivelEscritaAlfabetizacaoUseCase>();
             services.TryAddScopedWorkerService<IConsolidarNivelEscritaAlfabetizacaoCriticoUseCase, ConsolidarNivelEscritaAlfabetizacaoCriticoUseCase>();
             services.TryAddScopedWorkerService<IConsolidarVisaoGeralPainelEducacionalUseCase, ConsolidarVisaoGeralPainelEducacionalUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarInformacoesPapUseCase, ConsolidarInformacoesPapUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
