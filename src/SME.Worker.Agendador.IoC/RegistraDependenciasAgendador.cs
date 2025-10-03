@@ -240,7 +240,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IConsolidacaoInformacoesProdutividadeFrequenciaUseCase, ConsolidacaoInformacoesProdutividadeFrequenciaUseCase>();
             services.TryAddScopedWorkerService<IConsolidarInformacoesFrequenciaPainelEducacionalUseCase, ConsolidarInformacoesFrequenciaPainelEducacionalUseCase>();
             services.TryAddScopedWorkerService<IConsolidarIdepPainelEducacionalUseCase, ConsolidarIdepPainelEducacionalUseCase>();
-            services.TryAddScopedWorkerService<IConsolidarSondagemEscritaPainelEducacionalUseCase, ConsolidarSondagemEscritaPainelEducacionalUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarSondagemEscritaUePainelEducacionalUseCase, ConsolidarSondagemEscritaUePainelEducacionalUseCase>();
             services.TryAddScopedWorkerService<IConsolidarNivelEscritaAlfabetizacaoUseCase, ConsolidarNivelEscritaAlfabetizacaoUseCase>();
             services.TryAddScopedWorkerService<IConsolidarNivelEscritaAlfabetizacaoCriticoUseCase, ConsolidarNivelEscritaAlfabetizacaoCriticoUseCase>();
             services.TryAddScopedWorkerService<IConsolidarVisaoGeralPainelEducacionalUseCase, ConsolidarVisaoGeralPainelEducacionalUseCase>();

@@ -2,7 +2,7 @@
 
 namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PainelEducacional
 {
-    public interface IConsolidarSondagemEscritaPainelEducacionalUseCase : IUseCaseAgendador
+    public interface IConsolidarSondagemEscritaUePainelEducacionalUseCase : IUseCaseAgendador
     {
 
     }

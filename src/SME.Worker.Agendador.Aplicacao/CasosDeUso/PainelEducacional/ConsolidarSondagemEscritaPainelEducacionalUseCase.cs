@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.PainelEducacional
 {
-    public class ConsolidarSondagemEscritaPainelEducacionalUseCase : AbstractUseCase, IConsolidarSondagemEscritaPainelEducacionalUseCase
+    public class ConsolidarSondagemEscritaUePainelEducacionalUseCase : AbstractUseCase, IConsolidarSondagemEscritaUePainelEducacionalUseCase
     {
-        public ConsolidarSondagemEscritaPainelEducacionalUseCase(IMediator mediator) : base(mediator)
+        public ConsolidarSondagemEscritaUePainelEducacionalUseCase(IMediator mediator) : base(mediator)
         {
         }
 
         public async Task Executar()
         {
-            SentrySdk.AddBreadcrumb($"Mensagem ConsolidarSondagemEscritaPainelEducacionalUseCase", "Rabbit - ConsolidarSondagemEscritaPainelEducacionalUseCase");
-            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.ConsolidarSondagemEscritaPainelEducacional, Guid.NewGuid()));
+            SentrySdk.AddBreadcrumb($"Mensagem ConsolidarSondagemEscritaUePainelEducacionalUseCase", "Rabbit - ConsolidarSondagemEscritaUePainelEducacionalUseCase");
+            await mediator.Send(new PublicaFilaRabbitCommand(RotasRabbitSgp.ConsolidarSondagemEscritaUePainelEducacional, Guid.NewGuid()));
         }
     }
 }
