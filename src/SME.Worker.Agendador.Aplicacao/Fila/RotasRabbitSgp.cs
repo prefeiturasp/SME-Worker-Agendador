@@ -74,5 +74,13 @@
         public const string ConsolidarInformacoesProdutividadeFrequencia = "sgp.consolidacao.produtividade.frequencia";
 
         public const string SincronizarAbrangencia = "sgp.abrangencia.worker.sync";
+        public const string ConsolidarInformacoesFrequenciaPainelEducacional = "sgp.consolidacao.frequencia.analise.painel.educacional";
+        public const string ConsolidarIdepPainelEducacional = "sgp.consolidacao.idep.painel.educacional";
+        public const string ConsolidarSondagemEscritaUePainelEducacional = "sgp.consolidacao.painel.educacional.sondagem.escrita.ue";
+        public const string ConsolidarVisaoGeralPainelEducacional = "sgp.consolidacao.visao.geral.painel.educacional";
+        public const string ConsolidarNivelEscritaAlfabetizacao = "sgp.consolidar.nivel.escrita.alfabetizacao";
+        public const string ConsolidarNivelEscritaAlfabetizacaoCritico = "sgp.consolidar.nivel.escrita.alfabetizacao.critico";
+        public const string ConsolidarInformacoesPapPainelEducacional = "sgp.consolidar.informacoes.pap.painel.educacional";
+        public const string ConsolidarNotasPainelEducacional = "sgp.consolidacao.painel.educacional.notas";
     }
 }
