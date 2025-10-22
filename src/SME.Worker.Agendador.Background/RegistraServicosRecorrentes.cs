@@ -253,6 +253,8 @@ namespace SME.Worker.Agendador.Background
             // Executar rotina uma vez ao dia, às 04:30am
             Cliente.ExecutarPeriodicamente<IConsolidarReclassificacaoPainelEducacionalUseCase>(c => c.Executar(), Cron.Daily(7, 30));
 
+            // Executar rotina todo domingo, às 09:00am
+            Cliente.ExecutarPeriodicamente<IConsolidarNotasPainelEducacionalUseCase>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Sunday, 12));
         }
         public static void RegistrarServicosConectaFormacao()
         {
