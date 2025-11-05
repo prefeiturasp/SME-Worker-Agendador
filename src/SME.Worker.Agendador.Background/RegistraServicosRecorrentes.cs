@@ -32,6 +32,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoReuniaoPedagogica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoUeFechamentosInsuficientes;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacoesNiveisCargos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ObjetivoAprendizagem;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PainelEducacional;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaAusenciaFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaCalendarioUe.ExcluirPendenciaCalendarioAnoAnterior;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaPerfilUsuario;
@@ -65,7 +66,7 @@ namespace SME.Worker.Agendador.Background
             RegistrarServicosConectaFormacao();
             RegistrarServicosCdep();
         }
-        
+
         private static void RegistrarServicoEol()
         {
             // Executar rotina de geração de carga de turmas/componentes, uma vez ao dia, às 06:30am
@@ -172,7 +173,7 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IEncerrarEncaminhamentoAEEAutomaticoSyncUseCase>(c => c.Executar(), Cron.Daily(8));
 
             //TODO: Pendencia Devolutiva 1 Vez ao Dia a noite 
-            Cliente.ExecutarPeriodicamente<IReprocessarDiarioBordoPendenciaDevolutivaUseCase>(c => c.Executar(),Cron.Daily(21));
+            Cliente.ExecutarPeriodicamente<IReprocessarDiarioBordoPendenciaDevolutivaUseCase>(c => c.Executar(), Cron.Daily(21));
 
             // Executar rotina de remoção de responsavéis, uma vez ao dia, às 10:30
             Cliente.ExecutarPeriodicamente<IRemoverAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(8, 30));
@@ -188,7 +189,7 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoEncaminhamentoNAAPA>(c => c.Executar(), Cron.Daily(8, 30));
 
             //Executa rotina de exclusão de pendencia calendario no primeiro dia do ano às 00:00am
-            Cliente.ExecutarPeriodicamente<IExcluirPendenciaCalendarioAnoAnteriorUseCase>(c => c.Executar(),Cron.Yearly(1,1,3));
+            Cliente.ExecutarPeriodicamente<IExcluirPendenciaCalendarioAnoAnteriorUseCase>(c => c.Executar(), Cron.Yearly(1, 1, 3));
             //Executa rotina de exclusão de pendência no primeiro dia do ano às 00:00am
             Cliente.ExecutarPeriodicamente<IRemoverPendenciasNoFinalDoAnoLetivoUseCase>(c => c.Executar(), Cron.Yearly(1, 1, 3));
 
@@ -258,7 +259,7 @@ namespace SME.Worker.Agendador.Background
         {
             // uma vez ao dia, às 05:00am
             Cliente.ExecutarPeriodicamente<ISincronizacaoInstitucionalDreConectaFormacaoUseCase>(c => c.Executar(), Cron.Daily(8));
-            
+
             // uma vez ao dia, às 05:00am
             Cliente.ExecutarPeriodicamente<IEncerrarInscricoesAutomaticamenteUseCase>(c => c.Executar(), Cron.Daily(8));
         }
@@ -295,21 +296,21 @@ namespace SME.Worker.Agendador.Background
         {
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaAcessosSGPUseCase>(c => c.Executar(), Cron.Daily(4));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4));
-            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,15));
-            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseNotaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,30));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4, 15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseNotaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4, 30));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentoTurmaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4));
-            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentoTurmaDisciplinaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,15));
-            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentoAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,30));
-            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentoNotaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4,45));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentoTurmaDisciplinaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4, 15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentoAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4, 30));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentoNotaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(4, 45));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaConsolidacaoCCNotaNuloUseCase>(c => c.Executar(), Cron.Daily(5));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaDuplicacaoConsolidacaoCCAlunoTurmaUseCase>(c => c.Executar(), Cron.Daily(5));
-            Cliente.ExecutarPeriodicamente<IRegistrarMetricaDuplicacaoConsolidacaoCCNotaUseCase>(c => c.Executar(), Cron.Daily(5,15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaDuplicacaoConsolidacaoCCNotaUseCase>(c => c.Executar(), Cron.Daily(5, 15));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhoClasseNaoConsolidadoUseCase>(c => c.Executar(), Cron.Daily(5));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaFrequenciaAlunoInconsistenteUseCase>(c => c.Executar(), Cron.Daily(5));
-            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFrequenciaAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5,15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaFrequenciaAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5, 15));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaRegistroFrequenciaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5));
-            Cliente.ExecutarPeriodicamente<IRegistrarMetricaRegistroFrequenciaAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5,15));
-            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConsolidacaoFrequenciaAlunoMensalInconsistenteUseCase>(c => c.Executar(), Cron.Daily(5,15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaRegistroFrequenciaAlunoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5, 15));
+            Cliente.ExecutarPeriodicamente<IRegistrarMetricaConsolidacaoFrequenciaAlunoMensalInconsistenteUseCase>(c => c.Executar(), Cron.Daily(5, 15));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaDiarioBordoDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5));
             Cliente.ExecutarPeriodicamente<IRegistrarDevolutivaDuplicadoUseCase>(c => c.Executar(), Cron.Daily(5));
             Cliente.ExecutarPeriodicamente<IRegistrarDevolutivaMaisDeUmaNoDiarioUseCase>(c => c.Executar(), Cron.Daily(5));
@@ -328,14 +329,17 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaConselhosClasseAlunoUseCase>(c => c.Executar(), Cron.Daily(5));
             Cliente.ExecutarPeriodicamente<IRegistrarMetricaFechamentosTurmaDisciplinaUseCase>(c => c.Executar(), Cron.Daily(5));
         }
-        
-         public static void RegistrarServicosCdep()
+
+        public static void RegistrarServicosCdep()
         {
-            //todos os dias à 1 da manhã
+            //todos os dias à 7 da noite utc-3
             Cliente.ExecutarPeriodicamente<IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase>(c => c.Executar(), Cron.Daily(22));
             Cliente.ExecutarPeriodicamente<INotificacaoVencimentoEmprestimoUseCase>(c => c.Executar(), Cron.Daily(22));
             Cliente.ExecutarPeriodicamente<INotificacaoDevolucaoEmprestimoAtrasadoUseCase>(c => c.Executar(), Cron.Daily(22));
             Cliente.ExecutarPeriodicamente<INotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase>(c => c.Executar(), Cron.Daily(22));
+
+            //Todos os dias às 1 da manhã utc-3
+            Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoDoHistoricoDeConsultasDeAcervoUseCase>(c => c.Executar(), Cron.Daily(4));
         }
     }
 }
