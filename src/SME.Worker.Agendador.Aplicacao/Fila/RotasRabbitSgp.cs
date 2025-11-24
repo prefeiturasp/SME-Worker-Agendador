@@ -84,6 +84,7 @@
         public const string ConsolidarDistorcaoIdadePainelEducacional = "sgp.consolidacao.painel.educacional.distorcao-serie-idade";
         public const string ConsolidarEducacaoIntegralPainelEducacional = "sgp.consolidacao.painel.educacional.educacao-integral";
         public const string ConsolidarPlanosAEEPainelEducacional = "sgp.consolidacao.painel.educacional.plano-aee";
+        public const string ConsolidarInformacoesEducacionaisPainelEducacional = "sgp.consolidacao.painel.educacional.informacoes-educacionais";
     }
 }
 
