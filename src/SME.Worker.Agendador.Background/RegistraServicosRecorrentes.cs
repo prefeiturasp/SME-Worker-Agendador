@@ -3,8 +3,10 @@ using SME.Worker.Agendador.Aplicacao;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AtualizarTotalizadoresDePendencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ComponentesCurriculares;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoAcompanhamentoAprendizagemAluno;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoBoletimProvaAluno;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoDevolutivas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoFrequenciaTurma;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMatriculaTurma;
@@ -45,10 +47,6 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.PendenciaValidadePlanoA
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.RotasAgendamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Background.Core;
-using System.Runtime.Intrinsics.X86;
-using System.Security.Cryptography;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoBoletimProvaAluno;
 
 namespace SME.Worker.Agendador.Background
 {
@@ -70,13 +68,13 @@ namespace SME.Worker.Agendador.Background
         private static void RegistrarServicoEol()
         {
             // Executar rotina de geração de carga de turmas/componentes, uma vez ao dia, às 06:30am
-            Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), "30 09,10 * * *"); 
+            Cliente.ExecutarPeriodicamente<IInserirInformacoesListagemListaoEolUseCase>(c => c.Executar(), "30 08,10 * * *"); 
             // Executar rotina de geração de carga de funcionários/cargos, uma vez ao dia, às 04:30am
             Cliente.ExecutarPeriodicamente<IInserirFuncionariosEolElasticSearchUseCase>(c => c.Executar(), Cron.Daily(7, 30));
             // Executar rotina de atualizar carga agrupamentos atribuições de componentes território saber, uma vez ao dia, às 05:30am
             Cliente.ExecutarPeriodicamente<ISincronismoAgrupamentoComponentesTerritorioEolUseCase>(c => c.Executar(), Cron.Daily(8, 30));
             // Executar rotina de geração de carga de abrangencias/perfis do usuário (deve executar após IInserirFuncionariosEolElasticSearchUseCase), uma vez ao dia, às 06:00am
-            Cliente.ExecutarPeriodicamente<IGerarAbrangenciasPerfisUsuarioElasticSearchUseCase>(c => c.Executar(), Cron.Daily(09, 00));
+            Cliente.ExecutarPeriodicamente<IGerarAbrangenciasPerfisUsuarioElasticSearchUseCase>(c => c.Executar(), Cron.Daily(08, 00));
         }        
 
         public static void RegistrarServicosSgp()
@@ -141,9 +139,9 @@ namespace SME.Worker.Agendador.Background
 
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoPlanoAEEEmAbertoUseCase>(c => c.Executar(), Cron.Daily(5));
 
-            Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoInstitucionalSyncUseCase>(c => c.Executar(), Cron.Daily(9, 30));
+            Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoInstitucionalSyncUseCase>(c => c.Executar(), Cron.Daily(8, 30));
 
-            Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoMatriculaTurmasUseCase>(c => c.Executar(), Cron.Daily(9, 30));
+            Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoMatriculaTurmasUseCase>(c => c.Executar(), Cron.Daily(8, 30));
 
             Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoFrequenciaTurmaSyncUseCase>(c => c.Executar(), Cron.Daily(17));
 
@@ -153,16 +151,16 @@ namespace SME.Worker.Agendador.Background
 
             Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoDevolutivasPorTurmaInfantilSyncUseCase>(c => c.Executar(), Cron.Daily(7));
 
-            Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoAulasRegenciaAutomaticasUseCase>(c => c.Executar(), Cron.Daily(9));
+            Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoAulasRegenciaAutomaticasUseCase>(c => c.Executar(), Cron.Daily(8));
 
             Cliente.ExecutarPeriodicamente<IConciliacaoFrequenciaTurmasCronUseCase>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Saturday, 23));
 
             Cliente.ExecutarPeriodicamente<IIdentificarFrequenciaAlunoPresencasMaiorTotalAulasUseCase>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Monday, 18));
 
-            Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase>(c => c.Executar(), Cron.Daily(9));
+            Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoMediaRegistrosIndividuaisSyncUseCase>(c => c.Executar(), Cron.Daily(8));
 
             // Consolidação Acompanhamento Aprendizagem do Aluno
-            Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase>(c => c.Executar(), Cron.Daily(9));
+            Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoAcompanhamentoAprendizagemAlunoSyncUseCase>(c => c.Executar(), Cron.Daily(8));
 
             Cliente.ExecutarPeriodicamente<IRotasAgendamentoSyncUseCase>(c => c.Executar(), Cron.Daily(9, 30));           
 
@@ -170,13 +168,13 @@ namespace SME.Worker.Agendador.Background
 
             Cliente.ExecutarPeriodicamente<IExecutarVarreduraFechamentosEmProcessamentoPendentes>(c => c.Executar(), Cron.Daily(2));
 
-            Cliente.ExecutarPeriodicamente<IEncerrarEncaminhamentoAEEAutomaticoSyncUseCase>(c => c.Executar(), Cron.Daily(9));
+            Cliente.ExecutarPeriodicamente<IEncerrarEncaminhamentoAEEAutomaticoSyncUseCase>(c => c.Executar(), Cron.Daily(8));
 
             //TODO: Pendencia Devolutiva 1 Vez ao Dia a noite 
             Cliente.ExecutarPeriodicamente<IReprocessarDiarioBordoPendenciaDevolutivaUseCase>(c => c.Executar(),Cron.Daily(21));
 
             // Executar rotina de remoção de responsavéis, uma vez ao dia, às 10:30
-            Cliente.ExecutarPeriodicamente<IRemoverAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(10, 30));
+            Cliente.ExecutarPeriodicamente<IRemoverAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(8, 30));
 
 
             // Executar rotina de notificar aprovação de fechamento nota, uma vez ao dia, às 02:00am
@@ -186,7 +184,7 @@ namespace SME.Worker.Agendador.Background
             // Executar rotina de notificar aprovação de pareceres conclusivos conselho de classe, uma vez ao dia, às 02:00am
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoParecerConclusivoConselhoClasseUseCase>(c => c.Executar(), Cron.Daily(5));
             // Executar rotina de atualizar as informações do encaminhamento NAAPA, uma vez ao dia, às 06:30am
-            Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoEncaminhamentoNAAPA>(c => c.Executar(), Cron.Daily(9, 30));
+            Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoEncaminhamentoNAAPA>(c => c.Executar(), Cron.Daily(8, 30));
 
             //Executa rotina de exclusão de pendencia calendario no primeiro dia do ano às 00:00am
             Cliente.ExecutarPeriodicamente<IExcluirPendenciaCalendarioAnoAnteriorUseCase>(c => c.Executar(),Cron.Yearly(1,1,3));
@@ -194,22 +192,22 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IRemoverPendenciasNoFinalDoAnoLetivoUseCase>(c => c.Executar(), Cron.Yearly(1, 1, 3));
 
             // Executar rotina de atualizar do totalizadores de pendências, uma vez ao dia, às 06:30am
-            Cliente.ExecutarPeriodicamente<IAtualizarTotalizadoresDePendenciaUseCase>(c => c.Executar(), Cron.Daily(9, 30));
+            Cliente.ExecutarPeriodicamente<IAtualizarTotalizadoresDePendenciaUseCase>(c => c.Executar(), Cron.Daily(8, 30));
 
             // Executar rotina de atualizar carga dashboard consolidado NAAPA, uma vez ao dia, às 05:00am
             Cliente.ExecutarPeriodicamente<IAtualizarCargaDashboardConsolidadoEncaminhamentoNAAPA>(c => c.Executar(), Cron.Daily(8));
 
             // Executar rotina de atualizar as informações do plano AEE, uma vez ao dia, às 06:30am
-            Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoPlanoAEE>(c => c.Executar(), Cron.Daily(9, 30));
+            Cliente.ExecutarPeriodicamente<IAtualizarInformacoesDoPlanoAEE>(c => c.Executar(), Cron.Daily(8, 30));
 
             // Executar rotina de atualizar as turmas regular e SRM ativas do aluno no plano AEE, uma vez ao dia, às 06:30am
-            Cliente.ExecutarPeriodicamente<IAtualizarPlanoAEETurmaAlunoUseCase>(c => c.Executar(), Cron.Daily(9, 30));
+            Cliente.ExecutarPeriodicamente<IAtualizarPlanoAEETurmaAlunoUseCase>(c => c.Executar(), Cron.Daily(8, 30));
 
             // Executar rotina de atualizar as turmas regular e SRM ativas do aluno no encaminhamento AEE, uma vez ao dia, às 06:30am
-            Cliente.ExecutarPeriodicamente<IAtualizarEncaminhamentoAEETurmaAlunoUseCase>(c => c.Executar(), Cron.Daily(9, 30));
+            Cliente.ExecutarPeriodicamente<IAtualizarEncaminhamentoAEETurmaAlunoUseCase>(c => c.Executar(), Cron.Daily(8, 30));
 
             // Executar rotina de noficação de inatividade do atendimento do encaminhamento naapa, uma vez ao dia, às 06:30am
-            Cliente.ExecutarPeriodicamente<INotificarInatividadeDoAtendimentoNAAPAUseCase>(c => c.Executar(), Cron.Daily(9, 30));
+            Cliente.ExecutarPeriodicamente<INotificarInatividadeDoAtendimentoNAAPAUseCase>(c => c.Executar(), Cron.Daily(8, 30));
 
             // Executar geração de cache de atribuicoes responsaveis/esporádicas (deve executar antes IGerarAbrangenciasPerfisUsuarioElasticSearchUseCase), uma vez ao dia, às 05:30am
             Cliente.ExecutarPeriodicamente<IGerarCacheAtribuicaoResponsaveisUseCase>(c => c.Executar(), Cron.Daily(08, 30));
@@ -252,7 +250,7 @@ namespace SME.Worker.Agendador.Background
 
         public static void RegistrarServicosSerapAcompanhamento()
         {
-            Cliente.ExecutarPeriodicamente<IIniciarSyncAcompanhamentoUseCase>(c => c.Executar(), Cron.Daily(9));
+            Cliente.ExecutarPeriodicamente<IIniciarSyncAcompanhamentoUseCase>(c => c.Executar(), Cron.Daily(8));
         }
 
         public static void RegistrarServicosSerapItens()
