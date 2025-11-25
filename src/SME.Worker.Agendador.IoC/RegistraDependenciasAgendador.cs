@@ -4,9 +4,12 @@ using SME.Worker.Agendador.Aplicacao;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AtualizarTotalizadoresDePendencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.CDEP.ConsolidacaoSolicitacoesAcervos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ComponentesCurriculares;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConectaFormacao.SincronizacaoInstitucionalDre;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoAcompanhamentoAprendizagemAluno;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoBoletimProvaAluno;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoDevolutivas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoFrequenciaTurma;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoMatriculaTurma;
@@ -34,6 +37,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoReuniaoPedagogica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoUeFechamentosInsuficientes;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacoesNiveisCargos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ObjetivoAprendizagem;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PainelEducacional;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaAusenciaFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaCalendarioUe.ExcluirPendenciaCalendarioAnoAnterior;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaPerfilUsuario;
@@ -53,9 +57,6 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Infra.Contexto;
 using SME.Worker.Agendador.IoC.Extensions;
 using System;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoBoletimProvaAluno;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.PainelEducacional;
 
 namespace SME.Worker.Agendador.IoC
 {
@@ -261,6 +262,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<INotificacaoDevolucaoEmprestimoAtrasadoUseCase, NotificacaoDevolucaoEmprestimoAtrasadoUseCase>();
             services.TryAddScopedWorkerService<INotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase, NotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase>();
             services.TryAddScopedWorkerService<IExecutarConsolidacaoDoHistoricoDeConsultasDeAcervoUseCase, ExecutarConsolidacaoDoHistoricoDeConsultasDeAcervoUseCase>();
+            services.TryAddScopedWorkerService<IExecutarConsolidacaoDasSolicitacoesDeAcervoUseCase, ExecutarConsolidacaoDasSolicitacoesDeAcervoUseCase>();
         }
 
         private static void ResgistraDependenciaHttp(IServiceCollection services)
