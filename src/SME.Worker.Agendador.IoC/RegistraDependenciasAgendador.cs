@@ -6,6 +6,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ComponentesCurriculares;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConectaFormacao.SincronizacaoInstitucionalDre;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConectaFormacao.SyncEol;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoAcompanhamentoAprendizagemAluno;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoDevolutivas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoFrequenciaTurma;
@@ -170,6 +171,9 @@ namespace SME.Worker.Agendador.IoC
         {
             services.TryAddScopedWorkerService<ISincronizacaoInstitucionalDreConectaFormacaoUseCase, SincronizacaoInstitucionalDreConectaFormacaoUseCase>();
             services.TryAddScopedWorkerService<IEncerrarInscricoesAutomaticamenteUseCase, EncerrarInscricoesAutomaticamenteUseCase>();
+            services.AddScoped<IExecutarSincronizacaoCargosEolUseCase, ExecutarSincronizacaoCargosEolUseCase>();
+            services.AddScoped<ISincronizarAtribuicoesServidoresEolUseCase, SincronizarAtribuicoesServidoresEolUseCase>();
+            services.AddScoped<ISincronizarFuncaoAtividadeEolUseCase, SincronizarFuncaoAtividadeEolUseCase>();
         }
         private static void RegistrarCasosDeUsoSgp(IServiceCollection services)
         {

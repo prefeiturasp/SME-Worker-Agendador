@@ -6,6 +6,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ComponentesCurriculares;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConectaFormacao.SyncEol;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoAcompanhamentoAprendizagemAluno;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoBoletimProvaAluno;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConsolidacaoDevolutivas;
@@ -241,6 +242,15 @@ namespace SME.Worker.Agendador.Background
 
             // uma vez ao dia, às 05:00am
             Cliente.ExecutarPeriodicamente<IEncerrarInscricoesAutomaticamenteUseCase>(c => c.Executar(), Cron.Daily(8));
+
+            // uma vez ao dia, às 06:00am
+            Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoCargosEolUseCase>(c => c.Executar(), Cron.Daily(9, 0));
+
+            // uma vez ao dia, às 06:30am
+            Cliente.ExecutarPeriodicamente<ISincronizarAtribuicoesServidoresEolUseCase>(c => c.Executar(), Cron.Daily(9, 30));
+
+            // uma vez ao dia, às 07:00am
+            Cliente.ExecutarPeriodicamente<ISincronizarFuncaoAtividadeEolUseCase>(c => c.Executar(), Cron.Daily(10, 0));
         }
         public static void RegistrarServicosSerap()
         {
