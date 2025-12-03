@@ -15,7 +15,6 @@
         public const string RotaNotificacaoAprovacaoFechamento = "sgp.fechamento.nota.aprovacao.notificar";
         public const string RotaPendenciaAusenciaRegistroIndividual = "sgp.pendencias.professor.ausencia.registro.individual";
         public const string RotaValidacaoAusenciaConciliacaoFrequenciaTurma = "sgp.frequencia.turma.conciliacao.validar";
-        public const string EncerrarPlanoAEEEstudantesInativos = "plano.aee.encerrar.inativos";
         public const string GerarPendenciaValidadePlanoAEE = "plano.aee.pendencia.validade";
         public const string NotificarPlanoAEEExpirado = "plano.aee.notificar.expirados";
         public const string NotificarPlanoAEEEmAberto = "plano.aee.notificar.emaberto";
