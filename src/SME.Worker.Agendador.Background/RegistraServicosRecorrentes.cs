@@ -1,5 +1,6 @@
 ﻿using Hangfire;
 using SME.Worker.Agendador.Aplicacao;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.Abrangencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AtualizarTotalizadoresDePendencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
@@ -222,6 +223,9 @@ namespace SME.Worker.Agendador.Background
 
             // Executar rotina de atualizar carga dashboard consolidado NAAPA, uma vez ao dia, às 05:00am
             Cliente.ExecutarPeriodicamente<IAtualizarMapeamentoDosEstudantesUseCase>(c => c.Executar(), Cron.Daily(8));
+
+            // Executar rotina de atualizar a sincronização de abrangência uma vez ao dia, às 05:00am
+            Cliente.ExecutarPeriodicamente<ISincronizarAbrangenciaUseCase>(c => c.Executar(), Cron.Daily(8));
 
             // Executar rotina uma vez ao dia, às 03:00am
             Cliente.ExecutarPeriodicamente<IConsolidacaoInformacoesProdutividadeFrequenciaUseCase>(c => c.Executar(), Cron.Daily(6));
