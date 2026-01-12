@@ -8,5 +8,6 @@
         public const string NotificacaoDevolucaoEmprestimoAtrasoProlongado = "cdep.emprestimo.situacao.atraso.prolongado.aviso";
         public const string ExecutarConsolidacaoDoHistoricoDeConsultasDeAcervo = "cdep.consolidacao.historico.consultas.acervo";
         public const string ExecutarConsolidacaoDasSolicitacoesDeAcervo = "cdep.consolidacao.solicitacoes.acervo";
+        public const string ExecutarAtualizacaoSituacaoDasSolicitacoesDeAcervoVencidas = "cdep.atualizacao.situacao.solicitacoes.acervo.vencidas";
     }
 }

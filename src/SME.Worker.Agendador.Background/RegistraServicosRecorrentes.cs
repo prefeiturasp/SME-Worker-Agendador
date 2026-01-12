@@ -4,6 +4,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.AtualizarTotalizadoresDePendenci
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.CDEP.AtualizacaoSituacaoSolicitacao;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.CDEP.ConsolidacaoSolicitacoesAcervos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ComponentesCurriculares;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConectaFormacao.SyncEol;
@@ -361,6 +362,9 @@ namespace SME.Worker.Agendador.Background
 
             //Todos os dias às 2 da manhã utc-3
             Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoDasSolicitacoesDeAcervoUseCase>(c => c.Executar(), Cron.Daily(5));
+
+            //Todos os dias às 3 da manhã utc-3
+            Cliente.ExecutarPeriodicamente<IAtualizarSituacaoDasSolicitacoesDeAcervoVencidasUseCase>(c => c.Executar(), Cron.Daily(6));
         }
     }
 }
