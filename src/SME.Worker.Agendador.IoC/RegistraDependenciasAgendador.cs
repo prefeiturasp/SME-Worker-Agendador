@@ -239,14 +239,6 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IAtualizarMapeamentoDosEstudantesUseCase, AtualizarMapeamentoDosEstudantesUseCase>();
             services.TryAddScopedWorkerService<IConsolidacaoInformacoesProdutividadeFrequenciaUseCase, ConsolidacaoInformacoesProdutividadeFrequenciaUseCase>();
             services.TryAddScopedWorkerService<ISincronizarAbrangenciaUseCase, SincronizarAbrangenciaUseCase>();
-            services.TryAddScopedWorkerService<IConsolidarInformacoesFrequenciaPainelEducacionalUseCase, ConsolidarInformacoesFrequenciaPainelEducacionalUseCase>();
-            services.TryAddScopedWorkerService<IConsolidarIdepPainelEducacionalUseCase, ConsolidarIdepPainelEducacionalUseCase>();
-            services.TryAddScopedWorkerService<IConsolidarSondagemEscritaUePainelEducacionalUseCase, ConsolidarSondagemEscritaUePainelEducacionalUseCase>();
-            services.TryAddScopedWorkerService<IConsolidarNivelEscritaAlfabetizacaoUseCase, ConsolidarNivelEscritaAlfabetizacaoUseCase>();
-            services.TryAddScopedWorkerService<IConsolidarNivelEscritaAlfabetizacaoCriticoUseCase, ConsolidarNivelEscritaAlfabetizacaoCriticoUseCase>();
-            services.TryAddScopedWorkerService<IConsolidarVisaoGeralPainelEducacionalUseCase, ConsolidarVisaoGeralPainelEducacionalUseCase>();
-            services.TryAddScopedWorkerService<IConsolidarInformacoesPapUseCase, ConsolidarInformacoesPapUseCase>();
-            services.TryAddScopedWorkerService<IConsolidarNotasPainelEducacionalUseCase, ConsolidarNotasPainelEducacionalUseCase>();
 
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
         }
