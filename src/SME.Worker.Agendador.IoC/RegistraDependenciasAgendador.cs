@@ -254,6 +254,17 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IConsolidarPlanosAEEUseCase, ConsolidarPlanosAEEUseCase>();
             services.TryAddScopedWorkerService<IConsolidarInformacoesEducacionaisPainelEducacionalUseCase, ConsolidarInformacoesEducacionaisPainelEducacionalUseCase>();
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
+
+            services.TryAddScopedWorkerService<IConsolidarIdebPainelEducacional, ConsolidarIdebPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarFluenciaLeitoraPainelEducacional, ConsolidarFluenciaLeitoraPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarTaxaAlfabetizacaoPainelEducacional, ConsolidarTaxaAlfabetizacaoPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarAbandonoPainelEducacional, ConsolidarAbandonoPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarFrequenciaDiariaPainelEducacional, ConsolidarFrequenciaDiariaPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarFrequenciaSemanalPainelEducacional, ConsolidarFrequenciaSemanalPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarProficienciaIdebPainelEducacional, ConsolidarProficienciaIdebPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarProficienciaIdepPainelEducacional, ConsolidarProficienciaIdepPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarAprovacaoPainelEducacional, ConsolidarAprovacaoPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarFluenciaLeitoraUePainelEducacional, ConsolidarFluenciaLeitoraUePainelEducacional>();
         }
         
         private static void RegistrarCasosDeUsoCdep(IServiceCollection services)

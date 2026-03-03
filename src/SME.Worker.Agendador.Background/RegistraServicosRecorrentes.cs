@@ -262,8 +262,21 @@ namespace SME.Worker.Agendador.Background
             // Executar rotina uma vez ao dia, às 04:30am
             Cliente.ExecutarPeriodicamente<IConsolidarReclassificacaoPainelEducacionalUseCase>(c => c.Executar(), Cron.Daily(7, 30));
 
-            // Executar rotina todo domingo, às 09:00am
-            Cliente.ExecutarPeriodicamente<IConsolidarNotasPainelEducacionalUseCase>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Sunday, 12));
+            // Executar rotina uma vez ao dia, às 04:30am
+            Cliente.ExecutarPeriodicamente<IConsolidarIdebPainelEducacional>(c => c.Executar(), Cron.Daily(8, 40));
+            Cliente.ExecutarPeriodicamente<IConsolidarFluenciaLeitoraPainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
+            Cliente.ExecutarPeriodicamente<IConsolidarTaxaAlfabetizacaoPainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
+            Cliente.ExecutarPeriodicamente<IConsolidarAbandonoPainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
+            Cliente.ExecutarPeriodicamente<IConsolidarFrequenciaDiariaPainelEducacional>(c => c.Executar(), Cron.Daily(5, 10));
+
+            Cliente.ExecutarPeriodicamente<IConsolidarFrequenciaSemanalPainelEducacional>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Saturday, 23));
+
+            Cliente.ExecutarPeriodicamente<IConsolidarProficienciaIdebPainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
+            Cliente.ExecutarPeriodicamente<IConsolidarProficienciaIdepPainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
+
+            Cliente.ExecutarPeriodicamente<IConsolidarAprovacaoPainelEducacional>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Saturday, 23));
+
+            Cliente.ExecutarPeriodicamente<IConsolidarFluenciaLeitoraUePainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
         }
         public static void RegistrarServicosConectaFormacao()
         {
