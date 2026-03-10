@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using SME.Worker.Agendador.Aplicacao;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.Abrangencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AtualizarTotalizadoresDePendencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
@@ -34,12 +33,12 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.Metricas.DevolutivaSemDiario;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAlunosFaltosos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoAndamentoFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoInicioFimPeriodoFechamento;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoPeriodoFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoResultadoInsatisfatorio;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoReuniaoPedagogica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacaoUeFechamentosInsuficientes;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.NotificacoesNiveisCargos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ObjetivoAprendizagem;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.PainelEducacional;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaAusenciaFechamento;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaCalendarioUe.ExcluirPendenciaCalendarioAnoAnterior;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciaPerfilUsuario;
@@ -49,7 +48,6 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasAula;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais.RemoverPendencias;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.EncerramentoPlanoAEEEstudantesInativos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEEmAberto;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEExpirado;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.PendenciaValidadePlanoAEE;
@@ -200,7 +198,6 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IExecutaNotificacaoInicioFimPeriodoFechamentoUseCase, ExecutaNotificacaoInicioFimPeriodoFechamentoUseCase>();
             services.TryAddScopedWorkerService<ISyncGeralGoogleClassroomUseCase, SyncGeralGoogleClassroomUseCase>();
             services.TryAddScopedWorkerService<ISyncGsaGoogleClassroomUseCase, SyncGsaGoogleClassroomUseCase>();
-            services.TryAddScopedWorkerService<IExecutaEncerramentoPlanoAEEEstudantesInativosUseCase, ExecutaEncerramentoPlanoAEEEstudantesInativosUseCase>();
             services.TryAddScopedWorkerService<IExecutaPendenciaValidadePlanoAEEUseCase, ExecutaPendenciaValidadePlanoAEEUseCase>();
             services.TryAddScopedWorkerService<IExecutaNotificacaoPlanoAEEExpiradoUseCase, ExecutaNotificacaoPlanoAEEExpiradoUseCase>();
             services.TryAddScopedWorkerService<IExecutaNotificacaoPlanoAEEEmAbertoUseCase, ExecutaNotificacaoPlanoAEEEmAbertoUseCase>();
@@ -244,9 +241,31 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<INotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase, NotificarFreqMinimaMensalInsuficienteAlunoBuscaAtivaUseCase>();
             services.TryAddScopedWorkerService<IAtualizarMapeamentoDosEstudantesUseCase, AtualizarMapeamentoDosEstudantesUseCase>();
             services.TryAddScopedWorkerService<IConsolidacaoInformacoesProdutividadeFrequenciaUseCase, ConsolidacaoInformacoesProdutividadeFrequenciaUseCase>();
-            services.TryAddScopedWorkerService<ISincronizarAbrangenciaUseCase, SincronizarAbrangenciaUseCase>();
-
+            services.TryAddScopedWorkerService<IConsolidarInformacoesFrequenciaPainelEducacionalUseCase, ConsolidarInformacoesFrequenciaPainelEducacionalUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarIdepPainelEducacionalUseCase, ConsolidarIdepPainelEducacionalUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarSondagemEscritaUePainelEducacionalUseCase, ConsolidarSondagemEscritaUePainelEducacionalUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarNivelEscritaAlfabetizacaoUseCase, ConsolidarNivelEscritaAlfabetizacaoUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarNivelEscritaAlfabetizacaoCriticoUseCase, ConsolidarNivelEscritaAlfabetizacaoCriticoUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarVisaoGeralPainelEducacionalUseCase, ConsolidarVisaoGeralPainelEducacionalUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarInformacoesPapUseCase, ConsolidarInformacoesPapUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarReclassificacaoPainelEducacionalUseCase, ConsolidarReclassificacaoPainelEducacionalUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarNotasPainelEducacionalUseCase, ConsolidarNotasPainelEducacionalUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarDistorcaoIdadeUseCase, ConsolidarDistorcaoIdadeUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarEducacaoIntegralUseCase, ConsolidarEducacaoIntegralUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarPlanosAEEUseCase, ConsolidarPlanosAEEUseCase>();
+            services.TryAddScopedWorkerService<IConsolidarInformacoesEducacionaisPainelEducacionalUseCase, ConsolidarInformacoesEducacionaisPainelEducacionalUseCase>();
             services.TryAddScopedWorkerService<Infra.Interfaces.IContextoAplicacao, WorkerContext>();
+
+            services.TryAddScopedWorkerService<IConsolidarIdebPainelEducacional, ConsolidarIdebPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarFluenciaLeitoraPainelEducacional, ConsolidarFluenciaLeitoraPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarTaxaAlfabetizacaoPainelEducacional, ConsolidarTaxaAlfabetizacaoPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarAbandonoPainelEducacional, ConsolidarAbandonoPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarFrequenciaDiariaPainelEducacional, ConsolidarFrequenciaDiariaPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarFrequenciaSemanalPainelEducacional, ConsolidarFrequenciaSemanalPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarProficienciaIdebPainelEducacional, ConsolidarProficienciaIdebPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarProficienciaIdepPainelEducacional, ConsolidarProficienciaIdepPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarAprovacaoPainelEducacional, ConsolidarAprovacaoPainelEducacional>();
+            services.TryAddScopedWorkerService<IConsolidarFluenciaLeitoraUePainelEducacional, ConsolidarFluenciaLeitoraUePainelEducacional>();
         }
         
         private static void RegistrarCasosDeUsoCdep(IServiceCollection services)

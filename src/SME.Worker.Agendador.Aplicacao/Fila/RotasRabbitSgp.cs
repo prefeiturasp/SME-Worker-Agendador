@@ -15,7 +15,6 @@
         public const string RotaNotificacaoAprovacaoFechamento = "sgp.fechamento.nota.aprovacao.notificar";
         public const string RotaPendenciaAusenciaRegistroIndividual = "sgp.pendencias.professor.ausencia.registro.individual";
         public const string RotaValidacaoAusenciaConciliacaoFrequenciaTurma = "sgp.frequencia.turma.conciliacao.validar";
-        public const string EncerrarPlanoAEEEstudantesInativos = "plano.aee.encerrar.inativos";
         public const string GerarPendenciaValidadePlanoAEE = "plano.aee.pendencia.validade";
         public const string NotificarPlanoAEEExpirado = "plano.aee.notificar.expirados";
         public const string NotificarPlanoAEEEmAberto = "plano.aee.notificar.emaberto";
@@ -72,8 +71,6 @@
         public const string ConsolidarReflexoFrequenciaBuscaAtiva = "sgp.consolidacao.reflexo.frequencia.busca.ativa";
         public const string ExecutarAtualizacaoMapeamentoEstudantes = "sgp.mapeamento.estudantes.atualizar";
         public const string ConsolidarInformacoesProdutividadeFrequencia = "sgp.consolidacao.produtividade.frequencia";
-
-        public const string SincronizarAbrangencia = "sgp.abrangencia.worker.sync";
         public const string ConsolidarInformacoesFrequenciaPainelEducacional = "sgp.consolidacao.frequencia.analise.painel.educacional";
         public const string ConsolidarIdepPainelEducacional = "sgp.consolidacao.idep.painel.educacional";
         public const string ConsolidarSondagemEscritaUePainelEducacional = "sgp.consolidacao.painel.educacional.sondagem.escrita.ue";
@@ -81,6 +78,24 @@
         public const string ConsolidarNivelEscritaAlfabetizacao = "sgp.consolidar.nivel.escrita.alfabetizacao";
         public const string ConsolidarNivelEscritaAlfabetizacaoCritico = "sgp.consolidar.nivel.escrita.alfabetizacao.critico";
         public const string ConsolidarInformacoesPapPainelEducacional = "sgp.consolidar.informacoes.pap.painel.educacional";
+        public const string ConsolidarReclassificacaoPainelEducacional = "sgp.consolidacao.painel.educacional.reclassificacao";
         public const string ConsolidarNotasPainelEducacional = "sgp.consolidacao.painel.educacional.notas";
+        public const string ConsolidarDistorcaoIdadePainelEducacional = "sgp.consolidacao.painel.educacional.distorcao-serie-idade";
+        public const string ConsolidarEducacaoIntegralPainelEducacional = "sgp.consolidacao.painel.educacional.educacao-integral";
+        public const string ConsolidarPlanosAEEPainelEducacional = "sgp.consolidacao.painel.educacional.plano-aee";
+        public const string ConsolidarInformacoesEducacionaisPainelEducacional = "sgp.consolidacao.painel.educacional.informacoes-educacionais";
+
+        public const string ConsolidarIdebPainelEducacional = "sgp.consolidacao.ideb.painel.educacional";
+        public const string ConsolidarFluenciaLeitoraPainelEducacional = "sgp.consolidacao.painel.educacional.fluencia.leitora";
+        public const string ConsolidarTaxaAlfabetizacaoPainelEducacional = "sgp.consolidacao.painel.educacional.taxa.alfabetizacao";
+        public const string ConsolidarAbandonoPainelEducacional = "sgp.consolidacao.painel.educacional.abandono";
+        public const string ConsolidarFrequenciaDiariaPainelEducacional = "sgp.consolidacao.painel.educacional.frequencia.diaria";
+        public const string ConsolidarFrequenciaSemanalPainelEducacional = "sgp.consolidacao.painel.educacional.frequencia.semanal";
+        public const string ConsolidarProficienciaIdebPainelEducacional = "sgp.consolidacao.painel.educacional.proficiencia.ideb";
+        public const string ConsolidarProficienciaIdepPainelEducacional = "sgp.consolidacao.painel.educacional.proficiencia.idep";
+        public const string ConsolidarAprovacaoPainelEducacional = "sgp.consolidacao.painel.educacional.aprovacao";
+        public const string ConsolidarFluenciaLeitoraUePainelEducacional = "sgp.consolidacao.painel.educacional.fluencia-leitora-ue";
+        public const string SincronizarAbrangencia = "sgp.abrangencia.worker.sync";
     }
 }
+

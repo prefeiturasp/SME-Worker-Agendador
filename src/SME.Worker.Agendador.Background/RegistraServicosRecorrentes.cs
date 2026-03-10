@@ -45,7 +45,6 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasAula;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PendenciasGerais.RemoverPendencias;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.EncerramentoPlanoAEEEstudantesInativos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEEmAberto;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.NotificacaoPlanoAEEExpirado;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.PlanoAEE.PendenciaValidadePlanoAEE;
@@ -134,9 +133,6 @@ namespace SME.Worker.Agendador.Background
             Cliente.ExecutarPeriodicamente<IExecutaNotificacaoInicioFimPeriodoFechamentoUseCase>(c => c.Executar(), Cron.Daily(5, 15));
 
             //Cliente.ExecutarPeriodicamente<IRemoveConexaoIdleUseCase>(c => c.Executar(), Cron.MinuteInterval(30));
-
-            //Encerramnto de planos diariamente às 22 horas
-            Cliente.ExecutarPeriodicamente<IExecutaEncerramentoPlanoAEEEstudantesInativosUseCase>(c => c.Executar(), "0 01 * * *");
 
             Cliente.ExecutarPeriodicamente<IExecutaPendenciaValidadePlanoAEEUseCase>(c => c.Executar(), Cron.Daily(8));
 
@@ -228,14 +224,62 @@ namespace SME.Worker.Agendador.Background
             // Executar rotina de atualizar carga dashboard consolidado NAAPA, uma vez ao dia, às 05:00am
             Cliente.ExecutarPeriodicamente<IAtualizarMapeamentoDosEstudantesUseCase>(c => c.Executar(), Cron.Daily(8));
 
-            // Executar rotina de atualizar a sincronização de abrangência uma vez ao dia, às 05:00am
-            Cliente.ExecutarPeriodicamente<ISincronizarAbrangenciaUseCase>(c => c.Executar(), Cron.Daily(8));
+            // Executar rotina uma vez ao dia, às 04:40am
+            Cliente.ExecutarPeriodicamente<IConsolidarInformacoesEducacionaisPainelEducacionalUseCase>(c => c.Executar(), Cron.Daily(8, 40));
+
+            // Executar rotina uma vez ao dia, às 04:30am
+            Cliente.ExecutarPeriodicamente<IConsolidarDistorcaoIdadeUseCase>(c => c.Executar(), Cron.Daily(8, 30));
 
             // Executar rotina uma vez ao dia, às 03:00am
             Cliente.ExecutarPeriodicamente<IConsolidacaoInformacoesProdutividadeFrequenciaUseCase>(c => c.Executar(), Cron.Daily(6));
 
-            // Executar rotina todo domingo, às 09:00am
-            Cliente.ExecutarPeriodicamente<IConsolidarNotasPainelEducacionalUseCase>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Sunday, 12));
+            // Executar rotina uma vez ao dia, às 04:10am
+            Cliente.ExecutarPeriodicamente<IConsolidarEducacaoIntegralUseCase>(c => c.Executar(), Cron.Daily(7, 10));
+
+            // Executar rotina uma vez ao dia, às 04:00am
+            Cliente.ExecutarPeriodicamente<IConsolidarInformacoesFrequenciaPainelEducacionalUseCase>(c => c.Executar(), Cron.Daily(7));
+
+            // Executar rotina uma vez ao dia, às 03:00am
+            Cliente.ExecutarPeriodicamente<IConsolidarVisaoGeralPainelEducacionalUseCase>(c => c.Executar(), Cron.Daily(6));
+
+            // Executar rotina uma vez ao dia, às 02:00am
+            Cliente.ExecutarPeriodicamente<IConsolidarIdepPainelEducacionalUseCase>(c => c.Executar(), Cron.Daily(5));
+
+            // Executar rotina uma vez ao dia, às 00:30am
+            Cliente.ExecutarPeriodicamente<IConsolidarNivelEscritaAlfabetizacaoUseCase>(c => c.Executar(), Cron.Daily(3, 30));
+
+            // Executar rotina uma vez ao dia, às 00:50am
+            Cliente.ExecutarPeriodicamente<IConsolidarNivelEscritaAlfabetizacaoCriticoUseCase>(c => c.Executar(), Cron.Daily(3, 50));
+
+            // Executar rotina uma vez ao dia, às 00:20am
+            Cliente.ExecutarPeriodicamente<IConsolidarPlanosAEEUseCase>(c => c.Executar(), Cron.Daily(3, 20));
+
+            // Executar rotina uma vez ao dia, às 01:20am
+            Cliente.ExecutarPeriodicamente<IConsolidarInformacoesPapUseCase>(c => c.Executar(), Cron.Daily(4, 20));
+
+            // Executar rotina uma vez ao dia, às 02:20am
+            Cliente.ExecutarPeriodicamente<IConsolidarSondagemEscritaUePainelEducacionalUseCase>(c => c.Executar(), Cron.Daily(5, 20));
+
+            // Executar rotina uma vez ao dia, às 04:30am
+            Cliente.ExecutarPeriodicamente<IConsolidarReclassificacaoPainelEducacionalUseCase>(c => c.Executar(), Cron.Daily(7, 30));
+
+            // Executar rotina uma vez ao dia, às 04:30am
+            Cliente.ExecutarPeriodicamente<IConsolidarIdebPainelEducacional>(c => c.Executar(), Cron.Daily(8, 40));
+            Cliente.ExecutarPeriodicamente<IConsolidarFluenciaLeitoraPainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
+            Cliente.ExecutarPeriodicamente<IConsolidarTaxaAlfabetizacaoPainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
+            Cliente.ExecutarPeriodicamente<IConsolidarAbandonoPainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
+            Cliente.ExecutarPeriodicamente<IConsolidarFrequenciaDiariaPainelEducacional>(c => c.Executar(), Cron.Daily(5, 10));
+
+            Cliente.ExecutarPeriodicamente<IConsolidarFrequenciaSemanalPainelEducacional>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Saturday, 23));
+
+            Cliente.ExecutarPeriodicamente<IConsolidarProficienciaIdebPainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
+            Cliente.ExecutarPeriodicamente<IConsolidarProficienciaIdepPainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
+
+            Cliente.ExecutarPeriodicamente<IConsolidarAprovacaoPainelEducacional>(c => c.Executar(), Cron.Weekly(System.DayOfWeek.Saturday, 23));
+
+            Cliente.ExecutarPeriodicamente<IConsolidarFluenciaLeitoraUePainelEducacional>(c => c.Executar(), Cron.Daily(8, 10));
+            // Executar rotina de atualizar a sincronização de abrangência uma vez ao dia, às 05:00am
+            Cliente.ExecutarPeriodicamente<ISincronizarAbrangenciaUseCase>(c => c.Executar(), Cron.Daily(8));
         }
         public static void RegistrarServicosConectaFormacao()
         {
