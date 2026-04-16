@@ -1,6 +1,5 @@
 ﻿using Hangfire;
 using SME.Worker.Agendador.Aplicacao;
-using SME.Worker.Agendador.Aplicacao.CasosDeUso.Abrangencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AtualizarTotalizadoresDePendencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
