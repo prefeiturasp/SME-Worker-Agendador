@@ -4,6 +4,7 @@ using SME.Worker.Agendador.Background;
 using SME.Worker.Agendador.Background.Core.Interfaces;
 using System;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Hangfire
 {
@@ -30,6 +31,10 @@ namespace SME.Worker.Agendador.Hangfire
         {
             return BackgroundJob.Enqueue<T>(metodo);
         }
+        public string Executar<T>(Expression<Func<T, Task>> metodo)
+        {
+            return BackgroundJob.Enqueue<T>(metodo);
+        }
 
         public void ExecutarPeriodicamente(Expression<Action> metodo, string cron)
         {
@@ -39,6 +44,11 @@ namespace SME.Worker.Agendador.Hangfire
         public void ExecutarPeriodicamente<T>(Expression<Action<T>> metodo, string cron, string nomeFila = "default")
         {
             RecurringJob.AddOrUpdate(metodo, cron, queue: nomeFila);
+        }
+
+        public void ExecutarPeriodicamente<T>(Expression<Func<T, Task>> metodo, string cron, string nomeFila = "default")
+        {
+            RecurringJob.AddOrUpdate<T>(metodo, cron, queue: nomeFila);
         }
 
         public void Registrar()

@@ -13,7 +13,10 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.ConectaFormacao.SyncEol
         }
         public async Task<bool> Executar()
         {
-            await mediator.Send(new PublicaFilaRabbitCommand(RotasConectaFormacao.SincronizaCargosEol, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(
+                RotasConectaFormacao.SincronizaCargosEol, 
+                Guid.NewGuid(),
+                RotasConectaFormacao.Exchange));
             return true;
         }
     }

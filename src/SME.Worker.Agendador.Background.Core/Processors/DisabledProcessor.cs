@@ -2,6 +2,7 @@
 using SME.Worker.Agendador.Background.Core.Interfaces;
 using System;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Background.Core.Processors
 {
@@ -25,6 +26,15 @@ namespace SME.Worker.Agendador.Background.Core.Processors
 
             return string.Empty;
         }
+        public string Executar<T>(Expression<Func<T, Task>> metodo)
+        {
+            var classe = (T)Orquestrador.Provider.GetService(typeof(T));
+            var acao = metodo.Compile();
+
+            acao(classe).GetAwaiter().GetResult();
+
+            return string.Empty;
+        }
 
         public void ExecutarPeriodicamente(Expression<Action> metodo, string cron)
         {
@@ -32,6 +42,11 @@ namespace SME.Worker.Agendador.Background.Core.Processors
         }
 
         public void ExecutarPeriodicamente<T>(Expression<Action<T>> metodo, string cron, string nomeFila = "default")
+        {
+            throw new ErroInternoException("O serviço de processamento em segundo plano está desativado");
+        }
+
+        public void ExecutarPeriodicamente<T>(Expression<Func<T, Task>> metodo, string cron, string nomeFila = "default")
         {
             throw new ErroInternoException("O serviço de processamento em segundo plano está desativado");
         }

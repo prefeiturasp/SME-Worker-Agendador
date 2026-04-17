@@ -14,7 +14,10 @@ namespace SME.Worker.Agendador.Aplicacao
 
         public async Task<bool> Executar()
         {
-            await mediator.Send(new PublicaFilaRabbitCommand(RotasConectaFormacao.EncerrarInscricaoAutomaticamente, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(
+                RotasConectaFormacao.EncerrarInscricaoAutomaticamente, 
+                Guid.NewGuid(),
+                RotasConectaFormacao.Exchange));
             return true;
         }
     }
