@@ -95,6 +95,7 @@
         public const string ConsolidarProficienciaIdepPainelEducacional = "sgp.consolidacao.painel.educacional.proficiencia.idep";
         public const string ConsolidarAprovacaoPainelEducacional = "sgp.consolidacao.painel.educacional.aprovacao";
         public const string ConsolidarFluenciaLeitoraUePainelEducacional = "sgp.consolidacao.painel.educacional.fluencia-leitora-ue";
+        public const string SincronizarAbrangencia = "sgp.abrangencia.worker.sync";
     }
 }
 

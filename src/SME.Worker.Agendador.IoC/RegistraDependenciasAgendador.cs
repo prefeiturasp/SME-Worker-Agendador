@@ -1,11 +1,11 @@
-﻿using System;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using SME.Worker.Agendador.Aplicacao;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AtualizarTotalizadoresDePendencia;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Aula.CriacaoAutomatica;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.AulasPrevistas;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.Cdep;
+using SME.Worker.Agendador.Aplicacao.CasosDeUso.CDEP.AtualizacaoSituacaoSolicitacao;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.CDEP.ConsolidacaoSolicitacoesAcervos;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ComponentesCurriculares;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.ConectaFormacao.SincronizacaoInstitucionalDre;
@@ -56,6 +56,7 @@ using SME.Worker.Agendador.Aplicacao.CasosDeUso.SerapEstudantes;
 using SME.Worker.Agendador.Aplicacao.CasosDeUso.SincronizacaoInstitucional;
 using SME.Worker.Agendador.Infra.Contexto;
 using SME.Worker.Agendador.IoC.Extensions;
+using System;
 
 namespace SME.Worker.Agendador.IoC
 {
@@ -275,6 +276,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<INotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase, NotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase>();
             services.TryAddScopedWorkerService<IExecutarConsolidacaoDoHistoricoDeConsultasDeAcervoUseCase, ExecutarConsolidacaoDoHistoricoDeConsultasDeAcervoUseCase>();
             services.TryAddScopedWorkerService<IExecutarConsolidacaoDasSolicitacoesDeAcervoUseCase, ExecutarConsolidacaoDasSolicitacoesDeAcervoUseCase>();
+            services.TryAddScopedWorkerService<IAtualizarSituacaoDasSolicitacoesDeAcervoVencidasUseCase, AtualizarSituacaoDasSolicitacoesDeAcervoVencidasUseCase>();
         }
 
         private static void ResgistraDependenciaHttp(IServiceCollection services)

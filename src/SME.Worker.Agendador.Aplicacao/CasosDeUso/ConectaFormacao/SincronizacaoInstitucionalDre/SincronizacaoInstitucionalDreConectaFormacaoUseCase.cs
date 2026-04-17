@@ -14,7 +14,10 @@ namespace SME.Worker.Agendador.Aplicacao.CasosDeUso.ConectaFormacao.Sincronizaca
 
         public async Task<bool> Executar()
         {
-            await mediator.Send(new PublicaFilaRabbitCommand(RotasConectaFormacao.SincronizaEstruturaInstitucionalDre, Guid.NewGuid()));
+            await mediator.Send(new PublicaFilaRabbitCommand(
+                RotasConectaFormacao.SincronizaEstruturaInstitucionalDre, 
+                Guid.NewGuid(),
+                RotasConectaFormacao.Exchange));
             return true;
         }
     }
