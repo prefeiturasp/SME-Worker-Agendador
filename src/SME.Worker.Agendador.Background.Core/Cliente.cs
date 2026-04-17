@@ -2,6 +2,7 @@
 using SME.Worker.Agendador.Background.Core.Enumerados;
 using System;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace SME.Worker.Agendador.Background.Core
 {
@@ -21,6 +22,10 @@ namespace SME.Worker.Agendador.Background.Core
         {
             Orquestrador.ObterProcessador(TipoProcessamento.ExecucaoRecorrente).ExecutarPeriodicamente(metodo, cron, nomeFila);
         }
-        
+        public static void ExecutarPeriodicamenteAsync<T>(Expression<Func<T, Task>> metodo, string cron, string nomeFila = "default")
+        {
+            Orquestrador.ObterProcessador(TipoProcessamento.ExecucaoRecorrente).ExecutarPeriodicamente(metodo, cron, nomeFila);
+        }
+
     }
 }
