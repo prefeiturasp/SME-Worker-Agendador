@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SME.Worker.Agendador.Aplicacao.Fila
+﻿namespace SME.Worker.Agendador.Aplicacao.Fila
 {
     public static class RotasConectaFormacao
     {
+        public const string Exchange = "sme.conecta.workers";
+
         public const string SincronizaEstruturaInstitucionalDre = "conecta.sincronizacao.institucional.dre";
         public const string SincronizaEstruturaInstitucionalDreTratar = "conecta.sincronizacao.institucional.dre.tratar";
         public const string EncerrarInscricaoAutomaticamente = "conecta.inscricao.encerrar.cursista.inativo";

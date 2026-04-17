@@ -283,19 +283,19 @@ namespace SME.Worker.Agendador.Background
         public static void RegistrarServicosConectaFormacao()
         {
             // uma vez ao dia, às 05:00am
-            Cliente.ExecutarPeriodicamente<ISincronizacaoInstitucionalDreConectaFormacaoUseCase>(c => c.Executar(), Cron.Daily(8));
+            Cliente.ExecutarPeriodicamenteAsync<ISincronizacaoInstitucionalDreConectaFormacaoUseCase>(c => c.Executar(), Cron.Daily(8));
 
             // uma vez ao dia, às 05:00am
-            Cliente.ExecutarPeriodicamente<IEncerrarInscricoesAutomaticamenteUseCase>(c => c.Executar(), Cron.Daily(8));
+            Cliente.ExecutarPeriodicamenteAsync<IEncerrarInscricoesAutomaticamenteUseCase>(c => c.Executar(), Cron.Daily(8));
 
             // uma vez ao dia, às 06:00am
-            Cliente.ExecutarPeriodicamente<IExecutarSincronizacaoCargosEolUseCase>(c => c.Executar(), Cron.Daily(9, 0));
+            Cliente.ExecutarPeriodicamenteAsync<IExecutarSincronizacaoCargosEolUseCase>(c => c.Executar(), Cron.Daily(9, 0));
 
             // uma vez ao dia, às 06:30am
-            Cliente.ExecutarPeriodicamente<ISincronizarAtribuicoesServidoresEolUseCase>(c => c.Executar(), Cron.Daily(9, 30));
+            Cliente.ExecutarPeriodicamenteAsync<ISincronizarAtribuicoesServidoresEolUseCase>(c => c.Executar(), Cron.Daily(9, 30));
 
             // uma vez ao dia, às 07:00am
-            Cliente.ExecutarPeriodicamente<ISincronizarFuncaoAtividadeEolUseCase>(c => c.Executar(), Cron.Daily(10, 0));
+            Cliente.ExecutarPeriodicamenteAsync<ISincronizarFuncaoAtividadeEolUseCase>(c => c.Executar(), Cron.Daily(10, 0));
         }
         public static void RegistrarServicosSerap()
         {
@@ -367,19 +367,19 @@ namespace SME.Worker.Agendador.Background
         public static void RegistrarServicosCdep()
         {
             //todos os dias à 7 da noite utc-3
-            Cliente.ExecutarPeriodicamente<IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase>(c => c.Executar(), Cron.Daily(22));
-            Cliente.ExecutarPeriodicamente<INotificacaoVencimentoEmprestimoUseCase>(c => c.Executar(), Cron.Daily(22));
-            Cliente.ExecutarPeriodicamente<INotificacaoDevolucaoEmprestimoAtrasadoUseCase>(c => c.Executar(), Cron.Daily(22));
-            Cliente.ExecutarPeriodicamente<INotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase>(c => c.Executar(), Cron.Daily(22));
+            Cliente.ExecutarPeriodicamenteAsync<IExecutarAtualizacaoSituacaoParaEmprestimoComDevolucaoEmAtrasoUseCase>(c => c.Executar(), Cron.Daily(22));
+            Cliente.ExecutarPeriodicamenteAsync<INotificacaoVencimentoEmprestimoUseCase>(c => c.Executar(), Cron.Daily(22));
+            Cliente.ExecutarPeriodicamenteAsync<INotificacaoDevolucaoEmprestimoAtrasadoUseCase>(c => c.Executar(), Cron.Daily(22));
+            Cliente.ExecutarPeriodicamenteAsync<INotificacaoDevolucaoEmprestimoAtrasoProlongadoUseCase>(c => c.Executar(), Cron.Daily(22));
 
             //Todos os dias às 1 da manhã utc-3
-            Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoDoHistoricoDeConsultasDeAcervoUseCase>(c => c.Executar(), Cron.Daily(4));
+            Cliente.ExecutarPeriodicamenteAsync<IExecutarConsolidacaoDoHistoricoDeConsultasDeAcervoUseCase>(c => c.Executar(), Cron.Daily(4));
 
             //Todos os dias às 2 da manhã utc-3
-            Cliente.ExecutarPeriodicamente<IExecutarConsolidacaoDasSolicitacoesDeAcervoUseCase>(c => c.Executar(), Cron.Daily(5));
+            Cliente.ExecutarPeriodicamenteAsync<IExecutarConsolidacaoDasSolicitacoesDeAcervoUseCase>(c => c.Executar(), Cron.Daily(5));
 
             //Todos os dias às 3 da manhã utc-3
-            Cliente.ExecutarPeriodicamente<IAtualizarSituacaoDasSolicitacoesDeAcervoVencidasUseCase>(c => c.Executar(), Cron.Daily(6));
+            Cliente.ExecutarPeriodicamenteAsync<IAtualizarSituacaoDasSolicitacoesDeAcervoVencidasUseCase>(c => c.Executar(), Cron.Daily(6));
         }
     }
 }
