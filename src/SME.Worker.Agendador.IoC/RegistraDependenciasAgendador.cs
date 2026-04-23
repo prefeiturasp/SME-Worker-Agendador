@@ -266,6 +266,7 @@ namespace SME.Worker.Agendador.IoC
             services.TryAddScopedWorkerService<IConsolidarProficienciaIdepPainelEducacional, ConsolidarProficienciaIdepPainelEducacional>();
             services.TryAddScopedWorkerService<IConsolidarAprovacaoPainelEducacional, ConsolidarAprovacaoPainelEducacional>();
             services.TryAddScopedWorkerService<IConsolidarFluenciaLeitoraUePainelEducacional, ConsolidarFluenciaLeitoraUePainelEducacional>();
+            services.TryAddScopedWorkerService<ISincronizarAbrangenciaUseCase, SincronizarAbrangenciaUseCase>();
         }
         
         private static void RegistrarCasosDeUsoCdep(IServiceCollection services)
